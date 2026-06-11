@@ -136,16 +136,42 @@
                         Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi kami rancang untuk
                         menghasilkan karya terbaik — bukan sekadar foto, tapi sebuah cerita visual.
                     </p>
-                    <div class="grid grid-cols-2 gap-3">
-                        @foreach (['Peralatan Profesional', 'Editing Premium', 'Pengiriman Tepat Waktu', 'Konsultasi Gratis'] as $f)
-                            <div class="flex items-center gap-2.5 text-sm text-gray-700">
-                                <span class="w-5 h-5 rounded-md bg-red-50 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7" />
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                        @php
+                            $features = [
+                                [
+                                    'title' => 'Peralatan Pro', 
+                                    'desc' => 'Kamera & lensa resolusi tinggi',
+                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><circle cx="12" cy="13" r="4" stroke-width="1.5" />'
+                                ],
+                                [
+                                    'title' => 'Editing Premium', 
+                                    'desc' => 'Color grading kelas sinematik',
+                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />'
+                                ],
+                                [
+                                    'title' => 'Tepat Waktu', 
+                                    'desc' => 'Penyerahan hasil on-time',
+                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />'
+                                ],
+                                [
+                                    'title' => 'Konsultasi Konsep', 
+                                    'desc' => 'Diskusi visi & arahan gaya',
+                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />'
+                                ]
+                            ];
+                        @endphp
+                        @foreach ($features as $f)
+                            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-red-100 transition-all group">
+                                <span class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                                    <svg class="w-5 h-5 text-red-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        {!! $f['icon'] !!}
                                     </svg>
                                 </span>
-                                {{ $f }}
+                                <div>
+                                    <h4 class="text-gray-900 font-bold text-sm mb-0.5">{{ $f['title'] }}</h4>
+                                    <p class="text-gray-500 text-[11px] leading-relaxed">{{ $f['desc'] }}</p>
+                                </div>
                             </div>
                         @endforeach
                     </div>
