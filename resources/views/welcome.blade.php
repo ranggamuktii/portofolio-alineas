@@ -163,12 +163,41 @@
     ============================================================ --}}
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
-        categories: ['All', 'Portrait', 'Event', 'Wedding'],
+        limit: 9,
+        categories: ['All', 'Wedding', 'Portrait', 'Event', 'Video', 'School', 'Corporate'],
+        items: [],
+        showLoadMore: false,
+        init() {
+            this.items = Array.from(document.querySelectorAll('.portfolio-item'));
+            this.updateVisibility();
+        },
         setActive(cat) {
             this.active = cat;
-            document.querySelectorAll('.portfolio-item').forEach(el => {
-                el.classList.toggle('hidden-item', cat !== 'All' && !(el.dataset.cat || '').includes(cat));
+            this.limit = 9;
+            this.updateVisibility();
+        },
+        loadMore() {
+            this.limit += 9;
+            this.updateVisibility();
+        },
+        updateVisibility() {
+            let visibleCount = 0;
+            let totalMatch = 0;
+            this.items.forEach(el => {
+                let match = this.active === 'All' || (el.dataset.cat || '').includes(this.active);
+                if (match) {
+                    totalMatch++;
+                    if (visibleCount < this.limit) {
+                        el.classList.remove('hidden-item');
+                        visibleCount++;
+                    } else {
+                        el.classList.add('hidden-item');
+                    }
+                } else {
+                    el.classList.add('hidden-item');
+                }
             });
+            this.showLoadMore = totalMatch > this.limit;
         }
     }">
 
@@ -237,13 +266,16 @@
                         ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'The Family', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
                         ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
                         ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
-                        ['cat' => 'Event', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
+                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Cinematic Wedding', 'h' => 250, 'isVideo' => true, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
+                        ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
                         ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
+                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Video Angkatan', 'h' => 270, 'isVideo' => true, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/0jT4vgOXRb3WgfQFe8pmuEzSZ5wguukMZMD4dO9l.jpg'],
                         ['cat' => 'Wedding', 'label' => 'Prewedding', 'title' => 'Prewedding Premium', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
-                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group Session', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/0jT4vgOXRb3WgfQFe8pmuEzSZ5wguukMZMD4dO9l.jpg'],
-                        ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'Birthday Celebration', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
-                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'Maternity Session', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg'],
+                        ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
+                        ['cat' => 'Event', 'label' => 'Event', 'title' => 'Dokumentasi Event', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
+                        ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg'],
                         ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'Family Portrait', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg'],
+                        ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
                     ];
                 @endphp
 
@@ -253,8 +285,17 @@
                         <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
                             <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            
+                            @if(!empty($item['isVideo']))
+                                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 group-hover:bg-red-600/80 transition-all duration-300">
+                                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                            @endif
+
                             <div
-                                class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5">
+                                class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5 z-20">
                                 <span
                                     class="text-red-400 text-[9px] font-bold tracking-widest uppercase mb-0.5">{{ $item['label'] }}</span>
                                 <h3 class="text-white text-[13px] font-semibold leading-snug">{{ $item['title'] }}</h3>
@@ -262,6 +303,15 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="mt-12 text-center" x-show="showLoadMore" x-cloak>
+                <button @click="loadMore()" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-red-600 border border-gray-200 hover:border-red-600 px-6 py-2.5 rounded-full transition-all">
+                    Tampilkan Lebih Banyak
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </button>
             </div>
 
         </div>
@@ -277,23 +327,22 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
             <div class="reveal text-center mb-14">
-                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Paket Layanan</span>
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3">Pilih Paket Terbaik Anda
+                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Layanan Kami</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3">Keahlian Visual Kami
                 </h2>
-                <p class="text-gray-600 text-sm mt-3 max-w-sm mx-auto leading-relaxed">Berbagai paket foto studio
-                    profesional untuk setiap momen spesial Anda.</p>
+                <p class="text-gray-600 text-sm mt-3 max-w-sm mx-auto leading-relaxed">Dari momen intim personal hingga dokumentasi skala besar, kami memberikan dedikasi penuh di setiap bidikan.</p>
             </div>
 
             <div class="services-grid">
 
                 @php
                     $services = [
-                        ['delay' => 0, 'badge' => null, 'title' => 'The Family — Rp 150K', 'desc' => 'Abadikan kehangatan cinta keluarga. 30 menit sesi foto, max 4 orang, 15 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
-                        ['delay' => 100, 'badge' => null, 'title' => 'The Group — Rp 200K', 'desc' => 'Bingkai kebersamaan tanpa batas. 30 menit sesi foto, max 6 orang, cetak 4R/orang, 10 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
-                        ['delay' => 200, 'badge' => null, 'title' => 'The Birthday — Rp 250K', 'desc' => 'Rayakan bahagia di hari istimewa. 30 menit sesi dekorasi + 30 menit foto, balon warna & angka, cetak 4R & frame.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
-                        ['delay' => 300, 'badge' => null, 'title' => 'The Graduation — Rp 300K', 'desc' => 'Potret terbaik untuk sebuah pencapaian. 60 menit sesi foto, 2 sesi kostum, 15 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
-                        ['delay' => 400, 'badge' => null, 'title' => 'The Maternity — Rp 500K', 'desc' => 'Abadikan cinta sebelum pertemuan pertama. 60 menit sesi foto, free make up, 20 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
-                        ['delay' => 500, 'badge' => 'Premium', 'title' => 'Prewedding Premium — Rp 1.2Jt', 'desc' => 'Mengabadikan cinta sebelum hari bahagia. 60 menit sesi foto, free make up & kostum adat, cetak 16R.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
+                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
+                        ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
+                        ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
+                        ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
+                        ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
+                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
                     ];
                 @endphp
 
@@ -311,7 +360,7 @@
                             <p class="text-gray-600 text-sm leading-relaxed flex-1">{{ $svc['desc'] }}</p>
                             <a href="https://wa.me/6285213385280" target="_blank"
                                 class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-red-600 hover:text-red-700 transition-colors">
-                                Booking Sekarang
+                                Diskusikan Kebutuhan
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
