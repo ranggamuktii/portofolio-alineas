@@ -92,86 +92,70 @@
 
 
     {{-- ============================================================
-    ABOUT
+    ABOUT (BENTO GRID)
     ============================================================ --}}
-    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7] bg-noise">
+    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7]">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
 
-                {{-- Placeholder image --}}
-                <div class="reveal-left relative group">
-                    <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
-                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Alineas Studio - Prewedding Session"
-                            class="w-full h-full object-cover ken-burns">
-                    </div>
-
-                    <div
-                        class="absolute -bottom-6 -right-6 md:-bottom-8 md:-right-8 bg-white p-6 md:p-8 rounded-2xl shadow-xl flex items-center gap-5 border border-gray-50 reveal delay-200">
-                        <div
-                            class="w-14 h-14 md:w-16 md:h-16 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                            <span class="text-red-600 font-display text-2xl md:text-3xl font-bold">5+</span>
-                        </div>
-                        <div>
-                            <p class="text-gray-900 font-bold text-sm md:text-base">Tahun Pengalaman</p>
-                            <p class="text-gray-500 text-xs md:text-sm mt-0.5">Berkarya di Industri</p>
-                        </div>
-                    </div>
+                {{-- BOX 1: IMAGE (Span 1 col, 2 rows on Desktop) --}}
+                <div
+                    class="reveal-left md:col-span-1 md:row-span-2 rounded-[2rem] overflow-hidden relative group min-h-[320px] md:min-h-0 bg-gray-200 shadow-sm border border-gray-100">
+                    <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg"
+                        alt="Alineas Studio"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
 
-                {{-- About copy --}}
-                <div class="reveal-right">
-                    <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Tentang Kami</span>
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 leading-snug mt-3 mb-5">
+                {{-- BOX 2: MAIN TEXT (Span 2 cols on Desktop) --}}
+                <div
+                    class="reveal-right md:col-span-2 bg-white rounded-[2rem] p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col justify-center">
+                    <span class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-3">Tentang Kami</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 leading-snug mb-5">
                         Studio di Balik Ribuan Momen Indah
                     </h2>
-                    <p class="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
+                    <p class="text-gray-600 leading-relaxed mb-6 text-sm md:text-base">
                         Alineas Studio adalah studio fotografi profesional di Karawang, Jawa Barat. Kami hadir sebagai
                         mitra visual bagi individu, keluarga, dan perusahaan yang menginginkan hasil foto berkualitas
                         tinggi.
+                        Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi dirancang untuk
+                        menghasilkan karya terbaik.
                     </p>
-                    <p class="text-gray-600 leading-relaxed mb-8 text-sm md:text-base">
-                        Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi kami rancang untuk
-                        menghasilkan karya terbaik — bukan sekadar foto, tapi sebuah cerita visual.
-                    </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                        @php
-                            $features = [
-                                [
-                                    'title' => 'Peralatan Pro', 
-                                    'desc' => 'Kamera & lensa resolusi tinggi',
-                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /><circle cx="12" cy="13" r="4" stroke-width="1.5" />'
-                                ],
-                                [
-                                    'title' => 'Editing Premium', 
-                                    'desc' => 'Color grading kelas sinematik',
-                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />'
-                                ],
-                                [
-                                    'title' => 'Tepat Waktu', 
-                                    'desc' => 'Penyerahan hasil on-time',
-                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />'
-                                ],
-                                [
-                                    'title' => 'Konsultasi Konsep', 
-                                    'desc' => 'Diskusi visi & arahan gaya',
-                                    'icon' => '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />'
-                                ]
-                            ];
-                        @endphp
-                        @foreach ($features as $index => $f)
-                            <div class="reveal delay-{{ ($index + 1) * 100 }} flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-red-100 transition-all group">
-                                <span class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
-                                    <svg class="w-5 h-5 text-red-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        {!! $f['icon'] !!}
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+                        @foreach (['Peralatan Profesional', 'Editing Premium', 'Pengiriman Tepat Waktu', 'Konsultasi Gratis'] as $f)
+                            <div class="flex items-center gap-3 text-sm font-medium text-gray-800">
+                                <span class="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M5 13l4 4L19 7" />
                                     </svg>
                                 </span>
-                                <div>
-                                    <h4 class="text-gray-900 font-bold text-sm mb-0.5">{{ $f['title'] }}</h4>
-                                    <p class="text-gray-500 text-[11px] leading-relaxed">{{ $f['desc'] }}</p>
-                                </div>
+                                {{ $f }}
                             </div>
                         @endforeach
                     </div>
+                </div>
+
+                {{-- BOX 3: YEARS ACTIVE --}}
+                <div
+                    class="reveal delay-100 bg-red-600 rounded-[2rem] p-8 flex flex-col items-center justify-center text-center shadow-lg shadow-red-600/20 relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-20 h-20 rounded-full bg-white/10 blur-xl"></div>
+                    <div class="absolute -left-4 -bottom-4 w-16 h-16 rounded-full bg-black/10 blur-lg"></div>
+                    <div class="font-display text-5xl font-bold text-white mb-2 relative z-10">5+</div>
+                    <div class="text-red-100 text-sm font-medium relative z-10">Tahun Pengalaman</div>
+                </div>
+
+                {{-- BOX 4: OPERATING HOURS --}}
+                <div
+                    class="reveal delay-200 bg-gray-900 rounded-[2rem] p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
+                    <div class="flex items-center gap-2 mb-3 relative z-10">
+                        <span
+                            class="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.6)]"></span>
+                        <span class="text-gray-400 text-[10px] uppercase tracking-widest font-semibold">Buka Setiap
+                            Hari</span>
+                    </div>
+                    <p class="text-white text-xl font-bold relative z-10">09.00 – 21.00</p>
+                    <p class="text-gray-500 text-xs mt-1 relative z-10">WIB</p>
                 </div>
 
             </div>
