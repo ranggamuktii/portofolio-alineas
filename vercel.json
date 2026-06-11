@@ -22,8 +22,13 @@
     ],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
+        "APP_DEBUG": "true",
         "APP_URL": "https://company-profile-alineas.vercel.app",
-        "ASSET_URL": "https://company-profile-alineas.vercel.app"
+        "ASSET_URL": "https://company-profile-alineas.vercel.app",
+        "APP_KEY": "base64:6Y3oIhi/AxYcdQHTl2iexAL1fGfsevyKng2zZ/fQpxc=",
+        "CACHE_STORE": "array",
+        "SESSION_DRIVER": "cookie",
+        "QUEUE_CONNECTION": "sync",
+        "VIEW_COMPILED_PATH": "/tmp/storage/framework/views"
     }
 }
