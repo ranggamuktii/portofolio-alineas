@@ -159,8 +159,8 @@
     ============================================================ --}}
     <section id="clients" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100 overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-10">
-            <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Klien & Mitra Kami</span>
-            <h3 class="text-gray-900 font-display text-2xl md:text-3xl font-bold mt-2">Telah Dipercaya Oleh</h3>
+            <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Vendor & Mitra</span>
+            <h3 class="text-gray-900 font-display text-2xl md:text-3xl font-bold mt-2">Kerja Sama</h3>
         </div>
         <div class="relative flex max-w-full">
             <!-- Left fade -->
