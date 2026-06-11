@@ -223,7 +223,8 @@
             <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
 
                 {{-- Large featured --}}
-                <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding">
+                <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding"
+                     onclick="openLightbox('https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg')">
                     <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Prewedding Premium"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div
@@ -236,7 +237,7 @@
                 {{-- Right 2 stacked --}}
                 <div class="flex flex-col gap-3">
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="School">
+                        data-cat="School" onclick="openLightbox('https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg')">
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg" alt="Graduation"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -247,7 +248,7 @@
                         </div>
                     </div>
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="Portrait">
+                        data-cat="Portrait" onclick="openLightbox('https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg')">
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg" alt="Family Portrait"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -281,15 +282,18 @@
 
                 @foreach($portfolioItems as $i => $item)
                     <div class="masonry-item portfolio-item group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
-                        data-cat="{{ $item['cat'] }}">
+                        data-cat="{{ $item['cat'] }}" onclick="openLightbox('{{ $item['img'] }}')">
                         <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
                             <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             
                             @if(!empty($item['isVideo']))
                                 <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                                    <div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 group-hover:scale-110 group-hover:bg-red-600/80 transition-all duration-300">
-                                        <svg class="w-5 h-5 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <div class="w-10 h-10 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
+                                        <svg class="w-4 h-4 text-white ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                        </svg>
                                     </div>
                                 </div>
                             @endif
