@@ -120,14 +120,12 @@
                         Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi dirancang untuk
                         menghasilkan karya terbaik.
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-auto">
                         @foreach (['Peralatan Profesional', 'Editing Premium', 'Pengiriman Tepat Waktu', 'Konsultasi Gratis'] as $f)
-                            <div class="flex items-center gap-3 text-sm font-medium text-gray-800">
-                                <span class="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3.5 h-3.5 text-red-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7" />
+                            <div class="flex items-center gap-4 text-base font-semibold text-gray-800">
+                                <span class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
                                     </svg>
                                 </span>
                                 {{ $f }}
