@@ -50,16 +50,26 @@
 
     {{-- LIGHTBOX --}}
     <div id="lightbox" class="fixed inset-0 z-[99999] bg-black/92 p-4 md:p-10"
-        onclick="if(event.target===this)closeLightbox()">
+        onclick="if(event.target===this || event.target.id==='lightbox-container')closeLightbox()">
+        
         <button onclick="closeLightbox()"
-            class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-10">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
             </svg>
         </button>
-        <div class="w-full h-full flex items-center justify-center">
+
+        <button onclick="prevLightbox(event)" class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        
+        <button onclick="nextLightbox(event)" class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+
+        <div class="w-full h-full flex items-center justify-center select-none" id="lightbox-container">
             <img id="lightbox-img" src="" alt="Portfolio"
-                class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl">
+                class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl transition-opacity duration-200">
         </div>
     </div>
 
@@ -114,16 +124,64 @@
             }, { passive: true });
 
             // Lightbox
+            let lightboxImages = [];
+            let currentLightboxIndex = 0;
+
             window.openLightbox = src => {
-                document.getElementById('lightbox-img').src = src;
+                const els = Array.from(document.querySelectorAll('[onclick^="openLightbox"]'))
+                                 .filter(el => getComputedStyle(el).display !== 'none');
+                
+                lightboxImages = els.map(el => {
+                    const match = el.getAttribute('onclick').match(/'([^']+)'/);
+                    return match ? match[1] : null;
+                }).filter(Boolean);
+
+                currentLightboxIndex = lightboxImages.indexOf(src);
+                if (currentLightboxIndex === -1) {
+                    lightboxImages = [src];
+                    currentLightboxIndex = 0;
+                }
+
+                updateLightboxImage();
                 document.getElementById('lightbox').classList.add('active');
                 document.body.style.overflow = 'hidden';
             };
+
+            window.updateLightboxImage = () => {
+                const img = document.getElementById('lightbox-img');
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    img.src = lightboxImages[currentLightboxIndex];
+                    img.style.opacity = '1';
+                }, 150);
+            };
+
+            window.prevLightbox = (e) => {
+                if(e) e.stopPropagation();
+                if(lightboxImages.length <= 1) return;
+                currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                updateLightboxImage();
+            };
+
+            window.nextLightbox = (e) => {
+                if(e) e.stopPropagation();
+                if(lightboxImages.length <= 1) return;
+                currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
+                updateLightboxImage();
+            };
+
             window.closeLightbox = () => {
                 document.getElementById('lightbox').classList.remove('active');
                 document.body.style.overflow = '';
             };
-            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+            document.addEventListener('keydown', e => { 
+                if (document.getElementById('lightbox').classList.contains('active')) {
+                    if (e.key === 'Escape') closeLightbox(); 
+                    if (e.key === 'ArrowLeft') prevLightbox();
+                    if (e.key === 'ArrowRight') nextLightbox();
+                }
+            });
         })();
     </script>
 </body>
