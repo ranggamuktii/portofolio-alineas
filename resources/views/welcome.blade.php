@@ -94,7 +94,7 @@
     {{-- ============================================================
     ABOUT
     ============================================================ --}}
-    <section id="about" class="py-24 md:py-32 bg-[#faf9f7]">
+    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7]">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
