@@ -99,25 +99,25 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 {{-- Placeholder image --}}
-                <div class="reveal-left relative group">
+                <div class="reveal-left relative">
                     <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Alineas Studio - Prewedding Session"
                             class="w-full h-full object-cover ken-burns">
                     </div>
 
                     <div
-                        class="absolute -bottom-5 -right-3 md:-right-6 bg-red-600 rounded-xl p-5 shadow-xl shadow-red-600/20 reveal delay-200">
-                        <div class="font-display text-3xl font-bold text-white text-center">5+</div>
-                        <div class="text-red-100 text-xs mt-1 text-center font-medium">Tahun Pengalaman</div>
+                        class="absolute -bottom-5 -right-3 md:-right-6 bg-red-600 rounded-xl p-5 shadow-xl shadow-red-600/20">
+                        <div class="font-display text-3xl font-bold text-white">5+</div>
+                        <div class="text-red-100 text-xs mt-1">Tahun Pengalaman</div>
                     </div>
-                    
                     <div
-                        class="absolute -top-3 -left-3 md:-left-6 bg-white border border-gray-100 rounded-xl p-4 shadow-md reveal delay-100">
+                        class="absolute -top-3 -left-3 md:-left-6 bg-white border border-gray-100 rounded-xl p-4 shadow-md">
                         <div class="flex items-center gap-2 mb-1.5">
                             <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                            <span class="text-gray-400 text-[10px] uppercase tracking-widest font-bold">Buka Setiap Hari</span>
+                            <span class="text-gray-400 text-[10px] uppercase tracking-widest font-medium">Buka Setiap
+                                Hari</span>
                         </div>
-                        <p class="text-gray-800 text-sm font-bold">09.00 – 21.00 WIB</p>
+                        <p class="text-gray-800 text-sm font-semibold">09.00 – 21.00 WIB</p>
                     </div>
                 </div>
 
@@ -136,12 +136,13 @@
                         Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi kami rancang untuk
                         menghasilkan karya terbaik — bukan sekadar foto, tapi sebuah cerita visual.
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-auto">
+                    <div class="grid grid-cols-2 gap-3">
                         @foreach (['Peralatan Profesional', 'Editing Premium', 'Pengiriman Tepat Waktu', 'Konsultasi Gratis'] as $f)
-                            <div class="flex items-center gap-4 text-sm md:text-base font-semibold text-gray-800 reveal delay-100">
-                                <span class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                            <div class="flex items-center gap-2.5 text-sm text-gray-700">
+                                <span class="w-5 h-5 rounded-md bg-red-50 flex items-center justify-center flex-shrink-0">
+                                    <svg class="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M5 13l4 4L19 7" />
                                     </svg>
                                 </span>
                                 {{ $f }}
