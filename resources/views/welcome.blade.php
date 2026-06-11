@@ -94,15 +94,15 @@
     {{-- ============================================================
     ABOUT
     ============================================================ --}}
-    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7]">
+    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7] bg-noise">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
                 {{-- Placeholder image --}}
-                <div class="reveal-left relative">
-                    <div class="about-img-wrap aspect-[4/5]">
+                <div class="reveal-left relative group">
+                    <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Alineas Studio - Prewedding Session"
-                            class="w-full h-full object-cover">
+                            class="w-full h-full object-cover ken-burns">
                     </div>
 
                     <div
@@ -161,8 +161,8 @@
                                 ]
                             ];
                         @endphp
-                        @foreach ($features as $f)
-                            <div class="flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-red-100 transition-all group">
+                        @foreach ($features as $index => $f)
+                            <div class="reveal delay-{{ ($index + 1) * 100 }} flex items-start gap-3.5 p-4 rounded-2xl bg-white border border-gray-100 shadow-sm hover:shadow-md hover:border-red-100 transition-all group">
                                 <span class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
                                     <svg class="w-5 h-5 text-red-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         {!! $f['icon'] !!}

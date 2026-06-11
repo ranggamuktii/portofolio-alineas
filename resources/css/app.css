@@ -20,9 +20,10 @@
     ::selection { background: rgba(220,38,38,0.12); color: #1a1a1a; }
 }
 
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: #f5f4f2; }
-::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 99px; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #faf9f7; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #dc2626; }
 
 /* ============================================
    PAGE LOADER
@@ -56,11 +57,41 @@
     transition: background 0.45s ease, box-shadow 0.45s ease;
 }
 #main-nav.scrolled {
-    background: rgba(255,255,255,0.96);
+    background: rgba(255,255,255,0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     box-shadow: 0 1px 0 rgba(0,0,0,0.06);
     /* Intentionally NO border-bottom */
+}
+
+/* ============================================
+   FILM GRAIN / NOISE OVERLAY
+============================================ */
+.bg-noise {
+    position: relative;
+}
+.bg-noise::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+.bg-noise > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ============================================
+   KEN BURNS (CINEMATIC ZOOM)
+============================================ */
+.ken-burns {
+    transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.group:hover .ken-burns {
+    transform: scale(1.08);
 }
 
 /* Nav links: white when on hero, dark after scroll */
