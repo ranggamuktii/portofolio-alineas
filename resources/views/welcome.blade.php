@@ -471,8 +471,47 @@
         </div>
     </section>
 
+    <div class="warm-divider"></div>
 
-<div class="warm-divider"></div>
+    {{-- ============================================================
+    INSTAGRAM FEED
+    ============================================================ --}}
+    <section id="instagram" class="py-20 md:py-28 bg-gray-50 border-y border-gray-100 overflow-hidden relative">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+            <div class="reveal text-center mb-10 md:mb-14">
+                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">@alineas.studio</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3 flex items-center justify-center gap-3">
+                    <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Ikuti Cerita Kami
+                </h2>
+                <p class="text-gray-600 text-sm mt-3">Karya terbaru, *behind the scenes*, dan promo eksklusif menanti Anda.</p>
+            </div>
+            
+            <div class="reveal relative">
+                {{-- ELFSIGHT INSTAGRAM WIDGET --}}
+                {{-- Silakan buat widget Instagram Feed GRATIS di elfsight.com dan ganti ID di bawah ini --}}
+                <div class="elfsight-app-GANTI_DENGAN_ID_WIDGET_ANDA" data-elfsight-app-lazy></div>
+                
+                {{-- Tampilan Placeholder (Sebagai pemandu sebelum widget asli dipasang) --}}
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 opacity-40 pointer-events-none">
+                    @foreach(range(1, 4) as $i)
+                        <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center relative overflow-hidden">
+                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                    @endforeach
+                </div>
+                
+                <div class="text-center mt-10">
+                    <a href="https://www.instagram.com/alineas.studio" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-pink-600 border border-gray-200 hover:border-pink-600 px-6 py-2.5 rounded-full transition-all bg-white shadow-sm hover:shadow-md">
+                        Kunjungi Instagram Kami
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="warm-divider"></div>
 
 
 {{-- ============================================================
