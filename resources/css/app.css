@@ -236,3 +236,8 @@
    SMOOTH SCROLL OFFSET
 ============================================ */
 section[id] { scroll-margin-top: 80px; }
+
+/* ============================================
+   ELFSIGHT WATERMARK REMOVAL
+============================================ */
+a[href*="elfsight.com"] { display: none !important; }
