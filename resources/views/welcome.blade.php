@@ -489,17 +489,7 @@
             
             <div class="reveal relative">
                 {{-- ELFSIGHT INSTAGRAM WIDGET --}}
-                {{-- Silakan buat widget Instagram Feed GRATIS di elfsight.com dan ganti ID di bawah ini --}}
-                <div class="elfsight-app-GANTI_DENGAN_ID_WIDGET_ANDA" data-elfsight-app-lazy></div>
-                
-                {{-- Tampilan Placeholder (Sebagai pemandu sebelum widget asli dipasang) --}}
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 opacity-40 pointer-events-none">
-                    @foreach(range(1, 4) as $i)
-                        <div class="aspect-square bg-gray-200 rounded-xl flex items-center justify-center relative overflow-hidden">
-                            <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        </div>
-                    @endforeach
-                </div>
+                <div class="elfsight-app-615acf4c-abff-4232-8508-d497bde351b3" data-elfsight-app-lazy></div>
                 
                 <div class="text-center mt-10">
                     <a href="https://www.instagram.com/alineas.studio" target="_blank" class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-pink-600 border border-gray-200 hover:border-pink-600 px-6 py-2.5 rounded-full transition-all bg-white shadow-sm hover:shadow-md">
