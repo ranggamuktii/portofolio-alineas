@@ -67,9 +67,16 @@
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
         </button>
 
-        <div class="w-full h-full flex items-center justify-center select-none" id="lightbox-container">
+        <div class="w-full h-full flex items-center justify-center select-none pb-20 md:pb-24" id="lightbox-container">
             <img id="lightbox-img" src="" alt="Portfolio"
-                class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl transition-opacity duration-200">
+                class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-opacity duration-200">
+        </div>
+
+        <!-- Thumbnails -->
+        <div class="absolute bottom-4 left-0 right-0 w-full overflow-x-auto z-20 no-scrollbar">
+            <div class="flex items-center justify-center gap-2 px-4 min-w-max mx-auto" id="lightbox-thumbnails">
+                <!-- Injected via JS -->
+            </div>
         </div>
     </div>
 
@@ -142,6 +149,19 @@
                 }
                 
                 currentLightboxIndex = startIndex;
+                
+                // Build thumbnails
+                const thumbContainer = document.getElementById('lightbox-thumbnails');
+                if (lightboxImages.length > 1) {
+                    thumbContainer.innerHTML = lightboxImages.map((src, i) => `
+                        <img src="${src}" onclick="jumpLightbox(${i}, event)" 
+                             class="w-12 h-12 md:w-16 md:h-16 object-cover rounded-md cursor-pointer opacity-50 hover:opacity-100 transition-all border-2 border-transparent" 
+                             id="thumb-${i}">
+                    `).join('');
+                } else {
+                    thumbContainer.innerHTML = '';
+                }
+
                 updateLightboxImage();
                 document.getElementById('lightbox').classList.add('active');
                 document.body.style.overflow = 'hidden';
@@ -150,10 +170,34 @@
             window.updateLightboxImage = () => {
                 const img = document.getElementById('lightbox-img');
                 img.style.opacity = '0';
+                
+                // Update thumbnails highlight
+                if (lightboxImages.length > 1) {
+                    lightboxImages.forEach((_, i) => {
+                        const thumb = document.getElementById(`thumb-${i}`);
+                        if (thumb) {
+                            if (i === currentLightboxIndex) {
+                                thumb.classList.remove('opacity-50', 'border-transparent');
+                                thumb.classList.add('opacity-100', 'border-red-600', 'scale-110');
+                            } else {
+                                thumb.classList.add('opacity-50', 'border-transparent');
+                                thumb.classList.remove('opacity-100', 'border-red-600', 'scale-110');
+                            }
+                        }
+                    });
+                }
+
                 setTimeout(() => {
                     img.src = lightboxImages[currentLightboxIndex];
                     img.style.opacity = '1';
                 }, 150);
+            };
+
+            window.jumpLightbox = (index, e) => {
+                if(e) e.stopPropagation();
+                if(index === currentLightboxIndex) return;
+                currentLightboxIndex = index;
+                updateLightboxImage();
             };
 
             window.prevLightbox = (e) => {
