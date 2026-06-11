@@ -224,7 +224,11 @@
 
                 {{-- Large featured --}}
                 <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding"
-                     onclick="openLightbox('https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg')">
+                     onclick='openLightbox(@json([
+                         "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg",
+                         "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg",
+                         "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg"
+                     ]))'>
                     <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Prewedding Premium"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div
@@ -237,7 +241,10 @@
                 {{-- Right 2 stacked --}}
                 <div class="flex flex-col gap-3">
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="School" onclick="openLightbox('https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg')">
+                        data-cat="School" onclick='openLightbox(@json([
+                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg",
+                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg"
+                        ]))'>
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg" alt="Graduation"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -248,7 +255,10 @@
                         </div>
                     </div>
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="Portrait" onclick="openLightbox('https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg')">
+                        data-cat="Portrait" onclick='openLightbox(@json([
+                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg",
+                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg"
+                        ]))'>
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg" alt="Family Portrait"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -264,14 +274,22 @@
             <div class="masonry-grid">
                 @php
                     $portfolioItems = [
-                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'The Family', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'The Family', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg', 'gallery' => [
+                            'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg',
+                            'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg',
+                            'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'
+                        ]],
                         ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
                         ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
                         ['cat' => 'Video', 'label' => 'Video', 'title' => 'Cinematic Wedding', 'h' => 250, 'isVideo' => true, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
                         ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
                         ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
                         ['cat' => 'Video', 'label' => 'Video', 'title' => 'Video Angkatan', 'h' => 270, 'isVideo' => true, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/0jT4vgOXRb3WgfQFe8pmuEzSZ5wguukMZMD4dO9l.jpg'],
-                        ['cat' => 'Wedding', 'label' => 'Prewedding', 'title' => 'Prewedding Premium', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
+                        ['cat' => 'Wedding', 'label' => 'Prewedding', 'title' => 'Prewedding Premium', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg', 'gallery' => [
+                            'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg',
+                            'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg',
+                            'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'
+                        ]],
                         ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
                         ['cat' => 'Event', 'label' => 'Event', 'title' => 'Dokumentasi Event', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
                         ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg'],
@@ -282,7 +300,7 @@
 
                 @foreach($portfolioItems as $i => $item)
                     <div class="masonry-item portfolio-item group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
-                        data-cat="{{ $item['cat'] }}" onclick="openLightbox('{{ $item['img'] }}')">
+                        data-cat="{{ $item['cat'] }}" onclick='openLightbox(@json($item["gallery"] ?? [$item["img"]]))'>
                         <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
                             <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">

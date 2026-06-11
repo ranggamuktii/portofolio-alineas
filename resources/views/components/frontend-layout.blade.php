@@ -127,21 +127,21 @@
             let lightboxImages = [];
             let currentLightboxIndex = 0;
 
-            window.openLightbox = src => {
-                const els = Array.from(document.querySelectorAll('[onclick^="openLightbox"]'))
-                                 .filter(el => getComputedStyle(el).display !== 'none');
-                
-                lightboxImages = els.map(el => {
-                    const match = el.getAttribute('onclick').match(/'([^']+)'/);
-                    return match ? match[1] : null;
-                }).filter(Boolean);
-
-                currentLightboxIndex = lightboxImages.indexOf(src);
-                if (currentLightboxIndex === -1) {
-                    lightboxImages = [src];
-                    currentLightboxIndex = 0;
+            window.openLightbox = (images, startIndex = 0) => {
+                if (typeof images === 'string') {
+                    lightboxImages = [images];
+                } else if (Array.isArray(images)) {
+                    lightboxImages = images;
+                } else {
+                    try {
+                        // In case it's passed as a JSON string from Blade
+                        lightboxImages = JSON.parse(images);
+                    } catch (e) {
+                        lightboxImages = [String(images)];
+                    }
                 }
-
+                
+                currentLightboxIndex = startIndex;
                 updateLightboxImage();
                 document.getElementById('lightbox').classList.add('active');
                 document.body.style.overflow = 'hidden';
