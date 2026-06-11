@@ -92,37 +92,53 @@
 
 
     {{-- ============================================================
-    ABOUT (BENTO GRID)
+    ABOUT
     ============================================================ --}}
-    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7]">
+    <section id="about" class="pt-12 pb-20 md:pt-16 md:pb-24 bg-[#faf9f7] bg-noise">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                {{-- BOX 1: IMAGE (Span 1 col, 2 rows on Desktop) --}}
-                <div
-                    class="reveal-left md:col-span-1 md:row-span-2 rounded-[2rem] overflow-hidden relative group min-h-[320px] md:min-h-0 bg-gray-200 shadow-sm border border-gray-100">
-                    <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg"
-                        alt="Alineas Studio"
-                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                {{-- Placeholder image --}}
+                <div class="reveal-left relative group">
+                    <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
+                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Alineas Studio - Prewedding Session"
+                            class="w-full h-full object-cover ken-burns">
+                    </div>
+
+                    <div
+                        class="absolute -bottom-5 -right-3 md:-right-6 bg-red-600 rounded-xl p-5 shadow-xl shadow-red-600/20 reveal delay-200">
+                        <div class="font-display text-3xl font-bold text-white text-center">5+</div>
+                        <div class="text-red-100 text-xs mt-1 text-center font-medium">Tahun Pengalaman</div>
+                    </div>
+                    
+                    <div
+                        class="absolute -top-3 -left-3 md:-left-6 bg-white border border-gray-100 rounded-xl p-4 shadow-md reveal delay-100">
+                        <div class="flex items-center gap-2 mb-1.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
+                            <span class="text-gray-400 text-[10px] uppercase tracking-widest font-bold">Buka Setiap Hari</span>
+                        </div>
+                        <p class="text-gray-800 text-sm font-bold">09.00 – 21.00 WIB</p>
+                    </div>
                 </div>
 
-                {{-- BOX 2: MAIN TEXT (Span 2 cols on Desktop) --}}
-                <div
-                    class="reveal-right md:col-span-2 bg-white rounded-[2rem] p-8 md:p-12 border border-gray-100 shadow-sm flex flex-col justify-center">
-                    <span class="text-red-600 text-xs font-semibold tracking-widest uppercase mb-3">Tentang Kami</span>
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 leading-snug mb-5">
+                {{-- About copy --}}
+                <div class="reveal-right">
+                    <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Tentang Kami</span>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 leading-snug mt-3 mb-5">
                         Studio di Balik Ribuan Momen Indah
                     </h2>
-                    <p class="text-gray-600 leading-relaxed mb-6 text-sm md:text-base">
+                    <p class="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">
                         Alineas Studio adalah studio fotografi profesional di Karawang, Jawa Barat. Kami hadir sebagai
                         mitra visual bagi individu, keluarga, dan perusahaan yang menginginkan hasil foto berkualitas
                         tinggi.
-                        Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi dirancang untuk
-                        menghasilkan karya terbaik.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed mb-8 text-sm md:text-base">
+                        Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi kami rancang untuk
+                        menghasilkan karya terbaik — bukan sekadar foto, tapi sebuah cerita visual.
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-auto">
                         @foreach (['Peralatan Profesional', 'Editing Premium', 'Pengiriman Tepat Waktu', 'Konsultasi Gratis'] as $f)
-                            <div class="flex items-center gap-4 text-base font-semibold text-gray-800">
+                            <div class="flex items-center gap-4 text-sm md:text-base font-semibold text-gray-800 reveal delay-100">
                                 <span class="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
                                     <svg class="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
@@ -132,28 +148,6 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
-
-                {{-- BOX 3: YEARS ACTIVE --}}
-                <div
-                    class="reveal delay-100 bg-red-600 rounded-[2rem] p-8 flex flex-col items-center justify-center text-center shadow-lg shadow-red-600/20 relative overflow-hidden">
-                    <div class="absolute -right-4 -top-4 w-20 h-20 rounded-full bg-white/10 blur-xl"></div>
-                    <div class="absolute -left-4 -bottom-4 w-16 h-16 rounded-full bg-black/10 blur-lg"></div>
-                    <div class="font-display text-5xl font-bold text-white mb-2 relative z-10">5+</div>
-                    <div class="text-red-100 text-sm font-medium relative z-10">Tahun Pengalaman</div>
-                </div>
-
-                {{-- BOX 4: OPERATING HOURS --}}
-                <div
-                    class="reveal delay-200 bg-gray-900 rounded-[2rem] p-8 flex flex-col items-center justify-center text-center relative overflow-hidden">
-                    <div class="flex items-center gap-2 mb-3 relative z-10">
-                        <span
-                            class="w-2 h-2 rounded-full bg-green-400 animate-pulse shadow-[0_0_8px_rgba(74,222,128,0.6)]"></span>
-                        <span class="text-gray-400 text-[10px] uppercase tracking-widest font-semibold">Buka Setiap
-                            Hari</span>
-                    </div>
-                    <p class="text-white text-xl font-bold relative z-10">09.00 – 21.00</p>
-                    <p class="text-gray-500 text-xs mt-1 relative z-10">WIB</p>
                 </div>
 
             </div>
