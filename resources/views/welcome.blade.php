@@ -432,12 +432,17 @@
             
             <div class="marquee-track select-none flex items-center gap-12 md:gap-20 px-6">
                 @php
-                    $clients = ['Universitas Singaperbangsa', 'PT. Toyota Motor', 'SMAN 1 Karawang', 'PT. Honda Prospect', 'Pemkab Karawang', 'Bank BJB', 'PT. Yamaha Music', 'Dinas Pendidikan', 'Telkomsel'];
+                    $clientLogos = [
+                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+1',
+                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+2',
+                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+3',
+                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+4',
+                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+5',
+                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+6',
+                    ];
                 @endphp
-                @foreach(array_merge($clients, $clients) as $client)
-                    <div class="text-gray-400 text-lg md:text-2xl font-bold uppercase tracking-wider whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity duration-300">
-                        {{ $client }}
-                    </div>
+                @foreach(array_merge($clientLogos, $clientLogos) as $logo)
+                    <img src="{{ $logo }}" alt="Client Logo" class="h-12 md:h-16 w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
                 @endforeach
             </div>
         </div>
