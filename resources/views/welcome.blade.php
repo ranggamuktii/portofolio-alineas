@@ -225,7 +225,7 @@
                 {{-- Large featured --}}
                 <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding">
                     <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Prewedding Premium"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div
                         class="pf-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-5">
                         <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1">Prewedding</span>
@@ -236,9 +236,9 @@
                 {{-- Right 2 stacked --}}
                 <div class="flex flex-col gap-3">
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="Portrait">
+                        data-cat="School">
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg" alt="Graduation"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
                             class="pf-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5">
                             <span
@@ -249,7 +249,7 @@
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
                         data-cat="Portrait">
                         <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg" alt="Family Portrait"
-                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
                             class="pf-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5">
                             <span
