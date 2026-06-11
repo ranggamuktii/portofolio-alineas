@@ -439,8 +439,8 @@
                         <div>
                             <h4 class="font-semibold text-gray-900 mb-1">Alamat Studio</h4>
                             <p class="text-sm text-gray-600 leading-relaxed">
-                                Jl. Raya Telukjambe No. 88 (Contoh),<br>
-                                Karawang Barat, Jawa Barat 41361
+                                Jl. Kepuh, Citarik, Kec. Tirtamulya,<br>
+                                Karawang, Jawa Barat 41372
                             </p>
                         </div>
                     </div>
@@ -469,7 +469,7 @@
             <div class="reveal-right">
                 <div class="w-full aspect-[4/3] md:aspect-square bg-gray-100 rounded-2xl overflow-hidden border border-gray-200 shadow-xl relative group">
                     <iframe 
-                        src="https://maps.google.com/maps?q=Karawang&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.2724997412774!2d107.4446114!3d-6.3573493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6977005e65a0fd%3A0x951ebb93fda8d89d!2sALINEAS%20PHOTO%20STUDIO!5e0!3m2!1sid!2sid!4v1749999999999!5m2!1sid!2sid" 
                         class="w-full h-full grayscale group-hover:grayscale-0 transition-all duration-700" 
                         style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>

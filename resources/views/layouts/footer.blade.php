@@ -78,7 +78,7 @@
                         </div>
                         <div>
                             <p class="text-gray-500 text-xs mb-1">Lokasi Studio</p>
-                            <p class="text-gray-300 text-sm">Karawang, Jawa Barat</p>
+                            <p class="text-gray-300 text-sm">Jl. Kepuh, Citarik, Kec. Tirtamulya,<br>Karawang, Jawa Barat 41372</p>
                         </div>
                     </li>
                 </ul>
@@ -94,7 +94,7 @@
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <p class="text-gray-500 text-xs mt-3 leading-relaxed">
-                    Jl. Raya Telagasari - Kosambi, Pancawati, Kec. Klari, Karawang.
+                    Jl. Kepuh, Citarik, Kec. Tirtamulya, Karawang, Jawa Barat 41372.
                 </p>
             </div>
 
