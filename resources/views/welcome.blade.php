@@ -101,8 +101,8 @@
                 {{-- Placeholder image --}}
                 <div class="reveal-left relative">
                     <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
-                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Alineas Studio - Prewedding Session"
-                            class="w-full h-full object-cover ken-burns">
+                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg"
+                            alt="Alineas Studio - Prewedding Session" class="w-full h-full object-cover ken-burns">
                     </div>
 
                     <div
@@ -134,18 +134,25 @@
                     </p>
                     <p class="text-gray-600 leading-relaxed mb-8 text-sm md:text-base">
                         Dengan tim fotografer berpengalaman dan peralatan modern, setiap sesi kami rancang untuk
-                        menghasilkan karya terbaik — bukan sekadar foto, tapi sebuah cerita visual.
+                        menghasilkan karya terbaik bukan sekadar foto, tapi sebuah cerita visual.
                     </p>
-                    <div class="grid grid-cols-2 gap-3">
-                        @foreach (['Peralatan Profesional', 'Editing Premium', 'Pengiriman Tepat Waktu', 'Konsultasi Gratis'] as $f)
-                            <div class="flex items-center gap-2.5 text-sm text-gray-700">
-                                <span class="w-5 h-5 rounded-md bg-red-50 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                                            d="M5 13l4 4L19 7" />
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 mt-8">
+                        @foreach ([
+                            ['title' => 'Peralatan Profesional', 'icon' => 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z'],
+                            ['title' => 'Editing Premium', 'icon' => 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'],
+                            ['title' => 'Pengiriman Tepat Waktu', 'icon' => 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'],
+                            ['title' => 'Konsultasi Gratis', 'icon' => 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z']
+                        ] as $index => $f)
+                            <div class="flex items-center gap-4 group reveal delay-{{ ($index + 1) * 100 }}">
+                                <span class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                                    <svg class="w-6 h-6 text-red-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $f['icon'] }}" />
+                                        @if($index === 0)
+                                            <circle cx="12" cy="13" r="4" stroke-width="2" />
+                                        @endif
                                     </svg>
                                 </span>
-                                {{ $f }}
+                                <span class="text-gray-900 font-semibold text-sm md:text-base">{{ $f['title'] }}</span>
                             </div>
                         @endforeach
                     </div>
