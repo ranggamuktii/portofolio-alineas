@@ -398,6 +398,33 @@
         </div>
     </section>
 
+    {{-- ============================================================
+    CLIENTS / PARTNERS
+    ============================================================ --}}
+    <section id="clients" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-10">
+            <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Klien & Mitra Kami</span>
+            <h3 class="text-gray-900 font-display text-2xl md:text-3xl font-bold mt-2">Telah Dipercaya Oleh</h3>
+        </div>
+        <div class="relative flex max-w-full">
+            <!-- Left fade -->
+            <div class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            <!-- Right fade -->
+            <div class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            
+            <div class="marquee-track select-none flex items-center gap-12 md:gap-20 px-6">
+                @php
+                    $clients = ['Universitas Singaperbangsa', 'PT. Toyota Motor', 'SMAN 1 Karawang', 'PT. Honda Prospect', 'Pemkab Karawang', 'Bank BJB', 'PT. Yamaha Music', 'Dinas Pendidikan', 'Telkomsel'];
+                @endphp
+                @foreach(array_merge($clients, $clients) as $client)
+                    <div class="text-gray-400 text-lg md:text-2xl font-bold uppercase tracking-wider whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity duration-300">
+                        {{ $client }}
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
     <div class="warm-divider"></div>
 
 
