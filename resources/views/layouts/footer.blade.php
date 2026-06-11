@@ -101,12 +101,9 @@
         </div>
 
         {{-- Bottom bar --}}
-        <div class="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div class="border-t border-white/[0.06] pt-8 flex flex-col sm:flex-row justify-center items-center gap-3">
             <p class="text-gray-500 text-xs">
                 &copy; {{ date('Y') }} Alineas Studio. All rights reserved.
-            </p>
-            <p class="text-gray-600 text-xs">
-                Dibuat dengan <span class="text-red-500">♥</span> di Karawang, Jawa Barat
             </p>
         </div>
     </div>

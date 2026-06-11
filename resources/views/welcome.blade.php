@@ -79,7 +79,7 @@
     ============================================================ --}}
     <div class="py-4 border-y border-gray-100 bg-white overflow-hidden">
         <div class="marquee-track select-none">
-            @php $tickers = ['Prewedding', 'Wedding', 'Graduation', 'Portrait', 'Product', 'Video Angkatan', 'Event Aftermovie', 'Company Profile', 'Fashion', 'Corporate']; @endphp
+            @php $tickers = ['The Family', 'The Group', 'The Birthday', 'The Graduation', 'The Maternity', 'Prewedding Premium', 'Studio Foto', 'Karawang', 'Profesional', 'Pose With Alineas']; @endphp
             @foreach(array_merge($tickers, $tickers) as $ticker)
                 <div class="inline-flex items-center gap-5 px-7">
                     <span
@@ -101,14 +101,8 @@
                 {{-- Placeholder image --}}
                 <div class="reveal-left relative">
                     <div class="about-img-wrap aspect-[4/5]">
-                        {{-- PLACEHOLDER: ganti dengan foto studio --}}
-                        <div class="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-3">
-                            <svg class="w-14 h-14 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-300 text-xs font-medium tracking-wide">Foto Studio</span>
-                        </div>
+                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Alineas Studio - Prewedding Session"
+                            class="w-full h-full object-cover">
                     </div>
 
                     <div
@@ -169,7 +163,7 @@
     ============================================================ --}}
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
-        categories: ['All', 'Wedding', 'Portrait', 'Event', 'Product', 'Video'],
+        categories: ['All', 'Portrait', 'Event', 'Wedding'],
         setActive(cat) {
             this.active = cat;
             document.querySelectorAll('.portfolio-item').forEach(el => {
@@ -196,32 +190,17 @@
                 </div>
             </div>
 
-            {{-- Featured row: placeholder --}}
-            @php
-                function imgPlaceholder(string $label, string $extraClass = ''): string
-                {
-                    return '<div class="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-2 ' . $extraClass . '">'
-                        . '<svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>'
-                        . '<span class="text-gray-300 text-xs font-medium">' . $label . '</span>'
-                        . '</div>';
-                }
-            @endphp
 
             <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-3 mb-3">
 
                 {{-- Large featured --}}
                 <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding">
-                    <div class="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-2">
-                        <svg class="w-12 h-12 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <span class="text-gray-300 text-xs font-medium">Prewedding / Wedding</span>
-                    </div>
+                    <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg" alt="Prewedding Premium"
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div
                         class="pf-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-5">
-                        <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1">Wedding</span>
-                        <h3 class="text-white text-lg font-semibold">Classic Prewedding Session</h3>
+                        <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1">Prewedding</span>
+                        <h3 class="text-white text-lg font-semibold">Prewedding Premium Session</h3>
                     </div>
                 </div>
 
@@ -229,34 +208,24 @@
                 <div class="flex flex-col gap-3">
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
                         data-cat="Portrait">
-                        <div class="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-1.5">
-                            <svg class="w-9 h-9 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-300 text-[11px] font-medium">Portrait</span>
-                        </div>
+                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg" alt="Graduation"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
                             class="pf-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5">
                             <span
-                                class="text-red-400 text-[9px] font-bold tracking-widest uppercase mb-0.5">Portrait</span>
-                            <h3 class="text-white text-sm font-semibold">Fashion Editorial</h3>
+                                class="text-red-400 text-[9px] font-bold tracking-widest uppercase mb-0.5">Graduation</span>
+                            <h3 class="text-white text-sm font-semibold">The Graduation</h3>
                         </div>
                     </div>
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="Product">
-                        <div class="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-1.5">
-                            <svg class="w-9 h-9 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                            <span class="text-gray-300 text-[11px] font-medium">Product</span>
-                        </div>
+                        data-cat="Portrait">
+                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg" alt="Family Portrait"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
                             class="pf-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5">
                             <span
-                                class="text-red-400 text-[9px] font-bold tracking-widest uppercase mb-0.5">Product</span>
-                            <h3 class="text-white text-sm font-semibold">Cosmetics Campaign</h3>
+                                class="text-red-400 text-[9px] font-bold tracking-widest uppercase mb-0.5">Family</span>
+                            <h3 class="text-white text-sm font-semibold">The Family</h3>
                         </div>
                     </div>
                 </div>
@@ -265,18 +234,16 @@
             <div class="masonry-grid">
                 @php
                     $portfolioItems = [
-                        ['cat' => 'Event', 'label' => 'Event', 'title' => 'Graduation Ceremony', 'h' => 230],
-                        ['cat' => 'Wedding', 'label' => 'Wedding', 'title' => 'Outdoor Wedding', 'h' => 340],
-                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Company Profile Video', 'h' => 250, 'isVideo' => true],
-                        ['cat' => 'Product', 'label' => 'Product', 'title' => 'Food Photography', 'h' => 230],
-                        ['cat' => 'Event', 'label' => 'Event', 'title' => 'Corporate Conference', 'h' => 310],
-                        ['cat' => 'Portrait', 'label' => 'Portrait', 'title' => 'Family Portrait', 'h' => 250],
-                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Video Angkatan (Tren)', 'h' => 270, 'isVideo' => true],
-                        ['cat' => 'Product', 'label' => 'Product', 'title' => 'Fashion Product Shoot', 'h' => 330],
-                        ['cat' => 'Event', 'label' => 'Event', 'title' => 'Birthday Celebration', 'h' => 230],
-                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Wedding Cinematic', 'h' => 250, 'isVideo' => true],
-                        ['cat' => 'Wedding', 'label' => 'Wedding', 'title' => 'Engagement Session', 'h' => 310],
-                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Event Aftermovie', 'h' => 230, 'isVideo' => true],
+                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'The Family', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
+                        ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
+                        ['cat' => 'Event', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
+                        ['cat' => 'Wedding', 'label' => 'Prewedding', 'title' => 'Prewedding Premium', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group Session', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/0jT4vgOXRb3WgfQFe8pmuEzSZ5wguukMZMD4dO9l.jpg'],
+                        ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'Birthday Celebration', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'Maternity Session', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'Family Portrait', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg'],
                     ];
                 @endphp
 
@@ -284,15 +251,8 @@
                     <div class="masonry-item portfolio-item group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
                         data-cat="{{ $item['cat'] }}">
                         <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
-                            <div
-                                class="w-full h-full bg-gray-100 flex flex-col items-center justify-center gap-2 group-hover:bg-gray-200 transition-colors">
-                                @if(!empty($item['isVideo']))
-                                    <svg class="w-9 h-9 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                @else
-                                    <svg class="w-9 h-9 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                @endif
-                                <span class="text-gray-300 text-[11px] font-medium">{{ $item['label'] }}</span>
-                            </div>
+                            <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                             <div
                                 class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5">
                                 <span
@@ -317,36 +277,31 @@
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
             <div class="reveal text-center mb-14">
-                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Layanan</span>
-                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3">Apa yang Bisa Kami Lakukan
+                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Paket Layanan</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3">Pilih Paket Terbaik Anda
                 </h2>
-                <p class="text-gray-600 text-sm mt-3 max-w-sm mx-auto leading-relaxed">Dari momen personal hingga
-                    kebutuhan komersial, semua kami handle dengan standar yang konsisten.</p>
+                <p class="text-gray-600 text-sm mt-3 max-w-sm mx-auto leading-relaxed">Berbagai paket foto studio
+                    profesional untuk setiap momen spesial Anda.</p>
             </div>
 
             <div class="services-grid">
 
                 @php
                     $services = [
-                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi momen cinta Anda dengan sentuhan artistik yang elegan dan timeless.', 'icon' => 'photo'],
-                        ['delay' => 100, 'badge' => 'Tren', 'title' => 'Videography & Cinema', 'desc' => 'Video cinematic untuk Wedding, Company Profile, Event, hingga Video Angkatan.', 'icon' => 'video'],
-                        ['delay' => 200, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Foto diri, keluarga, atau profil profesional dengan lighting studio terbaik.', 'icon' => 'photo'],
-                        ['delay' => 300, 'badge' => null, 'title' => 'Graduation & Wisuda', 'desc' => 'Rayakan pencapaian akademis dengan sesi foto yang berkesan dan membanggakan.', 'icon' => 'photo'],
-                        ['delay' => 400, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi acara, seminar, konser, dan gathering secara profesional.', 'icon' => 'photo'],
-                        ['delay' => 500, 'badge' => null, 'title' => 'Product & Commercial', 'desc' => 'Foto produk untuk e-commerce, katalog, dan kampanye iklan dengan hasil premium.', 'icon' => 'photo'],
+                        ['delay' => 0, 'badge' => null, 'title' => 'The Family — Rp 150K', 'desc' => 'Abadikan kehangatan cinta keluarga. 30 menit sesi foto, max 4 orang, 15 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
+                        ['delay' => 100, 'badge' => null, 'title' => 'The Group — Rp 200K', 'desc' => 'Bingkai kebersamaan tanpa batas. 30 menit sesi foto, max 6 orang, cetak 4R/orang, 10 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
+                        ['delay' => 200, 'badge' => null, 'title' => 'The Birthday — Rp 250K', 'desc' => 'Rayakan bahagia di hari istimewa. 30 menit sesi dekorasi + 30 menit foto, balon warna & angka, cetak 4R & frame.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
+                        ['delay' => 300, 'badge' => null, 'title' => 'The Graduation — Rp 300K', 'desc' => 'Potret terbaik untuk sebuah pencapaian. 60 menit sesi foto, 2 sesi kostum, 15 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
+                        ['delay' => 400, 'badge' => null, 'title' => 'The Maternity — Rp 500K', 'desc' => 'Abadikan cinta sebelum pertemuan pertama. 60 menit sesi foto, free make up, 20 soft file edit.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
+                        ['delay' => 500, 'badge' => 'Premium', 'title' => 'Prewedding Premium — Rp 1.2Jt', 'desc' => 'Mengabadikan cinta sebelum hari bahagia. 60 menit sesi foto, free make up & kostum adat, cetak 16R.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
                     ];
                 @endphp
 
                 @foreach($services as $svc)
                     <div class="reveal delay-{{ $svc['delay'] }} service-card">
-                        <div class="sc-img relative h-48 bg-gray-100 flex flex-col items-center justify-center gap-2">
-                            @if(isset($svc['icon']) && $svc['icon'] === 'video')
-                                <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                <span class="text-gray-300 text-xs font-medium">Video Layanan</span>
-                            @else
-                                <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                                <span class="text-gray-300 text-xs font-medium">Foto Layanan</span>
-                            @endif
+                        <div class="sc-img relative h-48 overflow-hidden">
+                            <img src="{{ $svc['img'] }}" alt="{{ $svc['title'] }}"
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             @if($svc['badge'])
                                 <span class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">{{ $svc['badge'] }}</span>
                             @endif
@@ -356,7 +311,7 @@
                             <p class="text-gray-600 text-sm leading-relaxed flex-1">{{ $svc['desc'] }}</p>
                             <a href="https://wa.me/6285213385280" target="_blank"
                                 class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-red-600 hover:text-red-700 transition-colors">
-                                Tanya Sekarang
+                                Booking Sekarang
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
