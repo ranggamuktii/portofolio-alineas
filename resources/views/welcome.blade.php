@@ -532,7 +532,7 @@
                     </svg>
                     Ikuti Cerita Kami
                 </h2>
-                <p class="text-gray-600 text-sm mt-3">Karya terbaru, *behind the scenes*, dan promo eksklusif menanti
+                <p class="text-gray-600 text-sm mt-3">Karya terbaru, behind the scenes, dan promo eksklusif menanti
                     Anda.</p>
             </div>
 
