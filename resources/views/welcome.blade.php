@@ -189,11 +189,11 @@
                         ],
                         [
                             'src' => asset('images/mitra/hamosa_picture.png'),
-                            'class' => 'invert brightness-0 opacity-50 hover:opacity-100'
+                            'class' => 'brightness-0 opacity-50 hover:opacity-100'
                         ],
                         [
                             'src' => asset('images/mitra/minimaliz_photoworks.PNG'),
-                            'class' => 'invert brightness-0 opacity-50 hover:opacity-100'
+                            'class' => 'brightness-0 opacity-50 hover:opacity-100'
                         ],
                         [
                             'src' => asset('images/mitra/stories_photography.png'),
