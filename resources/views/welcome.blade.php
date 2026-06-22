@@ -183,12 +183,10 @@
             <div class="marquee-track select-none flex items-center gap-12 md:gap-20 px-6">
                 @php
                     $clientLogos = [
-                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+1',
-                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+2',
-                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+3',
-                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+4',
-                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+5',
-                        'https://placehold.co/300x120/f9fafb/9ca3af?text=Logo+Klien+6',
+                        asset('images/mitra/aldifian_photo.png'),
+                        asset('images/mitra/hamosa_picture.png'),
+                        asset('images/mitra/minimaliz_photoworks.PNG'),
+                        asset('images/mitra/stories_photography.png'),
                     ];
                 @endphp
                 @foreach(array_merge($clientLogos, $clientLogos) as $logo)
