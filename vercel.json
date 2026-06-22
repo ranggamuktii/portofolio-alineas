@@ -23,8 +23,8 @@
     "env": {
         "APP_ENV": "production",
         "APP_DEBUG": "true",
-        "APP_URL": "https://company-profile-alineas.vercel.app",
-        "ASSET_URL": "https://company-profile-alineas.vercel.app",
+        "APP_URL": "https://www.alineasstudio.web.id",
+        "ASSET_URL": "https://www.alineasstudio.web.id",
         "APP_KEY": "base64:6Y3oIhi/AxYcdQHTl2iexAL1fGfsevyKng2zZ/fQpxc=",
         "CACHE_STORE": "array",
         "SESSION_DRIVER": "cookie",
