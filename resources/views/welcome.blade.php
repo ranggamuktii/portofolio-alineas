@@ -183,15 +183,27 @@
             <div class="marquee-track select-none flex items-center gap-12 md:gap-20 px-6">
                 @php
                     $clientLogos = [
-                        asset('images/mitra/aldifian_photo.png'),
-                        asset('images/mitra/hamosa_picture.png'),
-                        asset('images/mitra/minimaliz_photoworks.PNG'),
-                        asset('images/mitra/stories_photography.png'),
+                        [
+                            'src' => asset('images/mitra/aldifian_photo.png'),
+                            'class' => 'brightness-0 opacity-50 hover:opacity-100'
+                        ],
+                        [
+                            'src' => asset('images/mitra/hamosa_picture.png'),
+                            'class' => 'invert brightness-0 opacity-50 hover:opacity-100'
+                        ],
+                        [
+                            'src' => asset('images/mitra/minimaliz_photoworks.PNG'),
+                            'class' => 'invert brightness-0 opacity-50 hover:opacity-100'
+                        ],
+                        [
+                            'src' => asset('images/mitra/stories_photography.png'),
+                            'class' => 'mix-blend-multiply grayscale opacity-60 hover:opacity-100'
+                        ],
                     ];
                 @endphp
                 @foreach(array_merge($clientLogos, $clientLogos) as $logo)
-                    <img src="{{ $logo }}" alt="Client Logo"
-                        class="h-12 md:h-16 w-auto object-contain grayscale opacity-60 hover:opacity-100 hover:grayscale-0 transition-all duration-300">
+                    <img src="{{ $logo['src'] }}" alt="Client Logo"
+                        class="h-12 md:h-16 w-auto object-contain transition-all duration-300 {{ $logo['class'] }}">
                 @endforeach
             </div>
         </div>
