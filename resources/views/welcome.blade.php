@@ -138,10 +138,10 @@
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 mt-8">
                         @foreach ([
-                            ['title' => 'Peralatan Profesional', 'icon' => 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z'],
-                            ['title' => 'Editing Premium', 'icon' => 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z'],
-                            ['title' => 'Pengiriman Tepat Waktu', 'icon' => 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'],
-                            ['title' => 'Konsultasi Gratis', 'icon' => 'M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z']
+                            ['title' => 'Foto Berkualitas Tinggi', 'icon' => 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z'],
+                            ['title' => 'Editing Detail & Natural', 'icon' => 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'],
+                            ['title' => 'Proses Cepat & Tepat Waktu', 'icon' => 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'],
+                            ['title' => 'Pelayanan Ramah & Responsif', 'icon' => 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z']
                         ] as $index => $f)
                             <div class="flex items-center gap-4 group reveal delay-{{ ($index + 1) * 100 }}">
                                 <span class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
@@ -506,7 +506,7 @@
                 <p class="text-gray-600 text-sm mt-3">Klien kami menitipkan momen berharga mereka dan kami jaga
                     kepercayaan itu.</p>
             </div>
-            <div class="reveal">
+            <div class="reveal max-w-5xl mx-auto">
                 <div class="transform scale-[0.90] sm:scale-100 origin-top overflow-hidden">
                     <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
                     <div class="elfsight-app-3f8acc35-fce7-478e-8145-226f9f636c9b" data-elfsight-app-lazy></div>
@@ -536,7 +536,7 @@
                     Anda.</p>
             </div>
 
-            <div class="reveal relative">
+            <div class="reveal relative max-w-5xl mx-auto">
                 {{-- ELFSIGHT INSTAGRAM WIDGET --}}
                 <div class="elfsight-app-615acf4c-abff-4232-8508-d497bde351b3" data-elfsight-app-lazy></div>
 

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ isset($title) ? $title . ' | Alineas Studio' : 'Alineas Studio — Photography Studio Karawang' }}</title>
+    <title>{{ isset($title) ? $title . ' | Alineas Studio' : 'Alineas Studio | Photography Studio Karawang' }}</title>
     <meta name="description"
         content="Alineas Studio, studio fotografi profesional di Karawang. Prewedding, wedding, portrait, graduation, product, dan event photography.">
 
@@ -51,7 +51,7 @@
     {{-- LIGHTBOX --}}
     <div id="lightbox" class="fixed inset-0 z-[99999] bg-black/92 p-4 md:p-10"
         onclick="if(event.target===this || event.target.id==='lightbox-container')closeLightbox()">
-        
+
         <button onclick="closeLightbox()"
             class="absolute top-5 right-5 w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,17 +59,25 @@
             </svg>
         </button>
 
-        <button onclick="prevLightbox(event)" class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        <button onclick="prevLightbox(event)"
+            class="absolute left-4 md:left-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
         </button>
-        
-        <button onclick="nextLightbox(event)" class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+
+        <button onclick="nextLightbox(event)"
+            class="absolute right-4 md:right-10 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white/70 hover:text-white transition-all z-20">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
         </button>
 
         <div class="w-full h-full flex items-center justify-center select-none pb-20 md:pb-24" id="lightbox-container">
             <img id="lightbox-img" src="" alt="Portfolio"
                 class="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl transition-opacity duration-200">
+            <iframe id="lightbox-video" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen
+                class="w-full max-w-4xl aspect-video rounded-lg shadow-2xl transition-opacity duration-200 hidden"></iframe>
         </div>
 
         <!-- Thumbnails -->
@@ -147,9 +155,9 @@
                         lightboxImages = [String(images)];
                     }
                 }
-                
+
                 currentLightboxIndex = startIndex;
-                
+
                 // Build thumbnails
                 const thumbContainer = document.getElementById('lightbox-thumbnails');
                 if (lightboxImages.length > 1) {
@@ -169,8 +177,10 @@
 
             window.updateLightboxImage = () => {
                 const img = document.getElementById('lightbox-img');
+                const video = document.getElementById('lightbox-video');
                 img.style.opacity = '0';
-                
+                if (video) video.style.opacity = '0';
+
                 // Update thumbnails highlight
                 if (lightboxImages.length > 1) {
                     lightboxImages.forEach((_, i) => {
@@ -188,28 +198,54 @@
                 }
 
                 setTimeout(() => {
-                    img.src = lightboxImages[currentLightboxIndex];
-                    img.style.opacity = '1';
+                    const src = lightboxImages[currentLightboxIndex];
+                    const isVideo = src.includes('youtube.com') || src.includes('youtu.be') || src.endsWith('.mp4');
+                    
+                    if (isVideo) {
+                        img.classList.add('hidden');
+                        video.classList.remove('hidden');
+                        
+                        let videoSrc = src;
+                        if (src.includes('watch?v=')) {
+                            videoSrc = src.replace('watch?v=', 'embed/').split('&')[0];
+                        } else if (src.includes('youtu.be/')) {
+                            videoSrc = src.replace('youtu.be/', 'youtube.com/embed/').split('?')[0];
+                        }
+                        
+                        // Prevent adding autoplay multiple times if it's already there
+                        if (!videoSrc.includes('autoplay=')) {
+                            video.src = videoSrc + (videoSrc.includes('?') ? '&' : '?') + 'autoplay=1';
+                        } else {
+                            video.src = videoSrc;
+                        }
+                        video.style.opacity = '1';
+                    } else {
+                        video.classList.add('hidden');
+                        video.src = '';
+                        img.classList.remove('hidden');
+                        img.src = src;
+                        img.style.opacity = '1';
+                    }
                 }, 150);
             };
 
             window.jumpLightbox = (index, e) => {
-                if(e) e.stopPropagation();
-                if(index === currentLightboxIndex) return;
+                if (e) e.stopPropagation();
+                if (index === currentLightboxIndex) return;
                 currentLightboxIndex = index;
                 updateLightboxImage();
             };
 
             window.prevLightbox = (e) => {
-                if(e) e.stopPropagation();
-                if(lightboxImages.length <= 1) return;
+                if (e) e.stopPropagation();
+                if (lightboxImages.length <= 1) return;
                 currentLightboxIndex = (currentLightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
                 updateLightboxImage();
             };
 
             window.nextLightbox = (e) => {
-                if(e) e.stopPropagation();
-                if(lightboxImages.length <= 1) return;
+                if (e) e.stopPropagation();
+                if (lightboxImages.length <= 1) return;
                 currentLightboxIndex = (currentLightboxIndex + 1) % lightboxImages.length;
                 updateLightboxImage();
             };
@@ -217,11 +253,13 @@
             window.closeLightbox = () => {
                 document.getElementById('lightbox').classList.remove('active');
                 document.body.style.overflow = '';
+                const video = document.getElementById('lightbox-video');
+                if (video) video.src = ''; // Stop video from playing in background
             };
 
-            document.addEventListener('keydown', e => { 
+            document.addEventListener('keydown', e => {
                 if (document.getElementById('lightbox').classList.contains('active')) {
-                    if (e.key === 'Escape') closeLightbox(); 
+                    if (e.key === 'Escape') closeLightbox();
                     if (e.key === 'ArrowLeft') prevLightbox();
                     if (e.key === 'ArrowRight') nextLightbox();
                 }
