@@ -271,10 +271,10 @@
                 {{-- Large featured --}}
                 <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding"
                     onclick='openLightbox([
-                        "{{ asset("images/portfolio/family_1.jpg") }}",
-                        "{{ asset("images/portfolio/family_2.jpg") }}"
+                        "https://placehold.co/800x600/e2e8f0/64748b?text=Prewedding+Gallery+1",
+                        "https://placehold.co/800x600/e2e8f0/64748b?text=Prewedding+Gallery+2"
                     ])'>
-                    <img src="{{ asset('images/portfolio/family_1.jpg') }}"
+                    <img src="https://placehold.co/800x600/e2e8f0/64748b?text=Prewedding+Premium"
                         alt="Prewedding Premium"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div
@@ -335,25 +335,25 @@
                                 asset('images/portfolio/family_3.jpg')
                             ]
                         ],
-                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => asset('images/portfolio/family_2.jpg')],
+                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => 'https://placehold.co/600x800/e2e8f0/64748b?text=Group+Portrait'],
                         ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => asset('images/portfolio/birthday_1.jpg')],
                         ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => asset('images/portfolio/graduation_1.jpg')],
-                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => asset('images/portfolio/family_3.jpg')],
+                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => 'https://placehold.co/600x800/e2e8f0/64748b?text=Maternity'],
                         [
                             'cat' => 'Wedding',
                             'label' => 'Prewedding',
                             'title' => 'Prewedding Premium',
                             'h' => 280,
-                            'img' => asset('images/portfolio/family_1.jpg'),
+                            'img' => 'https://placehold.co/600x600/e2e8f0/64748b?text=Prewedding',
                             'gallery' => [
-                                asset('images/portfolio/family_1.jpg'),
-                                asset('images/portfolio/family_2.jpg')
+                                'https://placehold.co/800x600/e2e8f0/64748b?text=Prewedding+Gallery+1',
+                                'https://placehold.co/800x600/e2e8f0/64748b?text=Prewedding+Gallery+2'
                             ]
                         ],
-                        ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/portfolio/graduation_2.jpg')],
-                        ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => asset('images/portfolio/graduation_2.jpg')],
+                        ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => 'https://placehold.co/600x400/e2e8f0/64748b?text=Corporate+Profile'],
+                        ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => 'https://placehold.co/600x600/e2e8f0/64748b?text=Yearbook'],
                         ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'Family Portrait', 'h' => 320, 'img' => asset('images/portfolio/family_2.jpg')],
-                        ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => asset('images/portfolio/birthday_1.jpg')],
+                        ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => 'https://placehold.co/600x400/e2e8f0/64748b?text=Photobooth'],
                     ];
                 @endphp
 
@@ -424,12 +424,12 @@
 
                 @php
                     $services = [
-                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => asset('images/portfolio/family_1.jpg')],
+                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => 'https://placehold.co/600x400/e2e8f0/64748b?text=Prewedding+%26+Wedding'],
                         ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => asset('images/portfolio/family_2.jpg')],
                         ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.jpg')],
                         ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.jpg')],
-                        ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => asset('images/portfolio/graduation_2.jpg')],
-                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => asset('images/portfolio/birthday_1.jpg')],
+                        ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => 'https://placehold.co/600x400/e2e8f0/64748b?text=Corporate+Profile'],
+                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => 'https://placehold.co/600x400/e2e8f0/64748b?text=Photobooth'],
                     ];
                 @endphp
 
