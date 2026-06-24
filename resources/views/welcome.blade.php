@@ -484,7 +484,7 @@
 
                 @foreach($services as $svc)
                     <div class="reveal delay-{{ $svc['delay'] }} service-card">
-                        <div class="sc-img relative h-48 overflow-hidden">
+                        <div class="sc-img relative aspect-square overflow-hidden">
                             <img src="{{ $svc['img'] }}" alt="{{ $svc['title'] }}"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                             @if($svc['badge'])
