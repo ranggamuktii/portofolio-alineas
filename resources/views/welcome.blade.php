@@ -170,7 +170,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Maternity', 'Goes to KUA'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Maternity', 'Goes to KUA', 'Automotive'],
         items: [],
         showLoadMore: false,
         init() {
@@ -465,6 +465,36 @@
                                 asset('images/portfolio/photobooth/alineas-photobooth-022.webp'),
                                 asset('images/portfolio/photobooth/alineas-photobooth-023.webp'),
                                 asset('images/portfolio/photobooth/alineas-photobooth-024.webp')
+                            ]
+                        ],
+                        [
+                            'cat' => 'Automotive',
+                            'label' => 'Automotive',
+                            'title' => 'The Automotive',
+                            'h' => 260,
+                            'img' => asset('images/portfolio/automotive/alineas-automotive-005.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/automotive/alineas-automotive-001.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-002.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-003.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-004.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-005.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-006.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-007.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-008.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-009.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-010.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-011.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-012.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-013.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-014.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-015.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-016.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-017.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-018.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-019.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-020.webp'),
+                                asset('images/portfolio/automotive/alineas-automotive-021.webp')
                             ]
                         ],
                         ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/placeholders/corporate.svg')],
