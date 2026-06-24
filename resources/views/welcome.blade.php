@@ -73,6 +73,8 @@
         </div>
     </section>
 
+    <div class="alineas-checkerboard"></div>
+
 
     {{-- ============================================================
     MARQUEE
@@ -826,7 +828,7 @@
         </div>
     </section>
 
-    <div class="warm-divider"></div>
+    <div class="alineas-checkerboard"></div>
 
 
     {{-- ============================================================
@@ -912,4 +914,5 @@
         </div>
     </section>
 
+    <div class="alineas-checkerboard"></div>
 </x-frontend-layout>
