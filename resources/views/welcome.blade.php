@@ -101,7 +101,7 @@
                 {{-- Placeholder image --}}
                 <div class="reveal-left relative">
                     <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
-                        <img src="{{ asset('images/portfolio/family_1.jpg') }}"
+                        <img src="{{ asset('images/about.jpg') }}"
                             alt="Alineas Studio - Prewedding Session" class="w-full h-full object-cover ken-burns">
                     </div>
 

@@ -9,7 +9,9 @@
     <meta name="description"
         content="Alineas Studio, studio fotografi profesional di Karawang. Prewedding, wedding, portrait, graduation, product, dan event photography.">
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/alineas-icon.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('images/alineas-icon.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
