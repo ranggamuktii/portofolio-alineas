@@ -516,7 +516,7 @@
                 @endphp
 
                 @foreach($services as $svc)
-                    <div class="reveal delay-{{ $svc['delay'] }} group relative aspect-square rounded-[1.125rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
+                    <div class="group relative aspect-square rounded-[1.125rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
                         {{-- Background Image --}}
                         <img src="{{ $svc['img'] }}" alt="{{ $svc['title'] }}"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
