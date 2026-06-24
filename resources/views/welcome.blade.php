@@ -513,8 +513,8 @@
                         ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/placeholders/corporate.svg')],
                         [
                             'cat' => 'School',
-                            'label' => 'Yearbook',
-                            'title' => 'Photo Angkatan & Yearbook',
+                            'label' => 'School',
+                            'title' => 'The School',
                             'h' => 280,
                             'img' => asset('images/portfolio/school/alineas-school-001.webp'),
                             'gallery' => [
