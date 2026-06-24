@@ -250,7 +250,50 @@
                                 asset('images/portfolio/family/9.webp')
                             ]
                         ],
-                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => asset('images/placeholders/group.svg')],
+                        [
+                            'cat' => 'Portrait',
+                            'label' => 'Group',
+                            'title' => 'The Group',
+                            'h' => 340,
+                            'img' => asset('images/portfolio/group/JNR_0003.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/group/edit nanda (12 of 17)-2.webp'),
+                                asset('images/portfolio/group/JNR_0003.webp'),
+                                asset('images/portfolio/group/JNR_0022@1x_1-1.webp'),
+                                asset('images/portfolio/group/MEGA (18).webp'),
+                                asset('images/portfolio/group/MEGA (47).webp'),
+                                asset('images/portfolio/group/SaveClip.App_527184416_17905807290211688_3817526892010729657_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_527215454_17905806942211688_6650913325361430378_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_527340721_17905807200211688_5396151982964376668_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_527357790_17905806951211688_1505508390601522073_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_528428848_17906067798211688_7783248709726844874_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_528661857_17905807191211688_5110593726252754794_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_574752194_17916434097211688_5846966872251401840_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_583013828_17917369020211688_3791008935069450078_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_669679596_17935077660211688_4422230294890896094_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_669831236_17935070955211688_1323213898466596697_n.webp'),
+                                asset('images/portfolio/group/SaveClip.App_670155107_17935070895211688_7924182404842309900_n.webp'),
+                                asset('images/portfolio/group/XII MIPA 3 (28).webp')
+                            ]
+                        ],
+                        [
+                            'cat' => 'Portrait',
+                            'label' => 'Exclusive',
+                            'title' => 'The Exclusive',
+                            'h' => 320,
+                            'img' => asset('images/portfolio/exclusive/DSC_4074.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/exclusive/DSC_4074.webp'),
+                                asset('images/portfolio/exclusive/DSC_4090.webp'),
+                                asset('images/portfolio/exclusive/DSC_4097.webp'),
+                                asset('images/portfolio/exclusive/DSC_4100.webp'),
+                                asset('images/portfolio/exclusive/FAJAR (18).webp'),
+                                asset('images/portfolio/exclusive/Isti (127).webp'),
+                                asset('images/portfolio/exclusive/Isti (140).webp'),
+                                asset('images/portfolio/exclusive/SASA (16).webp'),
+                                asset('images/portfolio/exclusive/SASA (93).webp')
+                            ]
+                        ],
                         [
                             'cat' => 'Event',
                             'label' => 'Birthday',

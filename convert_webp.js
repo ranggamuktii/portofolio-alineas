@@ -6,9 +6,13 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const directoryPath = path.join(__dirname, 'public/images/portfolio/prewedding');
+const directories = [
+    path.join(__dirname, 'public/images/portfolio/exclusive'),
+    path.join(__dirname, 'public/images/portfolio/group')
+];
 
 async function convertToWebP(dir) {
+    if (!fs.existsSync(dir)) return;
     const files = fs.readdirSync(dir);
     for (const file of files) {
         const fullPath = path.join(dir, file);
@@ -31,6 +35,11 @@ async function convertToWebP(dir) {
     }
 }
 
-convertToWebP(directoryPath).then(() => {
-    console.log('Prewedding images converted to WebP successfully!');
-});
+async function run() {
+    for (const dir of directories) {
+        await convertToWebP(dir);
+    }
+    console.log('Images converted to WebP successfully!');
+}
+
+run();
