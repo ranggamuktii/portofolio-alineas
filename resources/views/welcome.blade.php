@@ -545,9 +545,10 @@
                     @if(isset($item['gallery']))
                     <div class="masonry-item portfolio-item is-cover group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
                         data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]))'>
-                        <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
+                        <div class="relative overflow-hidden rounded-xl bg-gray-200 animate-pulse" style="height:{{ $item['h'] }}px;">
                             <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}" loading="lazy"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200'); this.classList.remove('opacity-0', 'scale-110');"
+                                class="opacity-0 scale-110 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
 
                             @if(!empty($item['isVideo']))
                                 <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
@@ -582,11 +583,10 @@
                             @php $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])]; @endphp
                             <div class="masonry-item portfolio-item is-individual hidden-item group cursor-pointer"
                                 data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]), {{ $imgIndex }})'>
-                                <div class="relative overflow-hidden rounded-xl bg-gray-200" style="height:{{ $h }}px;" x-data="{ loaded: false }">
-                                    <div class="absolute inset-0 animate-pulse bg-gray-300" x-show="!loaded"></div>
-                                    <img src="{{ $galleryImg }}" loading="lazy" @load="loaded = true"
-                                        :class="loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-110'"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-200 animate-pulse" style="height:{{ $h }}px;">
+                                    <img src="{{ $galleryImg }}" loading="lazy" 
+                                        onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200'); this.classList.remove('opacity-0', 'scale-110');"
+                                        class="opacity-0 scale-110 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
                                     <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </div>
