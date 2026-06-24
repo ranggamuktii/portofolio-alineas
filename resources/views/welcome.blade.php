@@ -346,7 +346,23 @@
                                 asset('images/portfolio/graduation/alineas-graduation-009.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-010.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-011.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-012.webp')
+                                asset('images/portfolio/graduation/alineas-graduation-012.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-013.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-014.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-015.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-016.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-017.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-018.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-019.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-020.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-021.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-022.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-023.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-024.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-025.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-026.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-027.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-028.webp')
                             ]
                         ],
                         [
