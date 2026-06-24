@@ -170,7 +170,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive'],
         items: [],
         showLoadMore: false,
         init() {
@@ -346,23 +346,7 @@
                                 asset('images/portfolio/graduation/alineas-graduation-009.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-010.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-011.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-012.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-013.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-014.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-015.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-016.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-017.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-018.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-019.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-020.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-021.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-022.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-023.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-024.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-025.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-026.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-027.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-028.webp')
+                                asset('images/portfolio/graduation/alineas-graduation-012.webp')
                             ]
                         ],
                         [
@@ -527,8 +511,31 @@
                             ]
                         ],
                         ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/placeholders/corporate.svg')],
-                        ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => asset('images/placeholders/yearbook.svg')],
-
+                        [
+                            'cat' => 'School',
+                            'label' => 'Yearbook',
+                            'title' => 'Photo Angkatan & Yearbook',
+                            'h' => 280,
+                            'img' => asset('images/portfolio/school/alineas-school-001.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/school/alineas-school-001.webp'),
+                                asset('images/portfolio/school/alineas-school-002.webp'),
+                                asset('images/portfolio/school/alineas-school-003.webp'),
+                                asset('images/portfolio/school/alineas-school-004.webp'),
+                                asset('images/portfolio/school/alineas-school-005.webp'),
+                                asset('images/portfolio/school/alineas-school-006.webp'),
+                                asset('images/portfolio/school/alineas-school-007.webp'),
+                                asset('images/portfolio/school/alineas-school-008.webp'),
+                                asset('images/portfolio/school/alineas-school-009.webp'),
+                                asset('images/portfolio/school/alineas-school-010.webp'),
+                                asset('images/portfolio/school/alineas-school-011.webp'),
+                                asset('images/portfolio/school/alineas-school-012.webp'),
+                                asset('images/portfolio/school/alineas-school-013.webp'),
+                                asset('images/portfolio/school/alineas-school-014.webp'),
+                                asset('images/portfolio/school/alineas-school-015.webp'),
+                                asset('images/portfolio/school/alineas-school-016.webp')
+                            ]
+                        ],
                         ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => asset('images/placeholders/photobooth.svg')],
                     ];
                 @endphp
