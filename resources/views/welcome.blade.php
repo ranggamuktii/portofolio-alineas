@@ -510,7 +510,18 @@
                                 asset('images/portfolio/automotive/alineas-automotive-021.webp')
                             ]
                         ],
-                        ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/placeholders/corporate.svg')],
+                        [
+                            'cat' => 'Corporate',
+                            'label' => 'Company Profile',
+                            'title' => 'Corporate Photography',
+                            'h' => 260,
+                            'img' => asset('images/portfolio/corporate/alineas-corporate-001.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/corporate/alineas-corporate-001.webp'),
+                                asset('images/portfolio/corporate/alineas-corporate-002.webp'),
+                                asset('images/portfolio/corporate/alineas-corporate-003.webp')
+                            ]
+                        ],
                         [
                             'cat' => 'School',
                             'label' => 'School',
