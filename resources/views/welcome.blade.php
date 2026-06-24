@@ -170,7 +170,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Maternity', 'Goes to KUA', 'Automotive'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive'],
         items: [],
         showLoadMore: false,
         init() {
@@ -435,7 +435,7 @@
                             ]
                         ],
                         [
-                            'cat' => 'Event',
+                            'cat' => 'Photobooth',
                             'label' => 'Photobooth',
                             'title' => 'The Photobooth',
                             'h' => 280,
@@ -465,6 +465,35 @@
                                 asset('images/portfolio/photobooth/alineas-photobooth-022.webp'),
                                 asset('images/portfolio/photobooth/alineas-photobooth-023.webp'),
                                 asset('images/portfolio/photobooth/alineas-photobooth-024.webp')
+                            ]
+                        ],
+                        [
+                            'cat' => 'Photobox',
+                            'label' => 'Photobox',
+                            'title' => 'The Photobox',
+                            'h' => 280,
+                            'img' => asset('images/portfolio/photobox/alineas-photobox-001.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/photobox/alineas-photobox-001.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-002.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-003.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-004.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-005.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-006.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-007.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-008.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-009.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-010.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-011.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-012.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-013.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-014.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-015.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-016.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-017.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-018.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-019.webp'),
+                                asset('images/portfolio/photobox/alineas-photobox-020.webp')
                             ]
                         ],
                         [
@@ -546,9 +575,11 @@
                             @php $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])]; @endphp
                             <div class="masonry-item portfolio-item is-individual hidden-item group cursor-pointer"
                                 data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]), {{ $imgIndex }})'>
-                                <div class="relative overflow-hidden rounded-xl" style="height:{{ $h }}px;">
-                                    <img src="{{ $galleryImg }}" loading="lazy"
-                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="relative overflow-hidden rounded-xl bg-gray-200" style="height:{{ $h }}px;" x-data="{ loaded: false }">
+                                    <div class="absolute inset-0 animate-pulse bg-gray-300" x-show="!loaded"></div>
+                                    <img src="{{ $galleryImg }}" loading="lazy" @load="loaded = true"
+                                        :class="loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-110'"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
                                     <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                                 </div>
                             </div>
