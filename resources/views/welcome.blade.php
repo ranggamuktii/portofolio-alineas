@@ -502,7 +502,7 @@
                     dokumentasi skala besar, kami memberikan dedikasi penuh di setiap bidikan.</p>
             </div>
 
-            <div class="services-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
 
                 @php
                     $services = [
@@ -516,26 +516,38 @@
                 @endphp
 
                 @foreach($services as $svc)
-                    <div class="reveal delay-{{ $svc['delay'] }} service-card">
-                        <div class="sc-img relative aspect-square overflow-hidden">
-                            <img src="{{ $svc['img'] }}" alt="{{ $svc['title'] }}"
-                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                            @if($svc['badge'])
-                                <span
-                                    class="absolute top-3 left-3 bg-red-600 text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full">{{ $svc['badge'] }}</span>
-                            @endif
-                        </div>
-                        <div class="p-5 flex flex-col flex-1">
-                            <h3 class="text-base font-semibold text-gray-900 mb-2">{{ $svc['title'] }}</h3>
-                            <p class="text-gray-600 text-sm leading-relaxed flex-1">{{ $svc['desc'] }}</p>
-                            <a href="https://wa.me/6285213385280?text={{ urlencode($svc['wa_text']) }}" target="_blank"
-                                class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-red-600 hover:text-red-700 transition-colors">
-                                Diskusikan Kebutuhan
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
+                    <div class="reveal delay-{{ $svc['delay'] }} group relative aspect-square rounded-[1.125rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
+                        {{-- Background Image --}}
+                        <img src="{{ $svc['img'] }}" alt="{{ $svc['title'] }}"
+                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                        
+                        {{-- Gradient Overlay --}}
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+
+                        {{-- Badge --}}
+                        @if($svc['badge'])
+                            <span class="absolute top-5 left-5 bg-red-600 text-white text-[10px] font-bold tracking-widest uppercase px-3.5 py-1.5 rounded-full z-20 shadow-md">
+                                {{ $svc['badge'] }}
+                            </span>
+                        @endif
+
+                        {{-- Content --}}
+                        <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-20">
+                            {{-- Title --}}
+                            <h3 class="font-display text-2xl font-bold text-white mb-2 group-hover:-translate-y-4 transition-transform duration-500">{{ $svc['title'] }}</h3>
+                            
+                            {{-- Hidden Content that reveals on hover --}}
+                            <div class="overflow-hidden max-h-0 group-hover:max-h-60 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out transform translate-y-4 group-hover:translate-y-0">
+                                <p class="text-white/80 text-sm leading-relaxed mb-6">{{ $svc['desc'] }}</p>
+                                
+                                <a href="https://wa.me/6285213385280?text={{ urlencode($svc['wa_text']) }}" target="_blank"
+                                    class="inline-flex items-center justify-center gap-2 w-full bg-white text-gray-900 text-sm font-bold px-5 py-3.5 rounded-xl hover:bg-red-600 hover:text-white transition-colors duration-300 shadow-lg">
+                                    Diskusikan Kebutuhan
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 @endforeach
