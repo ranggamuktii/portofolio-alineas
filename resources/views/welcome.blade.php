@@ -170,7 +170,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Maternity', 'Goes to KUA'],
         items: [],
         showLoadMore: false,
         init() {
@@ -349,7 +349,46 @@
                                 asset('images/portfolio/graduation/alineas-graduation-012.webp')
                             ]
                         ],
-                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => asset('images/placeholders/maternity.svg')],
+                        [
+                            'cat' => 'Portrait',
+                            'label' => 'Maternity',
+                            'title' => 'The Maternity',
+                            'h' => 320,
+                            'img' => asset('images/portfolio/maternity/alineas-maternity-001.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/maternity/alineas-maternity-001.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-002.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-003.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-004.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-005.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-006.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-007.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-008.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-009.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-010.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-011.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-012.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-013.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-014.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-015.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-016.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-017.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-018.webp'),
+                                asset('images/portfolio/maternity/alineas-maternity-019.webp')
+                            ]
+                        ],
+                        [
+                            'cat' => 'Wedding',
+                            'label' => 'Goes to KUA',
+                            'title' => 'Goes to KUA',
+                            'h' => 280,
+                            'img' => asset('images/portfolio/goestokua/alineas-goestokua-003.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/goestokua/alineas-goestokua-001.webp'),
+                                asset('images/portfolio/goestokua/alineas-goestokua-002.webp'),
+                                asset('images/portfolio/goestokua/alineas-goestokua-003.webp')
+                            ]
+                        ],
                         [
                             'cat' => 'Wedding',
                             'label' => 'Prewedding',
