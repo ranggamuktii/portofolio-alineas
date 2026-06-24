@@ -242,7 +242,7 @@
                             'label' => 'Event Coverage',
                             'title' => 'Event Coverage',
                             'h' => 280,
-                            'img' => asset('images/portfolio/event/alineas-event-001.webp'),
+                            'img' => asset('images/portfolio/event/alineas-event-009.webp'),
                             'gallery' => [
                                 asset('images/portfolio/event/alineas-event-001.webp'),
                                 asset('images/portfolio/event/alineas-event-002.webp'),
@@ -287,7 +287,7 @@
                             'label' => 'Group',
                             'title' => 'The Group',
                             'h' => 340,
-                            'img' => asset('images/portfolio/group/alineas-group-001.webp'),
+                            'img' => asset('images/portfolio/group/alineas-group-013.webp'),
                             'gallery' => [
                                 asset('images/portfolio/group/alineas-group-002.webp'),
                                 asset('images/portfolio/group/alineas-group-001.webp'),
@@ -331,7 +331,7 @@
                             'label' => 'Birthday',
                             'title' => 'The Birthday',
                             'h' => 260,
-                            'img' => asset('images/portfolio/birthday/alineas-birthday-001.webp'),
+                            'img' => asset('images/portfolio/birthday/alineas-birthday-010.webp'),
                             'gallery' => [
                                 asset('images/portfolio/birthday/alineas-birthday-001.webp'),
                                 asset('images/portfolio/birthday/alineas-birthday-002.webp'),
@@ -357,7 +357,7 @@
                             'label' => 'Graduation',
                             'title' => 'The Graduation',
                             'h' => 300,
-                            'img' => asset('images/portfolio/graduation/alineas-graduation-001.webp'),
+                            'img' => asset('images/portfolio/graduation/alineas-graduation-006.webp'),
                             'gallery' => [
                                 asset('images/portfolio/graduation/alineas-graduation-001.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-002.webp'),
@@ -378,7 +378,7 @@
                             'label' => 'Maternity',
                             'title' => 'The Maternity',
                             'h' => 320,
-                            'img' => asset('images/portfolio/maternity/alineas-maternity-001.webp'),
+                            'img' => asset('images/portfolio/maternity/alineas-maternity-004.webp'),
                             'gallery' => [
                                 asset('images/portfolio/maternity/alineas-maternity-001.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-002.webp'),
@@ -418,7 +418,7 @@
                             'label' => 'Prewedding',
                             'title' => 'Prewedding Premium',
                             'h' => 280,
-                            'img' => asset('images/portfolio/prewedding/alineas-prewedding-001.webp'),
+                            'img' => asset('images/portfolio/prewedding/alineas-prewedding-004.webp'),
                             'gallery' => [
                                 asset('images/portfolio/prewedding/alineas-prewedding-001.webp'),
                                 asset('images/portfolio/prewedding/alineas-prewedding-002.webp'),
@@ -480,7 +480,7 @@
                             'label' => 'Photobox',
                             'title' => 'The Photobox',
                             'h' => 280,
-                            'img' => asset('images/portfolio/photobox/alineas-photobox-001.webp'),
+                            'img' => asset('images/portfolio/photobox/alineas-photobox-020.webp'),
                             'gallery' => [
                                 asset('images/portfolio/photobox/alineas-photobox-001.webp'),
                                 asset('images/portfolio/photobox/alineas-photobox-002.webp'),
@@ -509,7 +509,7 @@
                             'label' => 'Automotive',
                             'title' => 'The Automotive',
                             'h' => 260,
-                            'img' => asset('images/portfolio/automotive/alineas-automotive-005.webp'),
+                            'img' => asset('images/portfolio/automotive/alineas-automotive-021.webp'),
                             'gallery' => [
                                 asset('images/portfolio/automotive/alineas-automotive-001.webp'),
                                 asset('images/portfolio/automotive/alineas-automotive-002.webp'),
@@ -539,7 +539,7 @@
                             'label' => 'School',
                             'title' => 'The School',
                             'h' => 280,
-                            'img' => asset('images/portfolio/school/alineas-school-001.webp'),
+                            'img' => asset('images/portfolio/school/alineas-school-003.webp'),
                             'gallery' => [
                                 asset('images/portfolio/school/alineas-school-001.webp'),
                                 asset('images/portfolio/school/alineas-school-002.webp'),
