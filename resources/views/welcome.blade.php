@@ -170,17 +170,8 @@
             <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Jaringan Kolaborasi</span>
             <h3 class="text-gray-900 font-display text-2xl md:text-3xl font-bold mt-2">Mitra & Vendor Kami</h3>
         </div>
-        <div class="relative flex max-w-full">
-            <!-- Left fade -->
-            <div
-                class="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none">
-            </div>
-            <!-- Right fade -->
-            <div
-                class="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none">
-            </div>
-
-            <div class="marquee-track select-none flex items-center gap-12 md:gap-20 px-6">
+        <div class="relative flex justify-center max-w-full">
+            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 px-6">
                 @php
                     $clientLogos = [
                         [
@@ -201,7 +192,7 @@
                         ],
                     ];
                 @endphp
-                @foreach(array_merge($clientLogos, $clientLogos) as $logo)
+                @foreach($clientLogos as $logo)
                     <img src="{{ $logo['src'] }}" alt="Client Logo"
                         class="h-12 md:h-16 w-auto object-contain transition-all duration-300 {{ $logo['class'] }}">
                 @endforeach
@@ -219,7 +210,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 9,
-        categories: ['All', 'Wedding', 'Portrait', 'Event', 'Video', 'School', 'Corporate'],
+        categories: ['All', 'Wedding', 'Portrait', 'Event', 'School', 'Corporate'],
         items: [],
         showLoadMore: false,
         init() {
@@ -347,10 +338,8 @@
                         ],
                         ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
                         ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
-                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Cinematic Wedding', 'h' => 250, 'isVideo' => true, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
                         ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
                         ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
-                        ['cat' => 'Video', 'label' => 'Video', 'title' => 'Video Angkatan', 'h' => 270, 'isVideo' => true, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/0jT4vgOXRb3WgfQFe8pmuEzSZ5wguukMZMD4dO9l.jpg'],
                         [
                             'cat' => 'Wedding',
                             'label' => 'Prewedding',
