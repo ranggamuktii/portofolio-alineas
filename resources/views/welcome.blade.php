@@ -162,46 +162,6 @@
         </div>
     </section>
 
-    {{-- ============================================================
-    CLIENTS / PARTNERS
-    ============================================================ --}}
-    <section id="clients" class="py-16 md:py-24 bg-gray-50 border-y border-gray-100 overflow-hidden">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12 text-center mb-10">
-            <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Jaringan Kolaborasi</span>
-            <h3 class="text-gray-900 font-display text-2xl md:text-3xl font-bold mt-2">Mitra & Vendor Kami</h3>
-        </div>
-        <div class="relative flex justify-center max-w-full">
-            <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 px-6">
-                @php
-                    $clientLogos = [
-                        [
-                            'src' => asset('images/mitra/aldifian_photo.png'),
-                            'class' => 'h-20 md:h-32 brightness-0 opacity-50 hover:opacity-100'
-                        ],
-                        [
-                            'src' => asset('images/mitra/hamosa_picture.png'),
-                            'class' => 'h-20 md:h-24 brightness-0 opacity-50 hover:opacity-100'
-                        ],
-                        [
-                            'src' => asset('images/mitra/minimaliz_photoworks.PNG'),
-                            'class' => 'h-10 md:h-12 brightness-0 opacity-50 hover:opacity-100'
-                        ],
-                        [
-                            'src' => asset('images/mitra/stories_photography.png'),
-                            'class' => 'h-20 md:h-24 mix-blend-multiply grayscale opacity-60 hover:opacity-100'
-                        ],
-                    ];
-                @endphp
-                @foreach($clientLogos as $logo)
-                    <img src="{{ $logo['src'] }}" alt="Client Logo"
-                        class="w-auto object-contain transition-all duration-300 {{ $logo['class'] }}">
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <div class="warm-divider"></div>
-
 
     {{-- ============================================================
     PORTFOLIO (Featured + Masonry)
@@ -289,10 +249,20 @@
                 <div class="flex flex-col gap-3">
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
                         data-cat="School" onclick='openLightbox([
-                            "{{ asset("images/portfolio/graduation_1.jpg") }}",
-                            "{{ asset("images/portfolio/graduation_2.jpg") }}"
+                            "{{ asset("images/portfolio/graduation/EDIT YUNI-12.jpg") }}",
+                            "{{ asset("images/portfolio/graduation/EDIT YUNI-14.jpg") }}",
+                            "{{ asset("images/portfolio/graduation/EDIT YUNI-17.jpg") }}",
+                            "{{ asset("images/portfolio/graduation/EDIT YUNI-4.jpg") }}",
+                            "{{ asset("images/portfolio/graduation/FITRI (10 of 20).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/FITRI (13 of 20).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/FITRI (2 of 20).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/FITRI (5 of 20).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/FITRI (9 of 20).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/M NAUFAL (102).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/RISKA (36).jpg") }}",
+                            "{{ asset("images/portfolio/graduation/SINTA (121).jpg") }}"
                         ])'>
-                        <img src="{{ asset('images/portfolio/graduation_1.jpg') }}"
+                        <img src="{{ asset('images/portfolio/graduation/EDIT YUNI-12.jpg') }}"
                             alt="Graduation"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -304,10 +274,20 @@
                     </div>
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
                         data-cat="Portrait" onclick='openLightbox([
-                            "{{ asset("images/portfolio/family_1.jpg") }}",
-                            "{{ asset("images/portfolio/family_2.jpg") }}"
+                            "{{ asset("images/portfolio/family/1.jpg") }}",
+                            "{{ asset("images/portfolio/family/10.jpg") }}",
+                            "{{ asset("images/portfolio/family/11.JPG") }}",
+                            "{{ asset("images/portfolio/family/12.jpg") }}",
+                            "{{ asset("images/portfolio/family/2.jpg") }}",
+                            "{{ asset("images/portfolio/family/3.jpg") }}",
+                            "{{ asset("images/portfolio/family/4.jpg") }}",
+                            "{{ asset("images/portfolio/family/5.jpg") }}",
+                            "{{ asset("images/portfolio/family/6.jpg") }}",
+                            "{{ asset("images/portfolio/family/7.jpg") }}",
+                            "{{ asset("images/portfolio/family/8.jpg") }}",
+                            "{{ asset("images/portfolio/family/9.jpg") }}"
                         ])'>
-                        <img src="{{ asset('images/portfolio/family_1.jpg') }}"
+                        <img src="{{ asset('images/portfolio/family/1.jpg') }}"
                             alt="Family Portrait"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -328,16 +308,70 @@
                             'label' => 'Family',
                             'title' => 'The Family',
                             'h' => 280,
-                            'img' => asset('images/portfolio/family_1.jpg'),
+                            'img' => asset('images/portfolio/family/1.jpg'),
                             'gallery' => [
-                                asset('images/portfolio/family_1.jpg'),
-                                asset('images/portfolio/family_2.jpg'),
-                                asset('images/portfolio/family_3.jpg')
+                                asset('images/portfolio/family/1.jpg'),
+                                asset('images/portfolio/family/10.jpg'),
+                                asset('images/portfolio/family/11.JPG'),
+                                asset('images/portfolio/family/12.jpg'),
+                                asset('images/portfolio/family/2.jpg'),
+                                asset('images/portfolio/family/3.jpg'),
+                                asset('images/portfolio/family/4.jpg'),
+                                asset('images/portfolio/family/5.jpg'),
+                                asset('images/portfolio/family/6.jpg'),
+                                asset('images/portfolio/family/7.jpg'),
+                                asset('images/portfolio/family/8.jpg'),
+                                asset('images/portfolio/family/9.jpg')
                             ]
                         ],
                         ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => asset('images/placeholders/group.svg')],
-                        ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => asset('images/portfolio/birthday_1.jpg')],
-                        ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => asset('images/portfolio/graduation_1.jpg')],
+                        [
+                            'cat' => 'Event',
+                            'label' => 'Birthday',
+                            'title' => 'The Birthday',
+                            'h' => 260,
+                            'img' => asset('images/portfolio/birthday/AXELO (28).jpg'),
+                            'gallery' => [
+                                asset('images/portfolio/birthday/AXELO (28).jpg'),
+                                asset('images/portfolio/birthday/birth (8).jpg'),
+                                asset('images/portfolio/birthday/birthday_.jpg'),
+                                asset('images/portfolio/birthday/Copy of CICI (26).jpg'),
+                                asset('images/portfolio/birthday/EDIT AKSARA-14.jpg'),
+                                asset('images/portfolio/birthday/Geo.jpg'),
+                                asset('images/portfolio/birthday/Lina.jpg'),
+                                asset('images/portfolio/birthday/MITHA (9).jpg'),
+                                asset('images/portfolio/birthday/NISA 91.jpg'),
+                                asset('images/portfolio/birthday/NIZAM 3.jpg'),
+                                asset('images/portfolio/birthday/NOFITRI (46).jpg'),
+                                asset('images/portfolio/birthday/Nurhasanah.jpg'),
+                                asset('images/portfolio/birthday/Rifki.jpg'),
+                                asset('images/portfolio/birthday/SYAQILA (10).jpg'),
+                                asset('images/portfolio/birthday/ULFA (24).jpg'),
+                                asset('images/portfolio/birthday/Weni.jpg'),
+                                asset('images/portfolio/birthday/Wulan (81).jpg')
+                            ]
+                        ],
+                        [
+                            'cat' => 'School',
+                            'label' => 'Graduation',
+                            'title' => 'The Graduation',
+                            'h' => 300,
+                            'img' => asset('images/portfolio/graduation/EDIT YUNI-12.jpg'),
+                            'gallery' => [
+                                asset('images/portfolio/graduation/EDIT YUNI-12.jpg'),
+                                asset('images/portfolio/graduation/EDIT YUNI-14.jpg'),
+                                asset('images/portfolio/graduation/EDIT YUNI-17.jpg'),
+                                asset('images/portfolio/graduation/EDIT YUNI-4.jpg'),
+                                asset('images/portfolio/graduation/FITRI (10 of 20).jpg'),
+                                asset('images/portfolio/graduation/FITRI (13 of 20).jpg'),
+                                asset('images/portfolio/graduation/FITRI (2 of 20).jpg'),
+                                asset('images/portfolio/graduation/FITRI (5 of 20).jpg'),
+                                asset('images/portfolio/graduation/FITRI (9 of 20).jpg'),
+                                asset('images/portfolio/graduation/M NAUFAL (102).jpg'),
+                                asset('images/portfolio/graduation/RISKA (36).jpg'),
+                                asset('images/portfolio/graduation/SINTA (121).jpg')
+                            ]
+                        ],
                         ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => asset('images/placeholders/maternity.svg')],
                         [
                             'cat' => 'Wedding',
