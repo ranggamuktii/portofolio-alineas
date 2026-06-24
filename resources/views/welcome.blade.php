@@ -170,7 +170,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Event Coverage'],
         items: [],
         showLoadMore: false,
         init() {
@@ -238,11 +238,35 @@
                 @php
                     $portfolioItems = [
                         [
+                            'cat' => 'Event',
+                            'label' => 'Event Coverage',
+                            'title' => 'Event Coverage',
+                            'h' => 280,
+                            'img' => asset('images/portfolio/event/alineas-event-001.webp'),
+                            'gallery' => [
+                                asset('images/portfolio/event/alineas-event-001.webp'),
+                                asset('images/portfolio/event/alineas-event-002.webp'),
+                                asset('images/portfolio/event/alineas-event-003.webp'),
+                                asset('images/portfolio/event/alineas-event-004.webp'),
+                                asset('images/portfolio/event/alineas-event-005.webp'),
+                                asset('images/portfolio/event/alineas-event-006.webp'),
+                                asset('images/portfolio/event/alineas-event-007.webp'),
+                                asset('images/portfolio/event/alineas-event-008.webp'),
+                                asset('images/portfolio/event/alineas-event-009.webp'),
+                                asset('images/portfolio/event/alineas-event-010.webp'),
+                                asset('images/portfolio/event/alineas-event-011.webp'),
+                                asset('images/portfolio/event/alineas-event-012.webp'),
+                                asset('images/portfolio/event/alineas-event-013.webp'),
+                                asset('images/portfolio/event/alineas-event-014.webp'),
+                                asset('images/portfolio/event/alineas-event-015.webp')
+                            ]
+                        ],
+                        [
                             'cat' => 'Portrait',
                             'label' => 'Family',
                             'title' => 'The Family',
                             'h' => 280,
-                            'img' => asset('images/portfolio/family/alineas-family-001.webp'),
+                            'img' => asset('images/portfolio/family/alineas-family-008.webp'),
                             'gallery' => [
                                 asset('images/portfolio/family/alineas-family-001.webp'),
                                 asset('images/portfolio/family/alineas-family-002.webp'),
@@ -630,22 +654,22 @@
                     $services = [
                         [
                             'delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 
-                            'images' => [asset('images/portfolio/prewedding/alineas-prewedding-004.webp'), asset('images/portfolio/prewedding/alineas-prewedding-014.webp'), asset('images/portfolio/goestokua/alineas-goestokua-003.webp')], 
+                            'images' => [asset('images/portfolio/prewedding/alineas-prewedding-004.webp'), asset('images/portfolio/prewedding/alineas-prewedding-014.webp'), asset('images/portfolio/prewedding/alineas-prewedding-017.webp'), asset('images/portfolio/prewedding/alineas-prewedding-010.webp'), asset('images/portfolio/prewedding/alineas-prewedding-002.webp'), asset('images/portfolio/prewedding/alineas-prewedding-015.webp')], 
                             'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi mengenai dokumentasi Prewedding atau Wedding. Bisa minta informasi detail paket dan harganya?'
                         ],
                         [
                             'delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 
-                            'images' => [asset('images/portfolio/family_2.webp'), asset('images/portfolio/maternity/alineas-maternity-008.webp'), asset('images/portfolio/maternity/alineas-maternity-019.webp')], 
+                            'images' => [asset('images/portfolio/exclusive/alineas-exclusive-002.webp'), asset('images/portfolio/exclusive/alineas-exclusive-006.webp'), asset('images/portfolio/maternity/alineas-maternity-008.webp'), asset('images/portfolio/maternity/alineas-maternity-019.webp'), asset('images/portfolio/exclusive/alineas-exclusive-005.webp'), asset('images/portfolio/exclusive/alineas-exclusive-008.webp')], 
                             'wa_text' => 'Halo Admin Alineas, saya tertarik untuk sesi foto Portrait/Personal. Boleh tahu detail paketnya?'
                         ],
                         [
                             'delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 
-                            'images' => [asset('images/portfolio/birthday/alineas-birthday-001.webp'), asset('images/portfolio/birthday/alineas-birthday-005.webp'), asset('images/portfolio/birthday/alineas-birthday-010.webp')], 
+                            'images' => [asset('images/portfolio/automotive/alineas-automotive-014.webp'), asset('images/portfolio/event/alineas-event-009.webp'), asset('images/portfolio/event/alineas-event-005.webp'), asset('images/portfolio/event/alineas-event-011.webp'), asset('images/portfolio/event/alineas-event-013.webp'), asset('images/portfolio/event/alineas-event-015.webp')], 
                             'wa_text' => 'Halo Admin Alineas, saya butuh jasa dokumentasi untuk Event/Acara. Bagaimana sistem kerjanya?'
                         ],
                         [
                             'delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 
-                            'images' => [asset('images/portfolio/graduation/alineas-graduation-001.webp'), asset('images/portfolio/graduation/alineas-graduation-005.webp'), asset('images/portfolio/graduation/alineas-graduation-010.webp')], 
+                            'images' => [asset('images/portfolio/school/alineas-school-003.webp'), asset('images/portfolio/school/alineas-school-015.webp'), asset('images/portfolio/school/alineas-school-005.webp'), asset('images/portfolio/school/alineas-school-009.webp'), asset('images/portfolio/graduation/alineas-graduation-006.webp'), asset('images/portfolio/graduation/alineas-graduation-003.webp')], 
                             'wa_text' => 'Halo Admin Alineas, saya ingin menanyakan perihal pembuatan Video Angkatan atau Yearbook.'
                         ],
                         [
@@ -655,7 +679,7 @@
                         ],
                         [
                             'delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 
-                            'images' => [asset('images/portfolio/photobooth/alineas-photobooth-008.webp'), asset('images/portfolio/photobooth/alineas-photobooth-005.webp'), asset('images/portfolio/photobooth/alineas-photobooth-015.webp')], 
+                            'images' => [asset('images/portfolio/photobox/alineas-photobox-009.webp'), asset('images/portfolio/photobox/alineas-photobox-019.webp'), asset('images/portfolio/photobox/alineas-photobox-014.webp'), asset('images/portfolio/photobox/alineas-photobox-006.webp'), asset('images/portfolio/photobox/alineas-photobox-016.webp'), asset('images/portfolio/photobox/alineas-photobox-012.webp')], 
                             'wa_text' => 'Halo Admin Alineas, saya tertarik dengan layanan Photobooth/Self Photo. Boleh minta detail harganya?'
                         ],
                     ];
