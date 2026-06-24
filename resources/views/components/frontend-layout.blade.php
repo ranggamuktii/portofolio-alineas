@@ -9,9 +9,15 @@
     <meta name="description"
         content="Alineas Studio, studio fotografi profesional di Karawang. Prewedding, wedding, portrait, graduation, product, dan event photography.">
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
     <link rel="icon" type="image/png" href="{{ asset('images/alineas-icon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/alineas-icon.png') }}">
+    
+    <!-- OpenGraph Meta Tags -->
+    <meta property="og:title" content="Alineas Studio | Photography Studio Karawang">
+    <meta property="og:description" content="Studio fotografi profesional di Karawang. Melayani Prewedding, Wedding, Portrait, Graduation, Product, dan Event photography.">
+    <meta property="og:image" content="{{ asset('images/web-banner.png') }}">
+    <meta property="og:url" content="{{ url('/') }}">
+    <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link

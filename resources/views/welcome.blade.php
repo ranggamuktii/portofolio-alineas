@@ -101,7 +101,7 @@
                 {{-- Placeholder image --}}
                 <div class="reveal-left relative">
                     <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
-                        <img src="{{ asset('images/about.jpg') }}"
+                        <img src="{{ asset('images/about.webp') }}"
                             alt="Alineas Studio - Prewedding Session" class="w-full h-full object-cover ken-burns">
                     </div>
 
@@ -234,20 +234,20 @@
                             'label' => 'Family',
                             'title' => 'The Family',
                             'h' => 280,
-                            'img' => asset('images/portfolio/family/1.jpg'),
+                            'img' => asset('images/portfolio/family/1.webp'),
                             'gallery' => [
-                                asset('images/portfolio/family/1.jpg'),
-                                asset('images/portfolio/family/10.jpg'),
-                                asset('images/portfolio/family/11.JPG'),
-                                asset('images/portfolio/family/12.jpg'),
-                                asset('images/portfolio/family/2.jpg'),
-                                asset('images/portfolio/family/3.jpg'),
-                                asset('images/portfolio/family/4.jpg'),
-                                asset('images/portfolio/family/5.jpg'),
-                                asset('images/portfolio/family/6.jpg'),
-                                asset('images/portfolio/family/7.jpg'),
-                                asset('images/portfolio/family/8.jpg'),
-                                asset('images/portfolio/family/9.jpg')
+                                asset('images/portfolio/family/1.webp'),
+                                asset('images/portfolio/family/10.webp'),
+                                asset('images/portfolio/family/11.webp'),
+                                asset('images/portfolio/family/12.webp'),
+                                asset('images/portfolio/family/2.webp'),
+                                asset('images/portfolio/family/3.webp'),
+                                asset('images/portfolio/family/4.webp'),
+                                asset('images/portfolio/family/5.webp'),
+                                asset('images/portfolio/family/6.webp'),
+                                asset('images/portfolio/family/7.webp'),
+                                asset('images/portfolio/family/8.webp'),
+                                asset('images/portfolio/family/9.webp')
                             ]
                         ],
                         ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => asset('images/placeholders/group.svg')],
@@ -256,25 +256,25 @@
                             'label' => 'Birthday',
                             'title' => 'The Birthday',
                             'h' => 260,
-                            'img' => asset('images/portfolio/birthday/AXELO (28).jpg'),
+                            'img' => asset('images/portfolio/birthday/AXELO (28).webp'),
                             'gallery' => [
-                                asset('images/portfolio/birthday/AXELO (28).jpg'),
-                                asset('images/portfolio/birthday/birth (8).jpg'),
-                                asset('images/portfolio/birthday/birthday_.jpg'),
-                                asset('images/portfolio/birthday/Copy of CICI (26).jpg'),
-                                asset('images/portfolio/birthday/EDIT AKSARA-14.jpg'),
-                                asset('images/portfolio/birthday/Geo.jpg'),
-                                asset('images/portfolio/birthday/Lina.jpg'),
-                                asset('images/portfolio/birthday/MITHA (9).jpg'),
-                                asset('images/portfolio/birthday/NISA 91.jpg'),
-                                asset('images/portfolio/birthday/NIZAM 3.jpg'),
-                                asset('images/portfolio/birthday/NOFITRI (46).jpg'),
-                                asset('images/portfolio/birthday/Nurhasanah.jpg'),
-                                asset('images/portfolio/birthday/Rifki.jpg'),
-                                asset('images/portfolio/birthday/SYAQILA (10).jpg'),
-                                asset('images/portfolio/birthday/ULFA (24).jpg'),
-                                asset('images/portfolio/birthday/Weni.jpg'),
-                                asset('images/portfolio/birthday/Wulan (81).jpg')
+                                asset('images/portfolio/birthday/AXELO (28).webp'),
+                                asset('images/portfolio/birthday/birth (8).webp'),
+                                asset('images/portfolio/birthday/birthday_.webp'),
+                                asset('images/portfolio/birthday/Copy of CICI (26).webp'),
+                                asset('images/portfolio/birthday/EDIT AKSARA-14.webp'),
+                                asset('images/portfolio/birthday/Geo.webp'),
+                                asset('images/portfolio/birthday/Lina.webp'),
+                                asset('images/portfolio/birthday/MITHA (9).webp'),
+                                asset('images/portfolio/birthday/NISA 91.webp'),
+                                asset('images/portfolio/birthday/NIZAM 3.webp'),
+                                asset('images/portfolio/birthday/NOFITRI (46).webp'),
+                                asset('images/portfolio/birthday/Nurhasanah.webp'),
+                                asset('images/portfolio/birthday/Rifki.webp'),
+                                asset('images/portfolio/birthday/SYAQILA (10).webp'),
+                                asset('images/portfolio/birthday/ULFA (24).webp'),
+                                asset('images/portfolio/birthday/Weni.webp'),
+                                asset('images/portfolio/birthday/Wulan (81).webp')
                             ]
                         ],
                         [
@@ -282,20 +282,20 @@
                             'label' => 'Graduation',
                             'title' => 'The Graduation',
                             'h' => 300,
-                            'img' => asset('images/portfolio/graduation/EDIT YUNI-12.jpg'),
+                            'img' => asset('images/portfolio/graduation/EDIT YUNI-12.webp'),
                             'gallery' => [
-                                asset('images/portfolio/graduation/EDIT YUNI-12.jpg'),
-                                asset('images/portfolio/graduation/EDIT YUNI-14.jpg'),
-                                asset('images/portfolio/graduation/EDIT YUNI-17.jpg'),
-                                asset('images/portfolio/graduation/EDIT YUNI-4.jpg'),
-                                asset('images/portfolio/graduation/FITRI (10 of 20).jpg'),
-                                asset('images/portfolio/graduation/FITRI (13 of 20).jpg'),
-                                asset('images/portfolio/graduation/FITRI (2 of 20).jpg'),
-                                asset('images/portfolio/graduation/FITRI (5 of 20).jpg'),
-                                asset('images/portfolio/graduation/FITRI (9 of 20).jpg'),
-                                asset('images/portfolio/graduation/M NAUFAL (102).jpg'),
-                                asset('images/portfolio/graduation/RISKA (36).jpg'),
-                                asset('images/portfolio/graduation/SINTA (121).jpg')
+                                asset('images/portfolio/graduation/EDIT YUNI-12.webp'),
+                                asset('images/portfolio/graduation/EDIT YUNI-14.webp'),
+                                asset('images/portfolio/graduation/EDIT YUNI-17.webp'),
+                                asset('images/portfolio/graduation/EDIT YUNI-4.webp'),
+                                asset('images/portfolio/graduation/FITRI (10 of 20).webp'),
+                                asset('images/portfolio/graduation/FITRI (13 of 20).webp'),
+                                asset('images/portfolio/graduation/FITRI (2 of 20).webp'),
+                                asset('images/portfolio/graduation/FITRI (5 of 20).webp'),
+                                asset('images/portfolio/graduation/FITRI (9 of 20).webp'),
+                                asset('images/portfolio/graduation/M NAUFAL (102).webp'),
+                                asset('images/portfolio/graduation/RISKA (36).webp'),
+                                asset('images/portfolio/graduation/SINTA (121).webp')
                             ]
                         ],
                         ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => asset('images/placeholders/maternity.svg')],
@@ -320,7 +320,7 @@
                     <div class="masonry-item portfolio-item group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
                         data-cat="{{ $item['cat'] }}" onclick='openLightbox(@json($item["gallery"] ?? [$item["img"]]))'>
                         <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
-                            <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}"
+                            <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}" loading="lazy"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
 
                             @if(!empty($item['isVideo']))
@@ -384,9 +384,9 @@
                 @php
                     $services = [
                         ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => asset('images/placeholders/prewedding.svg')],
-                        ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => asset('images/portfolio/family_2.jpg')],
-                        ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.jpg')],
-                        ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.jpg')],
+                        ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => asset('images/portfolio/family_2.webp')],
+                        ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.webp')],
+                        ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.webp')],
                         ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => asset('images/placeholders/corporate.svg')],
                         ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => asset('images/placeholders/photobooth.svg')],
                     ];
