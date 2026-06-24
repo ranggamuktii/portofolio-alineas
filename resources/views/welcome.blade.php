@@ -545,23 +545,59 @@
 
                 @php
                     $services = [
-                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => asset('images/portfolio/prewedding/alineas-prewedding-004.webp'), 'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi mengenai dokumentasi Prewedding atau Wedding. Bisa minta informasi detail paket dan harganya?'],
-                        ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => asset('images/portfolio/family_2.webp'), 'wa_text' => 'Halo Admin Alineas, saya tertarik untuk sesi foto Portrait/Personal. Boleh tahu detail paketnya?'],
-                        ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.webp'), 'wa_text' => 'Halo Admin Alineas, saya butuh jasa dokumentasi untuk Event/Acara. Bagaimana sistem kerjanya?'],
-                        ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.webp'), 'wa_text' => 'Halo Admin Alineas, saya ingin menanyakan perihal pembuatan Video Angkatan atau Yearbook.'],
-                        ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => asset('images/placeholders/corporate.svg'), 'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi tentang pembuatan Company Profile untuk perusahaan.'],
-                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => asset('images/portfolio/photobooth/alineas-photobooth-008.webp'), 'wa_text' => 'Halo Admin Alineas, saya tertarik dengan layanan Photobooth/Self Photo. Boleh minta detail harganya?'],
+                        [
+                            'delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 
+                            'images' => [asset('images/portfolio/prewedding/alineas-prewedding-004.webp'), asset('images/portfolio/prewedding/alineas-prewedding-014.webp'), asset('images/portfolio/goestokua/alineas-goestokua-003.webp')], 
+                            'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi mengenai dokumentasi Prewedding atau Wedding. Bisa minta informasi detail paket dan harganya?'
+                        ],
+                        [
+                            'delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 
+                            'images' => [asset('images/portfolio/family_2.webp'), asset('images/portfolio/maternity/alineas-maternity-008.webp'), asset('images/portfolio/maternity/alineas-maternity-019.webp')], 
+                            'wa_text' => 'Halo Admin Alineas, saya tertarik untuk sesi foto Portrait/Personal. Boleh tahu detail paketnya?'
+                        ],
+                        [
+                            'delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 
+                            'images' => [asset('images/portfolio/birthday/alineas-birthday-001.webp'), asset('images/portfolio/birthday/alineas-birthday-005.webp'), asset('images/portfolio/birthday/alineas-birthday-010.webp')], 
+                            'wa_text' => 'Halo Admin Alineas, saya butuh jasa dokumentasi untuk Event/Acara. Bagaimana sistem kerjanya?'
+                        ],
+                        [
+                            'delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 
+                            'images' => [asset('images/portfolio/graduation/alineas-graduation-001.webp'), asset('images/portfolio/graduation/alineas-graduation-005.webp'), asset('images/portfolio/graduation/alineas-graduation-010.webp')], 
+                            'wa_text' => 'Halo Admin Alineas, saya ingin menanyakan perihal pembuatan Video Angkatan atau Yearbook.'
+                        ],
+                        [
+                            'delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 
+                            'images' => [asset('images/placeholders/corporate.svg')], 
+                            'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi tentang pembuatan Company Profile untuk perusahaan.'
+                        ],
+                        [
+                            'delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 
+                            'images' => [asset('images/portfolio/photobooth/alineas-photobooth-008.webp'), asset('images/portfolio/photobooth/alineas-photobooth-005.webp'), asset('images/portfolio/photobooth/alineas-photobooth-015.webp')], 
+                            'wa_text' => 'Halo Admin Alineas, saya tertarik dengan layanan Photobooth/Self Photo. Boleh minta detail harganya?'
+                        ],
                     ];
                 @endphp
 
                 @foreach($services as $svc)
-                    <div class="group relative aspect-square rounded-[1.125rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
-                        {{-- Background Image --}}
-                        <img src="{{ $svc['img'] }}" alt="{{ $svc['title'] }}"
-                            class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                    <div x-data="{ currentIdx: 0 }" 
+                         @if(count($svc['images']) > 1)
+                         x-init="setTimeout(() => setInterval(() => { currentIdx = (currentIdx + 1) % {{ count($svc['images']) }} }, 3500), {{ $svc['delay'] * 3 }})"
+                         @endif
+                         class="group relative aspect-square rounded-[1.125rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
+                         
+                        {{-- Background Image Slideshow --}}
+                        <div class="absolute inset-0 w-full h-full bg-gray-100">
+                            @foreach($svc['images'] as $idx => $img)
+                                <img src="{{ $img }}" alt="{{ $svc['title'] }} {{ $idx + 1 }}"
+                                    x-show="currentIdx === {{ $idx }}" 
+                                    x-transition.opacity.duration.1000ms
+                                    @if($idx !== 0) x-cloak style="display: none;" @endif
+                                    class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
+                            @endforeach
+                        </div>
                         
                         {{-- Gradient Overlay --}}
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500 z-10"></div>
 
                         {{-- Badge --}}
                         @if($svc['badge'])
