@@ -385,7 +385,7 @@
                         ],
                         ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/placeholders/corporate.svg')],
                         ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => asset('images/placeholders/yearbook.svg')],
-                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'Family Portrait', 'h' => 320, 'img' => asset('images/portfolio/family_2.jpg')],
+
                         ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => asset('images/placeholders/photobooth.svg')],
                     ];
                 @endphp
