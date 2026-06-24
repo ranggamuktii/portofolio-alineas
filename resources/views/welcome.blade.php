@@ -101,7 +101,7 @@
                 {{-- Placeholder image --}}
                 <div class="reveal-left relative">
                     <div class="about-img-wrap aspect-[4/5] overflow-hidden rounded-[2rem]">
-                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg"
+                        <img src="{{ asset('images/portfolio/family_1.jpg') }}"
                             alt="Alineas Studio - Prewedding Session" class="w-full h-full object-cover ken-burns">
                     </div>
 
@@ -270,12 +270,11 @@
 
                 {{-- Large featured --}}
                 <div class="portfolio-featured md:col-span-2 cursor-zoom-in group h-64 md:h-[460px]" data-cat="Wedding"
-                    onclick='openLightbox(@json([
-                        "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg",
-                        "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg",
-                        "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg"
-                    ]))'>
-                    <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg"
+                    onclick='openLightbox([
+                        "{{ asset("images/portfolio/family_1.jpg") }}",
+                        "{{ asset("images/portfolio/family_2.jpg") }}"
+                    ])'>
+                    <img src="{{ asset('images/portfolio/family_1.jpg') }}"
                         alt="Prewedding Premium"
                         class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                     <div
@@ -289,11 +288,11 @@
                 {{-- Right 2 stacked --}}
                 <div class="flex flex-col gap-3">
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="School" onclick='openLightbox(@json([
-                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg",
-                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg"
-                        ]))'>
-                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg"
+                        data-cat="School" onclick='openLightbox([
+                            "{{ asset("images/portfolio/graduation_1.jpg") }}",
+                            "{{ asset("images/portfolio/graduation_2.jpg") }}"
+                        ])'>
+                        <img src="{{ asset('images/portfolio/graduation_1.jpg') }}"
                             alt="Graduation"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -304,11 +303,11 @@
                         </div>
                     </div>
                     <div class="portfolio-featured cursor-zoom-in group flex-1 min-h-[130px] md:min-h-0"
-                        data-cat="Portrait" onclick='openLightbox(@json([
-                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg",
-                            "https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg"
-                        ]))'>
-                        <img src="https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg"
+                        data-cat="Portrait" onclick='openLightbox([
+                            "{{ asset("images/portfolio/family_1.jpg") }}",
+                            "{{ asset("images/portfolio/family_2.jpg") }}"
+                        ])'>
+                        <img src="{{ asset('images/portfolio/family_1.jpg') }}"
                             alt="Family Portrait"
                             class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         <div
@@ -329,34 +328,32 @@
                             'label' => 'Family',
                             'title' => 'The Family',
                             'h' => 280,
-                            'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg',
+                            'img' => asset('images/portfolio/family_1.jpg'),
                             'gallery' => [
-                                'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg',
-                                'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg',
-                                'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'
+                                asset('images/portfolio/family_1.jpg'),
+                                asset('images/portfolio/family_2.jpg'),
+                                asset('images/portfolio/family_3.jpg')
                             ]
                         ],
-                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
-                        ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
-                        ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
-                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg'],
+                        ['cat' => 'Portrait', 'label' => 'Group', 'title' => 'The Group', 'h' => 340, 'img' => asset('images/portfolio/family_2.jpg')],
+                        ['cat' => 'Event', 'label' => 'Birthday', 'title' => 'The Birthday', 'h' => 260, 'img' => asset('images/portfolio/birthday_1.jpg')],
+                        ['cat' => 'School', 'label' => 'Graduation', 'title' => 'The Graduation', 'h' => 300, 'img' => asset('images/portfolio/graduation_1.jpg')],
+                        ['cat' => 'Portrait', 'label' => 'Maternity', 'title' => 'The Maternity', 'h' => 320, 'img' => asset('images/portfolio/family_3.jpg')],
                         [
                             'cat' => 'Wedding',
                             'label' => 'Prewedding',
                             'title' => 'Prewedding Premium',
                             'h' => 280,
-                            'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg',
+                            'img' => asset('images/portfolio/family_1.jpg'),
                             'gallery' => [
-                                'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg',
-                                'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/ItWnQKQ3S7LER12z6Nm90XZpQKsNrtSCYu8kSB1w.jpg',
-                                'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'
+                                asset('images/portfolio/family_1.jpg'),
+                                asset('images/portfolio/family_2.jpg')
                             ]
                         ],
-                        ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
-                        ['cat' => 'Event', 'label' => 'Event', 'title' => 'Dokumentasi Event', 'h' => 300, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
-                        ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/h0yt1XCtWx4b3bx1egPfDNtM36kpFCeZtoCjDM88.jpg'],
-                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'Family Portrait', 'h' => 320, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/Tl94aJIODbXCcUjhSpT4fQE7yxEPG47A1mfdvbrm.jpg'],
-                        ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
+                        ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/portfolio/graduation_2.jpg')],
+                        ['cat' => 'School', 'label' => 'Yearbook', 'title' => 'Photo Angkatan & Yearbook', 'h' => 280, 'img' => asset('images/portfolio/graduation_2.jpg')],
+                        ['cat' => 'Portrait', 'label' => 'Family', 'title' => 'Family Portrait', 'h' => 320, 'img' => asset('images/portfolio/family_2.jpg')],
+                        ['cat' => 'Event', 'label' => 'Photobooth', 'title' => 'Photobooth Experience', 'h' => 250, 'img' => asset('images/portfolio/birthday_1.jpg')],
                     ];
                 @endphp
 
@@ -427,12 +424,12 @@
 
                 @php
                     $services = [
-                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/fsg4dsoOG9xUxgOhL3ObuoHIevx8RJCii2WcubEa.jpg'],
-                        ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/Nf75ltSxde7ySretYbcAgYefnxLCKmYnTdo8CHHy.jpg'],
-                        ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/GlvJbpq7M8sXfdFoLIWcN5WvXsiXi04WCEeLiji8.jpg'],
-                        ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/rlJNsKvu2TdGtgGJWWfVYTS032it5mSE8qi8ktyP.jpg'],
-                        ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/galleries/yAYOnsiwQuBihACdIlO0vROM9R6yzyoAYt9qyT7g.jpg'],
-                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => 'https://fls-a1bffa8c-3a80-4abc-ae64-1d0ad838afd5.laravel.cloud/packages/CNS8rxp3AG2xtvSosG6jESiQIPXfzZr3adLyf7Pf.jpg'],
+                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => asset('images/portfolio/family_1.jpg')],
+                        ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => asset('images/portfolio/family_2.jpg')],
+                        ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.jpg')],
+                        ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.jpg')],
+                        ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => asset('images/portfolio/graduation_2.jpg')],
+                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => asset('images/portfolio/birthday_1.jpg')],
                     ];
                 @endphp
 
