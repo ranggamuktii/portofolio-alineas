@@ -176,11 +176,11 @@
                     $clientLogos = [
                         [
                             'src' => asset('images/mitra/aldifian_photo.png'),
-                            'class' => 'h-16 md:h-24 brightness-0 opacity-50 hover:opacity-100'
+                            'class' => 'h-28 md:h-48 brightness-0 opacity-50 hover:opacity-100 scale-125'
                         ],
                         [
                             'src' => asset('images/mitra/hamosa_picture.png'),
-                            'class' => 'h-16 md:h-20 brightness-0 opacity-50 hover:opacity-100'
+                            'class' => 'h-24 md:h-36 brightness-0 opacity-50 hover:opacity-100'
                         ],
                         [
                             'src' => asset('images/mitra/minimaliz_photoworks.PNG'),
@@ -188,7 +188,7 @@
                         ],
                         [
                             'src' => asset('images/mitra/stories_photography.png'),
-                            'class' => 'h-16 md:h-20 mix-blend-multiply grayscale opacity-60 hover:opacity-100'
+                            'class' => 'h-24 md:h-36 mix-blend-multiply grayscale opacity-60 hover:opacity-100'
                         ],
                     ];
                 @endphp
