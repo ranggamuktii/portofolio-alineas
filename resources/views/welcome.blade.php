@@ -176,25 +176,25 @@
                     $clientLogos = [
                         [
                             'src' => asset('images/mitra/aldifian_photo.png'),
-                            'class' => 'brightness-0 opacity-50 hover:opacity-100 scale-150'
+                            'class' => 'h-16 md:h-24 brightness-0 opacity-50 hover:opacity-100'
                         ],
                         [
                             'src' => asset('images/mitra/hamosa_picture.png'),
-                            'class' => 'brightness-0 opacity-50 hover:opacity-100 scale-125'
+                            'class' => 'h-16 md:h-20 brightness-0 opacity-50 hover:opacity-100'
                         ],
                         [
                             'src' => asset('images/mitra/minimaliz_photoworks.PNG'),
-                            'class' => 'brightness-0 opacity-50 hover:opacity-100 scale-75'
+                            'class' => 'h-10 md:h-12 brightness-0 opacity-50 hover:opacity-100'
                         ],
                         [
                             'src' => asset('images/mitra/stories_photography.png'),
-                            'class' => 'mix-blend-multiply grayscale opacity-60 hover:opacity-100 scale-125'
+                            'class' => 'h-16 md:h-20 mix-blend-multiply grayscale opacity-60 hover:opacity-100'
                         ],
                     ];
                 @endphp
                 @foreach($clientLogos as $logo)
                     <img src="{{ $logo['src'] }}" alt="Client Logo"
-                        class="h-12 md:h-16 w-auto object-contain transition-all duration-300 {{ $logo['class'] }}">
+                        class="w-auto object-contain transition-all duration-300 {{ $logo['class'] }}">
                 @endforeach
             </div>
         </div>
