@@ -511,18 +511,6 @@
                             ]
                         ],
                         [
-                            'cat' => 'Corporate',
-                            'label' => 'Company Profile',
-                            'title' => 'Corporate Photography',
-                            'h' => 260,
-                            'img' => asset('images/portfolio/corporate/alineas-corporate-001.webp'),
-                            'gallery' => [
-                                asset('images/portfolio/corporate/alineas-corporate-001.webp'),
-                                asset('images/portfolio/corporate/alineas-corporate-002.webp'),
-                                asset('images/portfolio/corporate/alineas-corporate-003.webp')
-                            ]
-                        ],
-                        [
                             'cat' => 'School',
                             'label' => 'School',
                             'title' => 'The School',
@@ -662,7 +650,7 @@
                         ],
                         [
                             'delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 
-                            'images' => [asset('images/placeholders/corporate.svg')], 
+                            'images' => [asset('images/portfolio/corporate/alineas-corporate-001.webp'), asset('images/portfolio/corporate/alineas-corporate-002.webp'), asset('images/portfolio/corporate/alineas-corporate-003.webp')], 
                             'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi tentang pembuatan Company Profile untuk perusahaan.'
                         ],
                         [
