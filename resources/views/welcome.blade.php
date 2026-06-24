@@ -184,7 +184,7 @@
                         ],
                         [
                             'src' => asset('images/mitra/minimaliz_photoworks.PNG'),
-                            'class' => 'brightness-0 opacity-50 hover:opacity-100'
+                            'class' => 'brightness-0 opacity-50 hover:opacity-100 scale-75'
                         ],
                         [
                             'src' => asset('images/mitra/stories_photography.png'),
