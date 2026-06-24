@@ -384,7 +384,7 @@
                             'label' => 'Photobooth',
                             'title' => 'The Photobooth',
                             'h' => 280,
-                            'img' => asset('images/portfolio/photobooth/alineas-photobooth-001.webp'),
+                            'img' => asset('images/portfolio/photobooth/alineas-photobooth-008.webp'),
                             'gallery' => [
                                 asset('images/portfolio/photobooth/alineas-photobooth-001.webp'),
                                 asset('images/portfolio/photobooth/alineas-photobooth-002.webp'),
@@ -511,7 +511,7 @@
                         ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.webp'), 'wa_text' => 'Halo Admin Alineas, saya butuh jasa dokumentasi untuk Event/Acara. Bagaimana sistem kerjanya?'],
                         ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.webp'), 'wa_text' => 'Halo Admin Alineas, saya ingin menanyakan perihal pembuatan Video Angkatan atau Yearbook.'],
                         ['delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 'img' => asset('images/placeholders/corporate.svg'), 'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi tentang pembuatan Company Profile untuk perusahaan.'],
-                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => asset('images/portfolio/photobooth/alineas-photobooth-005.webp'), 'wa_text' => 'Halo Admin Alineas, saya tertarik dengan layanan Photobooth/Self Photo. Boleh minta detail harganya?'],
+                        ['delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 'img' => asset('images/portfolio/photobooth/alineas-photobooth-008.webp'), 'wa_text' => 'Halo Admin Alineas, saya tertarik dengan layanan Photobooth/Self Photo. Boleh minta detail harganya?'],
                     ];
                 @endphp
 
