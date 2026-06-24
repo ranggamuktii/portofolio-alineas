@@ -169,8 +169,8 @@
     ============================================================ --}}
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
-        limit: 9,
-        categories: ['All', 'Wedding', 'Portrait', 'Event', 'School', 'Corporate'],
+        limit: 12,
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'Graduation', 'Birthday', 'Exclusive'],
         items: [],
         showLoadMore: false,
         init() {
@@ -179,18 +179,26 @@
         },
         setActive(cat) {
             this.active = cat;
-            this.limit = 9;
+            this.limit = 12;
             this.updateVisibility();
         },
         loadMore() {
-            this.limit += 9;
+            this.limit += 12;
             this.updateVisibility();
         },
         updateVisibility() {
             let visibleCount = 0;
             let totalMatch = 0;
             this.items.forEach(el => {
-                let match = this.active === 'All' || (el.dataset.cat || '').includes(this.active);
+                let isCover = el.classList.contains('is-cover');
+                let match = false;
+                
+                if (this.active === 'All') {
+                    match = isCover;
+                } else {
+                    match = (!isCover && el.dataset.label === this.active);
+                }
+
                 if (match) {
                     totalMatch++;
                     if (visibleCount < this.limit) {
@@ -378,9 +386,11 @@
                     ];
                 @endphp
 
+                {{-- 1. COVER ITEMS (Untuk mode 'All') --}}
                 @foreach($portfolioItems as $i => $item)
-                    <div class="masonry-item portfolio-item group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
-                        data-cat="{{ $item['cat'] }}" onclick='openLightbox(@json($item["gallery"] ?? [$item["img"]]))'>
+                    @if(isset($item['gallery']))
+                    <div class="masonry-item portfolio-item is-cover group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
+                        data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]))'>
                         <div class="relative overflow-hidden rounded-xl" style="height:{{ $item['h'] }}px;">
                             <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}" loading="lazy"
                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
@@ -401,13 +411,31 @@
                             @endif
 
                             <div
-                                class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex flex-col justify-end p-3.5 z-20">
-                                <span
-                                    class="text-red-400 text-[9px] font-bold tracking-widest uppercase mb-0.5">{{ $item['label'] }}</span>
-                                <h3 class="text-white text-[13px] font-semibold leading-snug">{{ $item['title'] }}</h3>
+                                class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1 block">{{ $item['label'] }}</span>
+                                <h3 class="text-white text-lg font-semibold leading-snug">{{ $item['title'] }}</h3>
+                                <p class="text-white/70 text-xs mt-1">{{ count($item['gallery']) }} Photos</p>
                             </div>
                         </div>
                     </div>
+                    @endif
+                @endforeach
+
+                {{-- 2. INDIVIDUAL ITEMS (Untuk mode kategori spesifik) --}}
+                @foreach($portfolioItems as $item)
+                    @if(isset($item['gallery']))
+                        @foreach($item['gallery'] as $imgIndex => $galleryImg)
+                            @php $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])]; @endphp
+                            <div class="masonry-item portfolio-item is-individual hidden-item group cursor-pointer"
+                                data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]), {{ $imgIndex }})'>
+                                <div class="relative overflow-hidden rounded-xl" style="height:{{ $h }}px;">
+                                    <img src="{{ $galleryImg }}" loading="lazy"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                    <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                 @endforeach
             </div>
 
