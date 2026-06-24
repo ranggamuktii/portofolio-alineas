@@ -1,0 +1,9 @@
+.git
+node_modules
+tests
+storage/framework/cache
+storage/framework/testing
+storage/logs
+.env
+.idea
+.vscode
