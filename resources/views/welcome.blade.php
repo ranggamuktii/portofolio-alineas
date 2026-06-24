@@ -1,4 +1,17 @@
 <x-frontend-layout>
+    <style>
+        .alineas-checkerboard {
+            height: 30px;
+            background-image: conic-gradient(
+                #C13127 90deg,
+                #F9F9F9 90deg 180deg,
+                #C13127 180deg 270deg,
+                #F9F9F9 270deg
+            );
+            background-size: 30px 30px;
+            width: 100%;
+        }
+    </style>
 
     {{-- ============================================================
     HERO — Jumbotron (banner tetap pakai gambar asli)
