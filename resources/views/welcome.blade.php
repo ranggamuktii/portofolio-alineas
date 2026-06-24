@@ -304,9 +304,28 @@
                             'label' => 'Prewedding',
                             'title' => 'Prewedding Premium',
                             'h' => 280,
-                            'img' => asset('images/placeholders/prewedding.svg'),
+                            'img' => asset('images/portfolio/prewedding/ALN_1518.webp'),
                             'gallery' => [
-                                asset('images/placeholders/prewedding.svg')
+                                asset('images/portfolio/prewedding/ALN_1518.webp'),
+                                asset('images/portfolio/prewedding/ALN_1523.webp'),
+                                asset('images/portfolio/prewedding/ALN_1551.webp'),
+                                asset('images/portfolio/prewedding/ALN_1612.webp'),
+                                asset('images/portfolio/prewedding/ALN_1615.webp'),
+                                asset('images/portfolio/prewedding/ALN_1655.webp'),
+                                asset('images/portfolio/prewedding/Cetak Gusti16rp.webp'),
+                                asset('images/portfolio/prewedding/edit (10 of 20).webp'),
+                                asset('images/portfolio/prewedding/edit (3 of 20).webp'),
+                                asset('images/portfolio/prewedding/FITRIA 57.webp'),
+                                asset('images/portfolio/prewedding/FITRIA 68.webp'),
+                                asset('images/portfolio/prewedding/GUSTI (39).webp'),
+                                asset('images/portfolio/prewedding/GUSTI (4).webp'),
+                                asset('images/portfolio/prewedding/GUSTI (93).webp'),
+                                asset('images/portfolio/prewedding/JAY 2.webp'),
+                                asset('images/portfolio/prewedding/JAY 26.webp'),
+                                asset('images/portfolio/prewedding/MAYA 39.webp'),
+                                asset('images/portfolio/prewedding/MAYA 40.webp'),
+                                asset('images/portfolio/prewedding/MAYA 71.webp'),
+                                asset('images/portfolio/prewedding/YUNI 34.webp')
                             ]
                         ],
                         ['cat' => 'Corporate', 'label' => 'Company Profile', 'title' => 'Corporate Photography', 'h' => 260, 'img' => asset('images/placeholders/corporate.svg')],
@@ -383,7 +402,7 @@
 
                 @php
                     $services = [
-                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => asset('images/placeholders/prewedding.svg')],
+                        ['delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 'img' => asset('images/portfolio/prewedding/ALN_1612.webp')],
                         ['delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 'img' => asset('images/portfolio/family_2.webp')],
                         ['delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 'img' => asset('images/portfolio/birthday_1.webp')],
                         ['delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 'img' => asset('images/portfolio/graduation_1.webp')],
