@@ -185,7 +185,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Event Coverage'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Event Coverage', 'Self Photo'],
         items: [],
         showLoadMore: false,
         init() {
@@ -232,12 +232,12 @@
 
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-            <div class="reveal flex flex-col sm:flex-row sm:items-end justify-between gap-5 mb-12">
-                <div>
+            <div class="reveal flex flex-col xl:flex-row xl:items-end justify-between gap-5 mb-12">
+                <div class="shrink-0 xl:pr-8">
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2">Karya Terbaik Kami</h2>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
                 </div>
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-2 xl:justify-end w-full">
                     <template x-for="cat in categories" :key="cat">
                         <button @click="setActive(cat)"
                             :class="active === cat ? 'bg-gray-900 text-white border-gray-900' : 'bg-transparent text-gray-400 border-gray-200 hover:border-gray-400 hover:text-gray-700'"
@@ -252,6 +252,27 @@
             <div class="masonry-grid">
                 @php
                     $portfolioItems = [
+                        [
+                            'cat' => 'Portrait',
+                            'label' => 'Self Photo',
+                            'title' => 'Self Photo',
+                            'h' => 280,
+                            'img' => asset('images/portfolio/selfphoto/sinta (3 of 5).jpg'),
+                            'gallery' => [
+                                asset('images/portfolio/selfphoto/10.jpg'),
+                                asset('images/portfolio/selfphoto/3.jpg'),
+                                asset('images/portfolio/selfphoto/AURA EDIT (2 of 5).jpg'),
+                                asset('images/portfolio/selfphoto/BUNGA EDIT-2.jpg'),
+                                asset('images/portfolio/selfphoto/EDITT ALYA.jpg'),
+                                asset('images/portfolio/selfphoto/ELIS (2 of 5).JPG'),
+                                asset('images/portfolio/selfphoto/FRAME 9.jpg'),
+                                asset('images/portfolio/selfphoto/RICHEL-1.JPG'),
+                                asset('images/portfolio/selfphoto/SELFS 4R LAYOUT 1 PHOTO.jpg'),
+                                asset('images/portfolio/selfphoto/SELFS 4R LAYOUT 4PHOTO.jpg'),
+                                asset('images/portfolio/selfphoto/SYIFA (37).jpg'),
+                                asset('images/portfolio/selfphoto/sinta (3 of 5).jpg')
+                            ]
+                        ],
                         [
                             'cat' => 'Event',
                             'label' => 'Event Coverage',
