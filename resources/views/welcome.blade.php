@@ -740,7 +740,7 @@
                         </div>
                         
                         {{-- Gradient Overlay --}}
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500 z-10"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-95 lg:opacity-80 lg:group-hover:opacity-95 transition-opacity duration-500 z-10"></div>
 
                         {{-- Badge --}}
                         @if($svc['badge'])
@@ -752,11 +752,11 @@
                         {{-- Content --}}
                         <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-20">
                             {{-- Title --}}
-                            <h3 class="font-display text-2xl font-bold text-white mb-2 group-hover:-translate-y-4 transition-transform duration-500">{{ $svc['title'] }}</h3>
+                            <h3 class="font-display text-2xl font-bold text-white mb-2 -translate-y-2 lg:translate-y-0 lg:group-hover:-translate-y-4 transition-transform duration-500">{{ $svc['title'] }}</h3>
                             
-                            {{-- Hidden Content that reveals on hover --}}
-                            <div class="overflow-hidden max-h-0 group-hover:max-h-60 opacity-0 group-hover:opacity-100 transition-all duration-700 ease-in-out transform translate-y-4 group-hover:translate-y-0">
-                                <p class="text-white/80 text-sm leading-relaxed mb-6">{{ $svc['desc'] }}</p>
+                            {{-- Hidden Content that reveals on hover on desktop, always visible on mobile --}}
+                            <div class="overflow-hidden max-h-60 lg:max-h-0 lg:group-hover:max-h-60 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-700 ease-in-out transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
+                                <p class="text-white/80 text-sm leading-relaxed mb-5">{{ $svc['desc'] }}</p>
                                 
                                 <a href="https://wa.me/6285213385280?text={{ urlencode($svc['wa_text']) }}" target="_blank"
                                     class="inline-flex items-center justify-center gap-2 w-full bg-white text-gray-900 text-sm font-bold px-5 py-3.5 rounded-xl hover:bg-red-600 hover:text-white transition-colors duration-300 shadow-lg">
