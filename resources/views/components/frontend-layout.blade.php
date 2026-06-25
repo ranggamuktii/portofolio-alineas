@@ -169,11 +169,25 @@
                 // Build thumbnails
                 const thumbContainer = document.getElementById('lightbox-thumbnails');
                 if (lightboxImages.length > 1) {
-                    thumbContainer.innerHTML = lightboxImages.map((src, i) => `
-                        <img src="${src}" onclick="jumpLightbox(${i}, event)" 
+                    thumbContainer.innerHTML = lightboxImages.map((src, i) => {
+                        let thumbSrc = src;
+                        if (src.includes('youtube.com') || src.includes('youtu.be')) {
+                            let videoId = '';
+                            if (src.includes('watch?v=')) {
+                                videoId = src.split('watch?v=')[1].split('&')[0];
+                            } else if (src.includes('youtu.be/')) {
+                                videoId = src.split('youtu.be/')[1].split('?')[0];
+                            }
+                            if (videoId) {
+                                thumbSrc = `https://img.youtube.com/vi/${videoId}/default.jpg`;
+                            }
+                        }
+                        return `
+                        <img src="${thumbSrc}" onclick="jumpLightbox(${i}, event)" 
                              class="w-12 h-12 md:w-16 md:h-16 object-cover rounded-md cursor-pointer opacity-50 hover:opacity-100 transition-all border-2 border-transparent" 
                              id="thumb-${i}">
-                    `).join('');
+                        `;
+                    }).join('');
                 } else {
                     thumbContainer.innerHTML = '';
                 }

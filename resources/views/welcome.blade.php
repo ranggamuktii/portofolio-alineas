@@ -185,7 +185,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Event Coverage', 'Self Photo'],
+        categories: ['All', 'Prewedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Event Coverage', 'Self Photo', 'Cinematic Wedding', 'Event Video', 'Prewedding Cinema'],
         items: [],
         showLoadMore: false,
         init() {
@@ -252,6 +252,45 @@
             <div class="masonry-grid">
                 @php
                     $portfolioItems = [
+                        [
+                            'cat' => 'Wedding',
+                            'label' => 'Cinematic Wedding',
+                            'title' => 'Cinematic Wedding',
+                            'h' => 280,
+                            'isVideo' => true,
+                            'img' => 'https://img.youtube.com/vi/7z5cK_QntPE/maxresdefault.jpg',
+                            'gallery' => [
+                                'https://youtu.be/7z5cK_QntPE',
+                                'https://youtu.be/J2hDRsYcGHI',
+                                'https://youtu.be/sTuBecU8Kco',
+                                'https://youtu.be/g3riXaYMrPs',
+                                'https://youtu.be/ZLwgYsDQ1eE',
+                                'https://www.youtube.com/watch?v=Uzolz6ViRJE'
+                            ]
+                        ],
+                        [
+                            'cat' => 'Event',
+                            'label' => 'Event Video',
+                            'title' => 'Event Video',
+                            'h' => 280,
+                            'isVideo' => true,
+                            'img' => 'https://img.youtube.com/vi/XLhTiPPdknU/maxresdefault.jpg',
+                            'gallery' => [
+                                'https://youtu.be/XLhTiPPdknU',
+                                'https://www.youtube.com/watch?v=RMG17_zDO2M'
+                            ]
+                        ],
+                        [
+                            'cat' => 'Wedding',
+                            'label' => 'Prewedding Cinema',
+                            'title' => 'Prewedding Cinema',
+                            'h' => 280,
+                            'isVideo' => true,
+                            'img' => 'https://img.youtube.com/vi/PR-gKLxvKdQ/maxresdefault.jpg',
+                            'gallery' => [
+                                'https://youtu.be/PR-gKLxvKdQ'
+                            ]
+                        ],
                         [
                             'cat' => 'Portrait',
                             'label' => 'Self Photo',
@@ -628,7 +667,7 @@
                                 class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1 block">{{ $item['label'] }}</span>
                                 <h3 class="text-white text-lg font-semibold leading-snug">{{ $item['title'] }}</h3>
-                                <p class="text-white/70 text-xs mt-1">{{ count($item['gallery']) }} Photos</p>
+                                <p class="text-white/70 text-xs mt-1">{{ count($item['gallery']) }} {{ !empty($item['isVideo']) ? 'Videos' : 'Photos' }}</p>
                             </div>
                         </div>
                     </div>
@@ -639,14 +678,37 @@
                 @foreach($portfolioItems as $item)
                     @if(isset($item['gallery']))
                         @foreach($item['gallery'] as $imgIndex => $galleryImg)
-                            @php $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])]; @endphp
+                            @php 
+                                $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])]; 
+                                $displayImg = $galleryImg;
+                                $isIndividualVideo = false;
+                                if (str_contains($galleryImg, 'youtube.com') || str_contains($galleryImg, 'youtu.be')) {
+                                    $isIndividualVideo = true;
+                                    $videoId = '';
+                                    if (str_contains($galleryImg, 'watch?v=')) {
+                                        $videoId = explode('&', explode('watch?v=', $galleryImg)[1])[0];
+                                    } elseif (str_contains($galleryImg, 'youtu.be/')) {
+                                        $videoId = explode('?', explode('youtu.be/', $galleryImg)[1])[0];
+                                    }
+                                    if ($videoId) {
+                                        $displayImg = 'https://img.youtube.com/vi/' . $videoId . '/maxresdefault.jpg';
+                                    }
+                                }
+                            @endphp
                             <div class="masonry-item portfolio-item is-individual hidden-item group cursor-pointer"
                                 data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]), {{ $imgIndex }})'>
                                 <div class="relative overflow-hidden rounded-xl bg-gray-200 animate-pulse" style="height:{{ $h }}px;">
-                                    <img src="{{ $galleryImg }}" loading="lazy" 
+                                    <img src="{{ $displayImg }}" loading="lazy" 
                                         onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200'); this.classList.remove('opacity-0', 'scale-110');"
                                         class="opacity-0 scale-110 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
                                     <div class="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                    @if($isIndividualVideo)
+                                        <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                            <div class="w-10 h-10 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
+                                                <svg class="w-4 h-4 text-white ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
