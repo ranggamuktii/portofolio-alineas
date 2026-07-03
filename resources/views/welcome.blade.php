@@ -185,7 +185,7 @@
     <section id="portfolio" class="py-24 md:py-32 bg-white" x-data="{
         active: 'All',
         limit: 12,
-        categories: ['All', 'Prewedding', 'Wedding', 'Family', 'Group', 'School', 'Graduation', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Product', 'Event Coverage', 'Self Photo', 'Cinematic Wedding', 'Event Video', 'Prewedding Cinema'],
+        categories: ['All', 'Prewedding', 'Wedding', 'Family', 'Group', 'School', 'Graduation Indoor', 'Graduation Outdoor', 'Birthday', 'Exclusive', 'Photobooth', 'Photobox', 'Maternity', 'Goes to KUA', 'Automotive', 'Product', 'Event Coverage', 'Self Photo', 'Cinematic Wedding', 'Event Video', 'Prewedding Cinema'],
         items: [],
         showLoadMore: false,
         init() {
@@ -445,8 +445,8 @@
                         ],
                         [
                             'cat' => 'School',
-                            'label' => 'Graduation',
-                            'title' => 'The Graduation',
+                            'label' => 'Graduation Indoor',
+                            'title' => 'Graduation Indoor',
                             'h' => 300,
                             'img' => asset('images/portfolio/graduation/alineas-graduation-006.webp'),
                             'gallery' => [
@@ -461,7 +461,16 @@
                                 asset('images/portfolio/graduation/alineas-graduation-009.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-010.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-011.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-012.webp'),
+                                asset('images/portfolio/graduation/alineas-graduation-012.webp')
+                            ]
+                        ],
+                        [
+                            'cat' => 'School',
+                            'label' => 'Graduation Outdoor',
+                            'title' => 'Graduation Outdoor',
+                            'h' => 280,
+                            'img' => asset('images/portfolio/graduation/alineas-graduation-outdoor-001.webp'),
+                            'gallery' => [
                                 asset('images/portfolio/graduation/alineas-graduation-outdoor-001.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-outdoor-002.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-outdoor-003.webp'),
