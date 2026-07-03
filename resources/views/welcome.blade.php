@@ -392,8 +392,6 @@
                             'gallery' => [
                                 asset('images/portfolio/exclusive/alineas-exclusive-001.webp'),
                                 asset('images/portfolio/exclusive/alineas-exclusive-002.webp'),
-                                asset('images/portfolio/exclusive/alineas-exclusive-003.webp'),
-                                asset('images/portfolio/exclusive/alineas-exclusive-004.webp'),
                                 asset('images/portfolio/exclusive/alineas-exclusive-005.webp'),
                                 asset('images/portfolio/exclusive/alineas-exclusive-006.webp'),
                                 asset('images/portfolio/exclusive/alineas-exclusive-007.webp'),
@@ -876,10 +874,60 @@
                 <p class="text-gray-600 text-sm mt-3">Klien kami menitipkan momen berharga mereka dan kami jaga
                     kepercayaan itu.</p>
             </div>
-            <div class="reveal max-w-5xl mx-auto">
-                <div class="transform scale-[0.90] sm:scale-100 origin-top overflow-hidden">
-                    <script src="https://static.elfsight.com/platform/platform.js" data-use-service-core defer></script>
-                    <div class="elfsight-app-3f8acc35-fce7-478e-8145-226f9f636c9b" data-elfsight-app-lazy></div>
+            <div class="reveal max-w-6xl mx-auto mt-10">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    @php
+                        $testimonials = [
+                            [
+                                'name' => 'Nisa & Rizky',
+                                'role' => 'Prewedding Client',
+                                'initial' => 'NR',
+                                'review' => 'Super puas sama hasil foto dan pelayanannya! Fotografernya sabar banget ngarahin gaya, padahal kita berdua lumayan kaku di depan kamera. Tone warnanya juga cakep banget sesuai ekspektasi.',
+                                'stars' => 5
+                            ],
+                            [
+                                'name' => 'Keluarga Bapak Budi',
+                                'role' => 'Family Portrait',
+                                'initial' => 'KB',
+                                'review' => 'Studio fotonya nyaman, bersih, dan properti fotonya lengkap. Anak-anak seneng diajak foto disini karena abangnya pinter banget bikin ketawa. Hasil cetaknya juga premium.',
+                                'stars' => 5
+                            ],
+                            [
+                                'name' => 'Sinta Amelia',
+                                'role' => 'Graduation Session',
+                                'initial' => 'SA',
+                                'review' => 'Bagus bangeeetttt! Proses editingnya cepat dan natural, nggak berlebihan. Adminnya juga responsif banget pas diajak diskusi konsep. Highly recommended buat warga Karawang!',
+                                'stars' => 5
+                            ]
+                        ];
+                    @endphp
+
+                    @foreach($testimonials as $index => $testi)
+                        <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-600/5 transition-all duration-300 flex flex-col justify-between">
+                            <div>
+                                <div class="flex gap-1 text-yellow-400 mb-5">
+                                    @for($i = 0; $i < $testi['stars']; $i++)
+                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                        </svg>
+                                    @endfor
+                                </div>
+                                <p class="text-gray-600 mb-8 text-sm md:text-base leading-relaxed italic">
+                                    "{{ $testi['review'] }}"
+                                </p>
+                            </div>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-red-100 text-red-600 font-display font-bold text-lg flex items-center justify-center rounded-full flex-shrink-0">
+                                    {{ $testi['initial'] }}
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-900 text-sm md:text-base">{{ $testi['name'] }}</h4>
+                                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">{{ $testi['role'] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
