@@ -1,4 +1,6 @@
 <x-frontend-layout>
+    <!-- Tambahkan Tailwind CDN sementara agar class baru langsung ter-render walau 'npm run dev' belum dijalankan -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .alineas-checkerboard {
             height: 30px;
