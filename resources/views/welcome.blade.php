@@ -237,14 +237,19 @@
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
                 </div>
-                <div class="flex overflow-x-auto gap-2 pb-2 w-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                    <template x-for="cat in categories" :key="cat">
-                        <button @click="setActive(cat)"
-                            :class="active === cat ? 'bg-gray-900 text-white border-gray-900 shadow-md' : 'bg-transparent text-gray-400 border-gray-200 hover:border-gray-400 hover:text-gray-900'"
-                            class="whitespace-nowrap shrink-0 snap-start border text-[11px] font-semibold tracking-widest uppercase px-4 py-2 rounded-full transition-all duration-250"
-                            x-text="cat">
-                        </button>
-                    </template>
+                <div class="relative w-full">
+                    <!-- Indikator fade di kanan untuk mobile -->
+                    <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 xl:hidden"></div>
+                    
+                    <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2 w-full snap-x snap-mandatory scroll-smooth">
+                        <template x-for="cat in categories" :key="cat">
+                            <button @click="setActive(cat)"
+                                :class="active === cat ? 'bg-gray-900 text-white border-gray-900 shadow-md' : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-900'"
+                                class="whitespace-nowrap shrink-0 snap-start border text-[10px] md:text-[11px] font-semibold tracking-widest uppercase px-4 py-2 md:py-2.5 rounded-full transition-all duration-250"
+                                x-text="cat">
+                            </button>
+                        </template>
+                    </div>
                 </div>
             </div>
 
