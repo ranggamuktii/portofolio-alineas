@@ -237,7 +237,7 @@
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
                 </div>
-                <div class="relative w-full min-w-0">
+                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0">
                     <!-- Indikator fade di kanan untuk mobile -->
                     <div class="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 xl:hidden"></div>
                     
