@@ -153,22 +153,22 @@
                     </p>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-y-6 gap-x-4 mt-8">
                         @foreach ([
-                            ['title' => 'Foto Berkualitas Tinggi', 'icon' => 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z'],
-                            ['title' => 'Editing Detail & Natural', 'icon' => 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'],
-                            ['title' => 'Proses Cepat & Tepat Waktu', 'icon' => 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'],
-                            ['title' => 'Pelayanan Ramah & Responsif', 'icon' => 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z']
-                        ] as $index => $f)
-                            <div class="flex items-center gap-4 group reveal delay-{{ ($index + 1) * 100 }}">
-                                <span class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
-                                    <svg class="w-6 h-6 text-red-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $f['icon'] }}" />
-                                        @if($index === 0)
-                                            <circle cx="12" cy="13" r="4" stroke-width="2" />
-                                        @endif
-                                    </svg>
-                                </span>
-                                <span class="text-gray-900 font-semibold text-sm md:text-base">{{ $f['title'] }}</span>
-                            </div>
+                                ['title' => 'Foto Berkualitas Tinggi', 'icon' => 'M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z'],
+                                ['title' => 'Editing Detail & Natural', 'icon' => 'M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z'],
+                                ['title' => 'Proses Cepat & Tepat Waktu', 'icon' => 'M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'],
+                                ['title' => 'Pelayanan Ramah & Responsif', 'icon' => 'M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z']
+                            ] as $index => $f)
+                                                            <div class="flex items-center gap-4 group reveal delay-{{ ($index + 1) * 100 }}">
+                                                                <span class="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0 group-hover:bg-red-600 transition-colors duration-300">
+                                                                    <svg class="w-6 h-6 text-red-600 group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $f['icon'] }}" />
+                                                                        @if($index === 0)
+                                                                            <circle cx="12" cy="13" r="4" stroke-width="2" />
+                                                                        @endif
+                                                                    </svg>
+                                                                </span>
+                                                                <span class="text-gray-900 font-semibold text-sm md:text-base">{{ $f['title'] }}</span>
+                                                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -197,7 +197,7 @@
             this.limit = 12;
             this.updateVisibility();
         },
-        loadMore() {
+        loadMore() {    
             this.limit += 12;
             this.updateVisibility();
         },
@@ -237,11 +237,11 @@
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
                 </div>
-                <div class="flex flex-wrap gap-2 xl:justify-end w-full">
+                <div class="flex overflow-x-auto gap-2 pb-2 w-full snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     <template x-for="cat in categories" :key="cat">
                         <button @click="setActive(cat)"
-                            :class="active === cat ? 'bg-gray-900 text-white border-gray-900' : 'bg-transparent text-gray-400 border-gray-200 hover:border-gray-400 hover:text-gray-700'"
-                            class="border text-[11px] font-semibold tracking-widest uppercase px-4 py-2 rounded-full transition-all duration-250"
+                            :class="active === cat ? 'bg-gray-900 text-white border-gray-900 shadow-md' : 'bg-transparent text-gray-400 border-gray-200 hover:border-gray-400 hover:text-gray-900'"
+                            class="whitespace-nowrap shrink-0 snap-start border text-[11px] font-semibold tracking-widest uppercase px-4 py-2 rounded-full transition-all duration-250"
                             x-text="cat">
                         </button>
                     </template>
@@ -460,8 +460,8 @@
                                 asset('images/portfolio/graduation/alineas-graduation-008.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-009.webp'),
                                 asset('images/portfolio/graduation/alineas-graduation-010.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-011.webp'),
-                                asset('images/portfolio/graduation/alineas-graduation-012.webp')
+                                asset('images/portfolio/graduation/alineas-graduation-011.webp')
+                                // asset('images/portfolio/graduation/alineas-graduation-012.webp')
                             ]
                         ],
                         [
@@ -507,14 +507,14 @@
                                 asset('images/portfolio/maternity/alineas-maternity-006.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-007.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-008.webp'),
-                                asset('images/portfolio/maternity/alineas-maternity-009.webp'),
+                                // asset('images/portfolio/maternity/alineas-maternity-009.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-010.webp'),
-                                asset('images/portfolio/maternity/alineas-maternity-011.webp'),
+                                // asset('images/portfolio/maternity/alineas-maternity-011.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-012.webp'),
-                                asset('images/portfolio/maternity/alineas-maternity-013.webp'),
+                                // asset('images/portfolio/maternity/alineas-maternity-013.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-014.webp'),
-                                asset('images/portfolio/maternity/alineas-maternity-015.webp'),
-                                asset('images/portfolio/maternity/alineas-maternity-016.webp'),
+                                // asset('images/portfolio/maternity/alineas-maternity-015.webp'),
+                                // asset('images/portfolio/maternity/alineas-maternity-016.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-017.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-018.webp'),
                                 asset('images/portfolio/maternity/alineas-maternity-019.webp')
@@ -762,36 +762,36 @@
                 {{-- 1. COVER ITEMS (Untuk mode 'All') --}}
                 @foreach($portfolioItems as $i => $item)
                     @if(isset($item['gallery']))
-                    <div class="masonry-item portfolio-item is-cover group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
-                        data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]))'>
-                        <div class="relative overflow-hidden rounded-xl bg-gray-200 animate-pulse" style="height:{{ $item['h'] }}px;">
-                            <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}" loading="lazy"
-                                onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200'); this.classList.remove('opacity-0', 'scale-110');"
-                                class="opacity-0 scale-110 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
+                        <div class="masonry-item portfolio-item is-cover group cursor-pointer reveal delay-{{ min(($i % 5) * 100, 400) }}"
+                            data-label="{{ $item['label'] }}" onclick='openLightbox(@json($item["gallery"]))'>
+                            <div class="relative overflow-hidden rounded-xl bg-gray-200 animate-pulse" style="height:{{ $item['h'] }}px;">
+                                <img src="{{ $item['img'] }}" alt="{{ $item['title'] }}" loading="lazy"
+                                    onload="this.parentElement.classList.remove('animate-pulse', 'bg-gray-200'); this.classList.remove('opacity-0', 'scale-110');"
+                                    class="opacity-0 scale-110 w-full h-full object-cover group-hover:scale-105 transition-all duration-700 ease-out">
 
-                            @if(!empty($item['isVideo']))
-                                <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                                    <div
-                                        class="w-10 h-10 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
-                                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
+                                @if(!empty($item['isVideo']))
+                                    <div class="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                                        <div
+                                            class="w-10 h-10 rounded-full bg-black/55 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:scale-110 group-hover:bg-red-600 group-hover:border-red-600 transition-all duration-300">
+                                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                        </div>
                                     </div>
-                                </div>
-                            @endif
+                                @endif
 
-                            <div
-                                class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1 block">{{ $item['label'] }}</span>
-                                <h3 class="text-white text-lg font-semibold leading-snug">{{ $item['title'] }}</h3>
-                                <p class="text-white/70 text-xs mt-1">{{ count($item['gallery']) }} {{ !empty($item['isVideo']) ? 'Videos' : 'Photos' }}</p>
+                                <div
+                                    class="pi-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                    <span class="text-red-400 text-[10px] font-bold tracking-widest uppercase mb-1 block">{{ $item['label'] }}</span>
+                                    <h3 class="text-white text-lg font-semibold leading-snug">{{ $item['title'] }}</h3>
+                                    <p class="text-white/70 text-xs mt-1">{{ count($item['gallery']) }} {{ !empty($item['isVideo']) ? 'Videos' : 'Photos' }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endif
                 @endforeach
 
@@ -800,7 +800,7 @@
                     @if(isset($item['gallery']))
                         @foreach($item['gallery'] as $imgIndex => $galleryImg)
                             @php 
-                                $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])]; 
+                                                                                                                                                                                                $h = [240, 280, 320, 360, 400][array_rand([240, 280, 320, 360, 400])];
                                 $displayImg = $galleryImg;
                                 $isIndividualVideo = false;
                                 if (str_contains($galleryImg, 'youtube.com') || str_contains($galleryImg, 'youtu.be')) {
@@ -872,33 +872,51 @@
                 @php
                     $services = [
                         [
-                            'delay' => 0, 'badge' => 'Populer', 'title' => 'Prewedding & Wedding', 'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.', 
-                            'images' => [asset('images/portfolio/prewedding/alineas-prewedding-004.webp'), asset('images/portfolio/prewedding/alineas-prewedding-014.webp'), asset('images/portfolio/prewedding/alineas-prewedding-017.webp'), asset('images/portfolio/prewedding/alineas-prewedding-010.webp'), asset('images/portfolio/prewedding/alineas-prewedding-002.webp'), asset('images/portfolio/prewedding/alineas-prewedding-015.webp')], 
+                            'delay' => 0,
+                            'badge' => 'Populer',
+                            'title' => 'Prewedding & Wedding',
+                            'desc' => 'Dokumentasi lengkap momen bahagia Anda, mencakup Photo Shoot Wedding, Cinematic Wedding, hingga sesi Prewedding elegan.',
+                            'images' => [asset('images/portfolio/prewedding/alineas-prewedding-004.webp'), asset('images/portfolio/prewedding/alineas-prewedding-014.webp'), asset('images/portfolio/prewedding/alineas-prewedding-017.webp'), asset('images/portfolio/prewedding/alineas-prewedding-010.webp'), asset('images/portfolio/prewedding/alineas-prewedding-002.webp'), asset('images/portfolio/prewedding/alineas-prewedding-015.webp')],
                             'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi mengenai dokumentasi Prewedding atau Wedding. Bisa minta informasi detail paket dan harganya?'
                         ],
                         [
-                            'delay' => 100, 'badge' => null, 'title' => 'Portrait & Personal', 'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.', 
-                            'images' => [asset('images/portfolio/exclusive/alineas-exclusive-002.webp'), asset('images/portfolio/exclusive/alineas-exclusive-006.webp'), asset('images/portfolio/maternity/alineas-maternity-008.webp'), asset('images/portfolio/maternity/alineas-maternity-019.webp'), asset('images/portfolio/exclusive/alineas-exclusive-005.webp'), asset('images/portfolio/exclusive/alineas-exclusive-008.webp')], 
+                            'delay' => 100,
+                            'badge' => null,
+                            'title' => 'Portrait & Personal',
+                            'desc' => 'Sesi studio profesional untuk Family, Group, Birthday, Graduation, dan Maternity yang diabadikan dengan sempurna.',
+                            'images' => [asset('images/portfolio/exclusive/alineas-exclusive-002.webp'), asset('images/portfolio/exclusive/alineas-exclusive-006.webp'), asset('images/portfolio/maternity/alineas-maternity-008.webp'), asset('images/portfolio/maternity/alineas-maternity-019.webp'), asset('images/portfolio/exclusive/alineas-exclusive-005.webp'), asset('images/portfolio/exclusive/alineas-exclusive-008.webp')],
                             'wa_text' => 'Halo Admin Alineas, saya tertarik untuk sesi foto Portrait/Personal. Boleh tahu detail paketnya?'
                         ],
                         [
-                            'delay' => 200, 'badge' => null, 'title' => 'Event Coverage', 'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.', 
-                            'images' => [asset('images/portfolio/automotive/alineas-automotive-014.webp'), asset('images/portfolio/event/alineas-event-009.webp'), asset('images/portfolio/event/alineas-event-005.webp'), asset('images/portfolio/event/alineas-event-011.webp'), asset('images/portfolio/event/alineas-event-013.webp'), asset('images/portfolio/event/alineas-event-015.webp')], 
+                            'delay' => 200,
+                            'badge' => null,
+                            'title' => 'Event Coverage',
+                            'desc' => 'Dokumentasi event komprehensif, menangkap setiap momen penting dan atmosfer dari acara Anda secara dinamis.',
+                            'images' => [asset('images/portfolio/automotive/alineas-automotive-014.webp'), asset('images/portfolio/event/alineas-event-009.webp'), asset('images/portfolio/event/alineas-event-005.webp'), asset('images/portfolio/event/alineas-event-011.webp'), asset('images/portfolio/event/alineas-event-013.webp'), asset('images/portfolio/event/alineas-event-015.webp')],
                             'wa_text' => 'Halo Admin Alineas, saya butuh jasa dokumentasi untuk Event/Acara. Bagaimana sistem kerjanya?'
                         ],
                         [
-                            'delay' => 300, 'badge' => null, 'title' => 'School & Campus', 'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).', 
-                            'images' => [asset('images/portfolio/school/alineas-school-003.webp'), asset('images/portfolio/school/alineas-school-015.webp'), asset('images/portfolio/school/alineas-school-005.webp'), asset('images/portfolio/school/alineas-school-009.webp'), asset('images/portfolio/graduation/alineas-graduation-006.webp'), asset('images/portfolio/graduation/alineas-graduation-003.webp')], 
+                            'delay' => 300,
+                            'badge' => null,
+                            'title' => 'School & Campus',
+                            'desc' => 'Kreativitas tanpa batas untuk pembuatan Video Angkatan, Photo Angkatan, dan penyusunan buku kenangan (Yearbook).',
+                            'images' => [asset('images/portfolio/school/alineas-school-003.webp'), asset('images/portfolio/school/alineas-school-015.webp'), asset('images/portfolio/school/alineas-school-005.webp'), asset('images/portfolio/school/alineas-school-009.webp'), asset('images/portfolio/graduation/alineas-graduation-006.webp'), asset('images/portfolio/graduation/alineas-graduation-003.webp')],
                             'wa_text' => 'Halo Admin Alineas, saya ingin menanyakan perihal pembuatan Video Angkatan atau Yearbook.'
                         ],
                         [
-                            'delay' => 400, 'badge' => null, 'title' => 'Corporate Profile', 'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.', 
-                            'images' => [asset('images/portfolio/corporate/alineas-corporate-001.webp'), asset('images/portfolio/corporate/alineas-corporate-002.webp'), asset('images/portfolio/corporate/alineas-corporate-003.webp')], 
+                            'delay' => 400,
+                            'badge' => null,
+                            'title' => 'Corporate Profile',
+                            'desc' => 'Produksi Company Profile berkualitas tinggi untuk memperkuat citra profesional dan kredibilitas bisnis Anda.',
+                            'images' => [asset('images/portfolio/corporate/alineas-corporate-001.webp'), asset('images/portfolio/corporate/alineas-corporate-002.webp'), asset('images/portfolio/corporate/alineas-corporate-003.webp')],
                             'wa_text' => 'Halo Admin Alineas, saya ingin berdiskusi tentang pembuatan Company Profile untuk perusahaan.'
                         ],
                         [
-                            'delay' => 500, 'badge' => 'Tren', 'title' => 'Fun & Experience', 'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.', 
-                            'images' => [asset('images/portfolio/photobox/alineas-photobox-009.webp'), asset('images/portfolio/photobox/alineas-photobox-019.webp'), asset('images/portfolio/photobox/alineas-photobox-014.webp'), asset('images/portfolio/photobox/alineas-photobox-006.webp'), asset('images/portfolio/photobox/alineas-photobox-016.webp'), asset('images/portfolio/photobox/alineas-photobox-012.webp')], 
+                            'delay' => 500,
+                            'badge' => 'Tren',
+                            'title' => 'Fun & Experience',
+                            'desc' => 'Hadirkan keseruan lewat layanan Self Photo, instalasi Photobooth event, hingga sistem Photobox interaktif.',
+                            'images' => [asset('images/portfolio/photobox/alineas-photobox-009.webp'), asset('images/portfolio/photobox/alineas-photobox-019.webp'), asset('images/portfolio/photobox/alineas-photobox-014.webp'), asset('images/portfolio/photobox/alineas-photobox-006.webp'), asset('images/portfolio/photobox/alineas-photobox-016.webp'), asset('images/portfolio/photobox/alineas-photobox-012.webp')],
                             'wa_text' => 'Halo Admin Alineas, saya tertarik dengan layanan Photobooth/Self Photo. Boleh minta detail harganya?'
                         ],
                     ];
@@ -907,10 +925,10 @@
                 @foreach($services as $svc)
                     <div x-data="{ currentIdx: 0 }" 
                          @if(count($svc['images']) > 1)
-                         x-init="setTimeout(() => setInterval(() => { currentIdx = (currentIdx + 1) % {{ count($svc['images']) }} }, 3500), {{ $svc['delay'] * 3 }})"
+                             x-init="setTimeout(() => setInterval(() => { currentIdx = (currentIdx + 1) % {{ count($svc['images']) }} }, 3500), {{ $svc['delay'] * 3 }})"
                          @endif
                          class="group relative aspect-square rounded-[1.125rem] overflow-hidden cursor-pointer shadow-sm hover:shadow-2xl transition-all duration-500">
-                         
+
                         {{-- Background Image Slideshow --}}
                         <div class="absolute inset-0 w-full h-full bg-gray-100">
                             @foreach($svc['images'] as $idx => $img)
@@ -921,7 +939,7 @@
                                     class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out">
                             @endforeach
                         </div>
-                        
+
                         {{-- Gradient Overlay --}}
                         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-95 lg:opacity-80 lg:group-hover:opacity-95 transition-opacity duration-500 z-10"></div>
 
@@ -936,11 +954,11 @@
                         <div class="absolute inset-0 flex flex-col justify-end p-6 md:p-8 z-20">
                             {{-- Title --}}
                             <h3 class="font-display text-2xl font-bold text-white mb-2 -translate-y-2 lg:translate-y-0 lg:group-hover:-translate-y-4 transition-transform duration-500">{{ $svc['title'] }}</h3>
-                            
+
                             {{-- Hidden Content that reveals on hover on desktop, always visible on mobile --}}
                             <div class="overflow-hidden max-h-60 lg:max-h-0 lg:group-hover:max-h-60 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-700 ease-in-out transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
                                 <p class="text-white/80 text-sm leading-relaxed mb-5">{{ $svc['desc'] }}</p>
-                                
+
                                 <a href="https://wa.me/6285213385280?text={{ urlencode($svc['wa_text']) }}" target="_blank"
                                     class="inline-flex items-center justify-center gap-2 w-full bg-white text-gray-900 text-sm font-bold px-5 py-3.5 rounded-xl hover:bg-red-600 hover:text-white transition-colors duration-300 shadow-lg">
                                     Diskusikan Kebutuhan
@@ -1039,7 +1057,7 @@
                                     "{{ $testi['review'] }}"
                                 </p>
                             </div>
-                            
+
                             <div class="flex items-center gap-4">
                                 <div class="w-12 h-12 bg-red-100 text-red-600 font-display font-bold text-lg flex items-center justify-center rounded-full flex-shrink-0">
                                     {{ $testi['initial'] }}
