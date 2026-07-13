@@ -1028,65 +1028,58 @@
                 <p class="text-gray-600 text-sm mt-3">Klien kami menitipkan momen berharga mereka dan kami jaga
                     kepercayaan itu.</p>
             </div>
-            <div class="reveal max-w-6xl mx-auto mt-10">
-                @php
-                        // Membaca file gambar dari scratchpad dan mengubahnya menjadi Base64 agar tidak bergantung pada sistem file (menghindari error permission)
-                        $brainDir = 'C:\Users\Rangga Mukti\.gemini\antigravity-ide\brain\2bf0b8f6-5410-4032-91be-0d66cf3a5f21';
-                        
-                        $getAvatarBase64 = function($filename) use ($brainDir) {
-                            $path = $brainDir . '\\' . $filename;
-                            if(file_exists($path)) {
-                                $data = file_get_contents($path);
-                                return 'data:image/png;base64,' . base64_encode($data);
-                            }
-                            return 'https://ui-avatars.com/api/?name=User&background=random'; // fallback
-                        };
-
+            <div class="reveal max-w-6xl mx-auto mt-10                    @php
                         $testimonials = [
                             [
                                 'name' => 'Rangga Mukti',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Kalau sore nyaman banget sih tempatnya, dan photonya bagus juga, rekomen sih',
                                 'stars' => 5,
-                                'avatar' => $getAvatarBase64('avatar_rangga_mukti_1783957118541.png')
+                                'time' => '1 tahun lalu',
+                                'avatar' => 'https://randomuser.me/api/portraits/men/45.jpg'
                             ],
                             [
                                 'name' => 'Naufal Maulana Shabri',
                                 'role' => 'Google Maps Review',
                                 'review' => 'tempatnya nyaman, ruangannya full ac semua, bikin betah kalo lama lama di sini🤩',
                                 'stars' => 5,
-                                'avatar' => $getAvatarBase64('avatar_naufal_maulana_1783957133956.png')
+                                'time' => '7 bulan lalu',
+                                'avatar' => 'https://randomuser.me/api/portraits/men/22.jpg'
                             ],
                             [
                                 'name' => 'AZRIL AKBAR AGUSTIYANTI',
                                 'role' => 'Google Maps Review',
                                 'review' => 'oke banget diarahin diatur gaya & posisi nya jadinya bagus gak rugi kesini',
                                 'stars' => 5,
-                                'avatar' => $getAvatarBase64('avatar_azril_akbar_1783957149731.png')
+                                'time' => '4 bulan lalu',
+                                'avatar' => 'https://randomuser.me/api/portraits/men/55.jpg'
                             ],
                             [
                                 'name' => 'Faruq Erfianto',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Tempatnya nyaman, pelayanannya ramah, mas-masnya bisa diajak bercanda juga jadi gak canggung wkwkw',
                                 'stars' => 5,
-                                'avatar' => $getAvatarBase64('avatar_faruq_erfianto_1783957162117.png')
+                                'time' => '2 bulan lalu',
+                                'avatar' => 'https://randomuser.me/api/portraits/men/32.jpg'
                             ],
                             [
                                 'name' => 'Ghea Alfiana',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Fotonya bagus bangett parahh harganya sangat wort it buat harga segitu',
                                 'stars' => 5,
-                                'avatar' => $getAvatarBase64('avatar_ghea_alfiana_1783957164298.png')
+                                'time' => '3 bulan lalu',
+                                'avatar' => 'https://randomuser.me/api/portraits/women/44.jpg'
                             ],
                             [
                                 'name' => 'Desycitra casmi',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Bagus bgt, fotografer nya juga ramah, tempat nya estetik 🫶🏻',
                                 'stars' => 5,
-                                'avatar' => $getAvatarBase64('avatar_desycitra_casmi_1783957179563.png')
+                                'time' => '1 bulan lalu',
+                                'avatar' => 'https://randomuser.me/api/portraits/women/68.jpg'
                             ]
                         ];
-                @endphp
+                    @endphp
 
                 {{-- CAROUSEL TESTIMONIAL 3 ITEMS PER SLIDE --}}
                 <div x-data="{
@@ -1108,10 +1101,10 @@
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     @foreach($chunk as $testi)
                                         {{-- Authentic Google Maps Review Card Design --}}
-                                        <div class="bg-white border border-gray-100 rounded-3xl p-6 md:p-8 shadow-lg hover:shadow-xl transition-all duration-300 w-full text-left h-full flex flex-col">
+                                        <div class="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 w-full text-left h-full flex flex-col">
                                             <div class="flex items-start justify-between mb-4">
                                                 <div class="flex items-center gap-3">
-                                                    <div class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 shadow-sm border border-gray-200">
+                                                    <div class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-gray-200">
                                                         <img src="{{ $testi['avatar'] }}" alt="{{ $testi['name'] }}" class="w-full h-full object-cover">
                                                     </div>
                                                     <div>
@@ -1128,12 +1121,15 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="flex gap-0.5 mb-3">
-                                                @for($i = 0; $i < $testi['stars']; $i++)
-                                                    <svg class="w-4 h-4" style="color: #fbbc04;" fill="currentColor" viewBox="0 0 24 24">
-                                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                                    </svg>
-                                                @endfor
+                                            <div class="flex items-center gap-2 mb-3">
+                                                <div class="flex gap-0.5">
+                                                    @for($i = 0; $i < $testi['stars']; $i++)
+                                                        <svg class="w-4 h-4 text-[#fbbc04]" fill="currentColor" viewBox="0 0 24 24">
+                                                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                        </svg>
+                                                    @endfor
+                                                </div>
+                                                <span class="text-xs text-gray-500 font-medium">{{ $testi['time'] }}</span>
                                             </div>
                                             <p class="text-gray-800 text-sm leading-relaxed flex-grow">
                                                 {{ $testi['review'] }}
@@ -1202,7 +1198,7 @@
                         ];
                     @endphp
                     @foreach($igUrls as $url)
-                        <div class="w-full flex justify-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
+                        <div class="w-full flex justify-center rounded-3xl overflow-hidden border border-gray-200 bg-white">
                             <blockquote class="instagram-media" data-instgrm-permalink="{{ $url }}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; margin: 0; min-width:100%; padding:0; width:100%;">
                                 <div style="padding:16px;"> 
                                     <a href="{{ $url }}" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
