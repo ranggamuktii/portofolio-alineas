@@ -241,7 +241,7 @@
                     <!-- Indikator fade di kanan untuk mobile -->
                     <div class="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 xl:hidden"></div>
                     
-                    <div class="flex overflow-x-auto no-scrollbar gap-2 pb-2 w-full snap-x snap-mandatory scroll-smooth">
+                    <div class="flex overflow-x-auto gap-2 pb-1 w-full snap-x snap-mandatory scroll-smooth [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
                                 :class="active === cat ? 'bg-gray-900 text-white border-gray-900 shadow-md' : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-900'"
@@ -1064,72 +1064,70 @@
                         slides: {{ count($testimonials) }},
                         next() { this.activeSlide = (this.activeSlide + 1) % this.slides },
                         prev() { this.activeSlide = (this.activeSlide - 1 + this.slides) % this.slides },
-                        startAutoPlay() { this.interval = setInterval(() => this.next(), 4000); },
+                        startAutoPlay() { this.interval = setInterval(() => this.next(), 5000); },
                         stopAutoPlay() { clearInterval(this.interval); }
                     }"
                     x-init="startAutoPlay()"
                     @mouseenter="stopAutoPlay()"
                     @mouseleave="startAutoPlay()"
-                    class="relative max-w-4xl mx-auto overflow-hidden"
+                    class="relative max-w-4xl mx-auto overflow-hidden px-4 md:px-0"
                 >
                     <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
                         @foreach($testimonials as $index => $testi)
-                            <div class="w-full flex-shrink-0 px-4 md:px-8 py-4">
-                                <div class="bg-gradient-to-br from-white to-gray-50 border border-gray-100 rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden group hover:shadow-xl transition-all duration-500">
-                                    {{-- Quote Icon Background --}}
-                                    <svg class="absolute top-6 right-6 md:top-10 md:right-10 w-24 h-24 text-red-50 opacity-[0.03] -rotate-12 group-hover:rotate-0 group-hover:opacity-[0.06] transition-all duration-500" fill="currentColor" viewBox="0 0 24 24">
-                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                                    </svg>
-
-                                    <div class="relative z-10">
-                                        <div class="flex gap-1 text-yellow-400 mb-6 drop-shadow-sm">
-                                            @for($i = 0; $i < $testi['stars']; $i++)
-                                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                            <div class="w-full flex-shrink-0 py-6 md:py-10 md:px-12 flex justify-center">
+                                {{-- Authentic Google Maps Review Card Design --}}
+                                <div class="bg-white border border-gray-200 rounded-[20px] p-6 md:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 w-full max-w-2xl text-left">
+                                    <div class="flex items-start justify-between mb-4">
+                                        <div class="flex items-center gap-3">
+                                            <div class="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+                                                <svg class="w-8 h-8 text-gray-400 mt-2" fill="currentColor" viewBox="0 0 24 24">
+                                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                                                 </svg>
-                                            @endfor
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-gray-900 text-base md:text-lg tracking-tight">{{ $testi['name'] }}</h4>
+                                                <div class="flex items-center gap-1.5 text-xs text-gray-500 mt-0.5 font-medium">
+                                                    <svg viewBox="0 0 24 24" width="14" height="14" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.75h3.57c2.08-1.92 3.28-4.74 3.28-8.07z" fill="#4285F4"/>
+                                                        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.75c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                                        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                                        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                                    </svg>
+                                                    <span>Ulasan Google</span>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <p class="text-gray-800 mb-8 text-lg md:text-xl leading-relaxed italic font-medium">
-                                            "{{ $testi['review'] }}"
-                                        </p>
                                     </div>
-
-                                    <div class="flex items-center gap-4 relative z-10 border-t border-gray-100 pt-6 mt-4">
-                                        <div class="w-12 h-12 bg-red-50 text-red-600 flex items-center justify-center rounded-full flex-shrink-0 border border-red-100">
-                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" />
+                                    <div class="flex gap-0.5 mb-3">
+                                        @for($i = 0; $i < $testi['stars']; $i++)
+                                            <svg class="w-4 h-4 md:w-5 md:h-5" style="color: #fbbc04;" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                                             </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="font-bold text-gray-900 text-base md:text-lg">{{ $testi['name'] }}</h4>
-                                            <span class="text-xs text-gray-500 uppercase tracking-widest font-medium flex items-center gap-1.5 mt-0.5">
-                                                <svg class="w-3.5 h-3.5 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
-                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                                </svg>
-                                                {{ $testi['role'] }}
-                                            </span>
-                                        </div>
+                                        @endfor
                                     </div>
+                                    <p class="text-gray-800 text-sm md:text-base leading-relaxed">
+                                        {{ $testi['review'] }}
+                                    </p>
                                 </div>
                             </div>
                         @endforeach
                     </div>
 
                     {{-- Navigation Controls --}}
-                    <div class="flex justify-center items-center gap-6 mt-4">
-                        <button @click="prev()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors shadow-sm">
+                    <div class="flex justify-center items-center gap-6 mt-2">
+                        <button @click="prev()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors shadow-sm">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                         </button>
                         
                         <div class="flex gap-2">
                             <template x-for="i in slides" :key="i">
                                 <button @click="activeSlide = i - 1" 
-                                    :class="{'bg-red-600 w-8': activeSlide === i - 1, 'bg-gray-300 w-2': activeSlide !== i - 1}"
+                                    :class="{'bg-blue-600 w-8': activeSlide === i - 1, 'bg-gray-300 w-2': activeSlide !== i - 1}"
                                     class="h-2 rounded-full transition-all duration-500 ease-out"></button>
                             </template>
                         </div>
 
-                        <button @click="next()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors shadow-sm">
+                        <button @click="next()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors shadow-sm">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </button>
                     </div>
@@ -1160,23 +1158,43 @@
 
             <div class="reveal relative max-w-5xl mx-auto">
                 {{-- NATIVE INSTAGRAM EMBEDS --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 justify-items-center">
                     @php
                         $igUrls = [
-                            'https://www.instagram.com/p/DXGgWbKEeYT/embed',
-                            'https://www.instagram.com/p/DaXIANQkQnY/embed',
-                            'https://www.instagram.com/p/DakLxMBEXg-/embed',
-                            'https://www.instagram.com/p/DVorcq2knpN/embed',
-                            'https://www.instagram.com/p/DQJK4cfETnY/embed',
-                            'https://www.instagram.com/p/DZwTfEtEd9e/embed'
+                            'https://www.instagram.com/p/DXGgWbKEeYT/',
+                            'https://www.instagram.com/p/DaXIANQkQnY/',
+                            'https://www.instagram.com/p/DakLxMBEXg-/',
+                            'https://www.instagram.com/p/DVorcq2knpN/',
+                            'https://www.instagram.com/p/DQJK4cfETnY/',
+                            'https://www.instagram.com/p/DZwTfEtEd9e/'
                         ];
                     @endphp
                     @foreach($igUrls as $url)
-                        <div class="w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
-                            <iframe class="w-full h-[450px] md:h-[500px]" src="{{ $url }}" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        <div class="w-full flex justify-center">
+                            <blockquote class="instagram-media" data-instgrm-permalink="{{ $url }}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 1px 3px rgba(0,0,0,0.05),0 1px 10px rgba(0,0,0,0.02); margin: 1px; max-width:400px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
+                                <div style="padding:16px;"> 
+                                    <a href="{{ $url }}" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                                        <div style="display: flex; flex-direction: row; align-items: center;">
+                                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
+                                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
+                                                <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
+                                                <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
+                                            </div>
+                                        </div>
+                                        <div style="padding: 19% 0;"></div>
+                                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg>
+                                        </div>
+                                        <div style="padding-top: 8px;">
+                                            <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </blockquote>
                         </div>
                     @endforeach
                 </div>
+                <script async src="//www.instagram.com/embed.js"></script>
 
                 <div class="text-center mt-10">
                     <a href="https://www.instagram.com/alineas.studio" target="_blank"
