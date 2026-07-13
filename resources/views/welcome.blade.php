@@ -1019,8 +1019,7 @@
 
     {{-- ============================================================
     REVIEWS
-    ============================================================ --}}
-    <section id="reviews" class="py-24 md:py-32 bg-white">
+    ============================================================ --    <section id="reviews" class="py-24 md:py-32 bg-[#faf9f7]">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="reveal text-center mb-12">
                 <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Testimoni</span>
@@ -1028,55 +1027,50 @@
                 <p class="text-gray-600 text-sm mt-3">Klien kami menitipkan momen berharga mereka dan kami jaga
                     kepercayaan itu.</p>
             </div>
-            <div class="reveal max-w-6xl mx-auto mt-10                    @php
+            <div class="reveal max-w-6xl mx-auto mt-10">
+                @php
                         $testimonials = [
                             [
                                 'name' => 'Rangga Mukti',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Kalau sore nyaman banget sih tempatnya, dan photonya bagus juga, rekomen sih',
                                 'stars' => 5,
-                                'time' => '1 tahun lalu',
-                                'avatar' => 'https://randomuser.me/api/portraits/men/45.jpg'
+                                'time' => '1 tahun lalu'
                             ],
                             [
                                 'name' => 'Naufal Maulana Shabri',
                                 'role' => 'Google Maps Review',
                                 'review' => 'tempatnya nyaman, ruangannya full ac semua, bikin betah kalo lama lama di sini🤩',
                                 'stars' => 5,
-                                'time' => '7 bulan lalu',
-                                'avatar' => 'https://randomuser.me/api/portraits/men/22.jpg'
+                                'time' => '7 bulan lalu'
                             ],
                             [
                                 'name' => 'AZRIL AKBAR AGUSTIYANTI',
                                 'role' => 'Google Maps Review',
                                 'review' => 'oke banget diarahin diatur gaya & posisi nya jadinya bagus gak rugi kesini',
                                 'stars' => 5,
-                                'time' => '4 bulan lalu',
-                                'avatar' => 'https://randomuser.me/api/portraits/men/55.jpg'
+                                'time' => '4 bulan lalu'
                             ],
                             [
                                 'name' => 'Faruq Erfianto',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Tempatnya nyaman, pelayanannya ramah, mas-masnya bisa diajak bercanda juga jadi gak canggung wkwkw',
                                 'stars' => 5,
-                                'time' => '2 bulan lalu',
-                                'avatar' => 'https://randomuser.me/api/portraits/men/32.jpg'
+                                'time' => '2 bulan lalu'
                             ],
                             [
                                 'name' => 'Ghea Alfiana',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Fotonya bagus bangett parahh harganya sangat wort it buat harga segitu',
                                 'stars' => 5,
-                                'time' => '3 bulan lalu',
-                                'avatar' => 'https://randomuser.me/api/portraits/women/44.jpg'
+                                'time' => '3 bulan lalu'
                             ],
                             [
                                 'name' => 'Desycitra casmi',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Bagus bgt, fotografer nya juga ramah, tempat nya estetik 🫶🏻',
                                 'stars' => 5,
-                                'time' => '1 bulan lalu',
-                                'avatar' => 'https://randomuser.me/api/portraits/women/68.jpg'
+                                'time' => '1 bulan lalu'
                             ]
                         ];
                     @endphp
@@ -1087,7 +1081,7 @@
                         totalChunks: {{ count(array_chunk($testimonials, 3)) }},
                         next() { this.activeSlide = (this.activeSlide + 1) % this.totalChunks },
                         prev() { this.activeSlide = (this.activeSlide - 1 + this.totalChunks) % this.totalChunks },
-                        startAutoPlay() { this.interval = setInterval(() => this.next(), 6000); },
+                        startAutoPlay() { this.interval = setInterval(function() { this.next() }.bind(this), 6000); },
                         stopAutoPlay() { clearInterval(this.interval); }
                     }"
                     x-init="startAutoPlay()"
@@ -1097,16 +1091,13 @@
                 >
                     <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
                         @foreach(array_chunk($testimonials, 3) as $chunk)
-                            <div class="w-full flex-shrink-0 px-1">
+                            <div class="w-full flex-shrink-0 px-2">
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     @foreach($chunk as $testi)
                                         {{-- Authentic Google Maps Review Card Design --}}
-                                        <div class="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 w-full text-left h-full flex flex-col">
+                                        <div class="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 w-full text-left h-full flex flex-col shadow-sm">
                                             <div class="flex items-start justify-between mb-4">
                                                 <div class="flex items-center gap-3">
-                                                    <div class="w-11 h-11 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden flex-shrink-0 border border-gray-200">
-                                                        <img src="{{ $testi['avatar'] }}" alt="{{ $testi['name'] }}" class="w-full h-full object-cover">
-                                                    </div>
                                                     <div>
                                                         <h4 class="font-bold text-gray-900 text-sm md:text-base tracking-tight leading-tight">{{ $testi['name'] }}</h4>
                                                         <div class="flex items-center gap-1.5 text-xs text-gray-500 mt-1 font-medium">
