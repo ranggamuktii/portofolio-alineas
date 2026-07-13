@@ -1021,60 +1021,118 @@
                     kepercayaan itu.</p>
             </div>
             <div class="reveal max-w-6xl mx-auto mt-10">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="grid grid-cols-1">
                     @php
                         $testimonials = [
                             [
                                 'name' => 'Rangga Mukti',
                                 'role' => 'Google Maps Review',
-                                'initial' => 'RM',
                                 'review' => 'Kalau sore nyaman banget sih tempatnya, dan photonya bagus juga, rekomen sih',
                                 'stars' => 5
                             ],
                             [
                                 'name' => 'Naufal Maulana Shabri',
                                 'role' => 'Google Maps Review',
-                                'initial' => 'NM',
                                 'review' => 'tempatnya nyaman, ruangannya full ac semua, bikin betah kalo lama lama di sini🤩',
                                 'stars' => 5
                             ],
                             [
-                                'name' => 'Alineas photo',
+                                'name' => 'fitrah fardiansyah',
                                 'role' => 'Google Maps Review',
-                                'initial' => 'AP',
-                                'review' => 'Studionya bagus dan aestetik 😍😍 meskipun di pelosok',
+                                'review' => 'G nyangka Murah, hasil bagus lagi. recomended lah',
+                                'stars' => 5
+                            ],
+                            [
+                                'name' => 'AZRIL AKBAR AGUSTIYANTI',
+                                'role' => 'Google Maps Review',
+                                'review' => 'oke banget diarahin diatur gaya & posisi nya jadinya bagus gak rugi kesini',
+                                'stars' => 5
+                            ],
+                            [
+                                'name' => 'avep grind',
+                                'role' => 'Google Maps Review',
+                                'review' => 'Hasilnya bagus banget, studionya aestetik',
                                 'stars' => 5
                             ]
                         ];
                     @endphp
-
-                    @foreach($testimonials as $index => $testi)
-                        <div class="bg-gray-50 border border-gray-100 rounded-3xl p-8 hover:-translate-y-2 hover:shadow-xl hover:shadow-red-600/5 transition-all duration-300 flex flex-col justify-between">
-                            <div>
-                                <div class="flex gap-1 text-yellow-400 mb-5">
-                                    @for($i = 0; $i < $testi['stars']; $i++)
-                                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                        </svg>
-                                    @endfor
-                                </div>
-                                <p class="text-gray-600 mb-8 text-sm md:text-base leading-relaxed italic">
-                                    "{{ $testi['review'] }}"
-                                </p>
-                            </div>
-
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-red-100 text-red-600 font-display font-bold text-lg flex items-center justify-center rounded-full flex-shrink-0">
-                                    {{ $testi['initial'] }}
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900 text-sm md:text-base">{{ $testi['name'] }}</h4>
-                                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">{{ $testi['role'] }}</span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
                 </div>
+
+                {{-- CAROUSEL TESTIMONIAL --}}
+                <div x-data="{
+                        activeSlide: 0,
+                        slides: {{ count($testimonials) }},
+                        next() { this.activeSlide = (this.activeSlide + 1) % this.slides },
+                        prev() { this.activeSlide = (this.activeSlide - 1 + this.slides) % this.slides },
+                        startAutoPlay() { this.interval = setInterval(() => this.next(), 4000); },
+                        stopAutoPlay() { clearInterval(this.interval); }
+                    }"
+                    x-init="startAutoPlay()"
+                    @mouseenter="stopAutoPlay()"
+                    @mouseleave="startAutoPlay()"
+                    class="relative max-w-4xl mx-auto overflow-hidden"
+                >
+                    <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
+                        @foreach($testimonials as $index => $testi)
+                            <div class="w-full flex-shrink-0 px-4 md:px-8 py-4">
+                                <div class="bg-gradient-to-br from-white to-gray-50 border border-gray-100 rounded-[2.5rem] p-8 md:p-12 shadow-sm relative overflow-hidden group hover:shadow-xl transition-all duration-500">
+                                    {{-- Quote Icon Background --}}
+                                    <svg class="absolute top-6 right-6 md:top-10 md:right-10 w-24 h-24 text-red-50 opacity-[0.03] -rotate-12 group-hover:rotate-0 group-hover:opacity-[0.06] transition-all duration-500" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                                    </svg>
+
+                                    <div class="relative z-10">
+                                        <div class="flex gap-1 text-yellow-400 mb-6 drop-shadow-sm">
+                                            @for($i = 0; $i < $testi['stars']; $i++)
+                                                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                                                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                </svg>
+                                            @endfor
+                                        </div>
+                                        <p class="text-gray-800 mb-8 text-lg md:text-xl leading-relaxed italic font-medium">
+                                            "{{ $testi['review'] }}"
+                                        </p>
+                                    </div>
+
+                                    <div class="flex items-center gap-4 relative z-10 border-t border-gray-100 pt-6 mt-4">
+                                        <div class="w-12 h-12 bg-red-50 text-red-600 flex items-center justify-center rounded-full flex-shrink-0 border border-red-100">
+                                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="font-bold text-gray-900 text-base md:text-lg">{{ $testi['name'] }}</h4>
+                                            <span class="text-xs text-gray-500 uppercase tracking-widest font-medium flex items-center gap-1.5 mt-0.5">
+                                                <svg class="w-3.5 h-3.5 text-blue-500" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                                </svg>
+                                                {{ $testi['role'] }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    {{-- Navigation Controls --}}
+                    <div class="flex justify-center items-center gap-6 mt-4">
+                        <button @click="prev()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        
+                        <div class="flex gap-2">
+                            <template x-for="i in slides" :key="i">
+                                <button @click="activeSlide = i - 1" 
+                                    :class="{'bg-red-600 w-8': activeSlide === i - 1, 'bg-gray-300 w-2': activeSlide !== i - 1}"
+                                    class="h-2 rounded-full transition-all duration-500 ease-out"></button>
+                            </template>
+                        </div>
+
+                        <button @click="next()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-red-600 hover:text-white hover:border-red-600 transition-colors shadow-sm">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
             </div>
         </div>
     </section>
@@ -1101,27 +1159,22 @@
             </div>
 
             <div class="reveal relative max-w-5xl mx-auto">
-                {{-- STATIC INSTAGRAM GRID WIDGET --}}
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4">
+                {{-- NATIVE INSTAGRAM EMBEDS --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
                     @php
-                        $igFeeds = [
-                            asset('images/portfolio/prewedding/alineas-prewedding-004.webp'),
-                            asset('images/portfolio/graduation/alineas-graduation-006.webp'),
-                            asset('images/portfolio/family/alineas-family-008.webp'),
-                            asset('images/portfolio/group/alineas-group-013.webp'),
-                            asset('images/portfolio/maternity/alineas-maternity-004.webp'),
-                            asset('images/portfolio/event/alineas-event-009.webp'),
+                        $igUrls = [
+                            'https://www.instagram.com/p/DXGgWbKEeYT/embed',
+                            'https://www.instagram.com/p/DaXIANQkQnY/embed',
+                            'https://www.instagram.com/p/DakLxMBEXg-/embed',
+                            'https://www.instagram.com/p/DVorcq2knpN/embed',
+                            'https://www.instagram.com/p/DQJK4cfETnY/embed',
+                            'https://www.instagram.com/p/DZwTfEtEd9e/embed'
                         ];
                     @endphp
-                    @foreach($igFeeds as $feed)
-                        <a href="https://www.instagram.com/alineas.studio" target="_blank" class="group relative aspect-square overflow-hidden bg-gray-200 rounded-xl md:rounded-2xl block">
-                            <img src="{{ $feed }}" alt="Alineas Studio Instagram Feed" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
-                                <svg class="w-8 h-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform scale-50 group-hover:scale-100" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                                </svg>
-                            </div>
-                        </a>
+                    @foreach($igUrls as $url)
+                        <div class="w-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden transform hover:-translate-y-1 transition-all duration-300">
+                            <iframe class="w-full h-[450px] md:h-[500px]" src="{{ $url }}" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                        </div>
                     @endforeach
                 </div>
 
