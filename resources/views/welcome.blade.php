@@ -1211,8 +1211,8 @@
                         ];
                     @endphp
                     @foreach($igUrls as $url)
-                        <div class="w-full flex justify-center">
-                            <blockquote class="instagram-media" data-instgrm-permalink="{{ $url }}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05),0 1px 2px rgba(0,0,0,0.02); margin: 0; min-width:100%; padding:0; width:100%;">
+                        <div class="w-full flex justify-center rounded-3xl overflow-hidden shadow-lg border border-gray-100 bg-white">
+                            <blockquote class="instagram-media" data-instgrm-permalink="{{ $url }}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; margin: 0; min-width:100%; padding:0; width:100%;">
                                 <div style="padding:16px;"> 
                                     <a href="{{ $url }}" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
                                         <div style="display: flex; flex-direction: row; align-items: center;">
