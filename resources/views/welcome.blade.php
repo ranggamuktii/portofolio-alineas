@@ -1028,73 +1028,62 @@
             </div>
             <div class="reveal max-w-6xl mx-auto mt-10">
                 @php
-                    // Salin file avatar dari direktori scratchpad agent ke public path saat pertama kali dirender
-                    $avatarsDir = public_path('images/avatars');
-                    if(!file_exists($avatarsDir)) {
-                        mkdir($avatarsDir, 0777, true);
-                    }
-                    $brainDir = 'C:\Users\Rangga Mukti\.gemini\antigravity-ide\brain\2bf0b8f6-5410-4032-91be-0d66cf3a5f21';
-                    
-                    $files = [
-                        'avatar_rangga_mukti_1783957118541.png',
-                        'avatar_naufal_maulana_1783957133956.png',
-                        'avatar_azril_akbar_1783957149731.png',
-                        'avatar_faruq_erfianto_1783957162117.png',
-                        'avatar_ghea_alfiana_1783957164298.png',
-                        'avatar_desycitra_casmi_1783957179563.png'
-                    ];
-                    foreach($files as $file) {
-                        $source = $brainDir . '\\' . $file;
-                        $dest = $avatarsDir . '\\' . $file;
-                        if(file_exists($source) && !file_exists($dest)) {
-                            copy($source, $dest);
-                        }
-                    }
+                        // Membaca file gambar dari scratchpad dan mengubahnya menjadi Base64 agar tidak bergantung pada sistem file (menghindari error permission)
+                        $brainDir = 'C:\Users\Rangga Mukti\.gemini\antigravity-ide\brain\2bf0b8f6-5410-4032-91be-0d66cf3a5f21';
+                        
+                        $getAvatarBase64 = function($filename) use ($brainDir) {
+                            $path = $brainDir . '\\' . $filename;
+                            if(file_exists($path)) {
+                                $data = file_get_contents($path);
+                                return 'data:image/png;base64,' . base64_encode($data);
+                            }
+                            return 'https://ui-avatars.com/api/?name=User&background=random'; // fallback
+                        };
 
-                    $testimonials = [
-                        [
-                            'name' => 'Rangga Mukti',
-                            'role' => 'Google Maps Review',
-                            'review' => 'Kalau sore nyaman banget sih tempatnya, dan photonya bagus juga, rekomen sih',
-                            'stars' => 5,
-                            'avatar' => '/images/avatars/avatar_rangga_mukti_1783957118541.png'
-                        ],
-                        [
-                            'name' => 'Naufal Maulana Shabri',
-                            'role' => 'Google Maps Review',
-                            'review' => 'tempatnya nyaman, ruangannya full ac semua, bikin betah kalo lama lama di sini🤩',
-                            'stars' => 5,
-                            'avatar' => '/images/avatars/avatar_naufal_maulana_1783957133956.png'
-                        ],
-                        [
-                            'name' => 'AZRIL AKBAR AGUSTIYANTI',
-                            'role' => 'Google Maps Review',
-                            'review' => 'oke banget diarahin diatur gaya & posisi nya jadinya bagus gak rugi kesini',
-                            'stars' => 5,
-                            'avatar' => '/images/avatars/avatar_azril_akbar_1783957149731.png'
-                        ],
-                        [
-                            'name' => 'Faruq Erfianto',
-                            'role' => 'Google Maps Review',
-                            'review' => 'Tempatnya nyaman, pelayanannya ramah, mas-masnya bisa diajak bercanda juga jadi gak canggung wkwkw',
-                            'stars' => 5,
-                            'avatar' => '/images/avatars/avatar_faruq_erfianto_1783957162117.png'
-                        ],
-                        [
-                            'name' => 'Ghea Alfiana',
-                            'role' => 'Google Maps Review',
-                            'review' => 'Fotonya bagus bangett parahh harganya sangat wort it buat harga segitu',
-                            'stars' => 5,
-                            'avatar' => '/images/avatars/avatar_ghea_alfiana_1783957164298.png'
-                        ],
-                        [
-                            'name' => 'Desycitra casmi',
-                            'role' => 'Google Maps Review',
-                            'review' => 'Bagus bgt, fotografer nya juga ramah, tempat nya estetik 🫶🏻',
-                            'stars' => 5,
-                            'avatar' => '/images/avatars/avatar_desycitra_casmi_1783957179563.png'
-                        ]
-                    ];
+                        $testimonials = [
+                            [
+                                'name' => 'Rangga Mukti',
+                                'role' => 'Google Maps Review',
+                                'review' => 'Kalau sore nyaman banget sih tempatnya, dan photonya bagus juga, rekomen sih',
+                                'stars' => 5,
+                                'avatar' => $getAvatarBase64('avatar_rangga_mukti_1783957118541.png')
+                            ],
+                            [
+                                'name' => 'Naufal Maulana Shabri',
+                                'role' => 'Google Maps Review',
+                                'review' => 'tempatnya nyaman, ruangannya full ac semua, bikin betah kalo lama lama di sini🤩',
+                                'stars' => 5,
+                                'avatar' => $getAvatarBase64('avatar_naufal_maulana_1783957133956.png')
+                            ],
+                            [
+                                'name' => 'AZRIL AKBAR AGUSTIYANTI',
+                                'role' => 'Google Maps Review',
+                                'review' => 'oke banget diarahin diatur gaya & posisi nya jadinya bagus gak rugi kesini',
+                                'stars' => 5,
+                                'avatar' => $getAvatarBase64('avatar_azril_akbar_1783957149731.png')
+                            ],
+                            [
+                                'name' => 'Faruq Erfianto',
+                                'role' => 'Google Maps Review',
+                                'review' => 'Tempatnya nyaman, pelayanannya ramah, mas-masnya bisa diajak bercanda juga jadi gak canggung wkwkw',
+                                'stars' => 5,
+                                'avatar' => $getAvatarBase64('avatar_faruq_erfianto_1783957162117.png')
+                            ],
+                            [
+                                'name' => 'Ghea Alfiana',
+                                'role' => 'Google Maps Review',
+                                'review' => 'Fotonya bagus bangett parahh harganya sangat wort it buat harga segitu',
+                                'stars' => 5,
+                                'avatar' => $getAvatarBase64('avatar_ghea_alfiana_1783957164298.png')
+                            ],
+                            [
+                                'name' => 'Desycitra casmi',
+                                'role' => 'Google Maps Review',
+                                'review' => 'Bagus bgt, fotografer nya juga ramah, tempat nya estetik 🫶🏻',
+                                'stars' => 5,
+                                'avatar' => $getAvatarBase64('avatar_desycitra_casmi_1783957179563.png')
+                            ]
+                        ];
                 @endphp
 
                 {{-- CAROUSEL TESTIMONIAL 3 ITEMS PER SLIDE --}}
