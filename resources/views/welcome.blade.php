@@ -243,7 +243,7 @@
 
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-            <div class="reveal flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-12">
+            <div class="reveal flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-16 relative z-30">
 
                 {{-- Section heading --}}
                 <div class="shrink-0 xl:pr-10">
@@ -1251,8 +1251,8 @@
                 >
                     <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'"> 
                         @foreach(array_chunk($testimonials, 3) as $chunk)
-                            <div class="w-full flex-shrink-0 px-1">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                            <div class="w-full flex-shrink-0 px-1 h-full">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 h-full">
                                     @foreach($chunk as $testi)
                                         <div class="testi-card">
                                             {{-- Decorative quote mark --}}
