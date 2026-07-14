@@ -1,19 +1,5 @@
 <x-frontend-layout>
-    <!-- Tambahkan Tailwind CDN sementara agar class baru langsung ter-render walau 'npm run dev' belum dijalankan -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Playfair Display', 'serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
+<style>
         .alineas-checkerboard {
             height: 30px;
             background-image: conic-gradient(

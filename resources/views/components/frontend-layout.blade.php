@@ -11,6 +11,8 @@
 
     <link rel="icon" type="image/png" href="{{ asset('images/alineas-icon.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('images/alineas-icon.png') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/alineas-icon.png') }}">
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
     
     <!-- OpenGraph Meta Tags -->
     <meta property="og:title" content="Alineas Studio | Photography Studio Karawang">
