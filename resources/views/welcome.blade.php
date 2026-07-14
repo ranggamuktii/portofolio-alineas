@@ -230,44 +230,95 @@
         }
     }">
 
+        <style>
+            /* Filter scroll — hide native scrollbar */
+            .filter-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+            .filter-scroll::-webkit-scrollbar { display: none; }
+            /* Mobile filter panel backdrop */
+            .filter-backdrop { backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+            /* Fade edge indicators */
+            .filter-fade-left  { background: linear-gradient(to right,  #ffffff 0%, transparent 100%); }
+            .filter-fade-right { background: linear-gradient(to left,   #ffffff 0%, transparent 100%); }
+        </style>
+
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-            <div class="reveal flex flex-col xl:flex-row xl:items-end justify-between gap-5 mb-12">
-                <div class="shrink-0 xl:pr-8">
+            <div class="reveal flex flex-col xl:flex-row xl:items-end justify-between gap-6 mb-12">
+
+                {{-- Section heading --}}
+                <div class="shrink-0 xl:pr-10">
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
                 </div>
-                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0 flex flex-col xl:flex-row items-center justify-end">
-                    <!-- Mobile Select Dropdown -->
-                    <div class="relative w-full xl:hidden mb-2">
-                        <select x-model="active" @change="setActive($event.target.value)"
-                            class="w-full appearance-none bg-white border border-gray-200 text-gray-900 text-sm font-semibold tracking-wide rounded-full px-5 py-3.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all">
-                            <template x-for="cat in categories" :key="cat">
-                                <option :value="cat" x-text="cat"></option>
-                            </template>
-                        </select>
-                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-5 text-gray-500">
-                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+
+                {{-- Filter controls --}}
+                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0" x-data="{ mobileOpen: false }">
+
+                    {{-- ── MOBILE: Custom pill trigger + dropdown panel ──────── --}}
+                    <div class="xl:hidden">
+                        {{-- Trigger button --}}
+                        <button @click="mobileOpen = !mobileOpen"
+                            class="w-full flex items-center justify-between gap-3 bg-white border border-gray-200 rounded-2xl px-5 py-3.5 shadow-sm hover:border-red-400 transition-all duration-200">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0 animate-pulse"></span>
+                                <span class="text-gray-900 text-sm font-bold tracking-wide" x-text="active"></span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Filter</span>
+                                <svg class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="mobileOpen ? 'rotate-180' : ''"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
+                            </div>
+                        </button>
+
+                        {{-- Backdrop --}}
+                        <div x-show="mobileOpen" @click="mobileOpen = false"
+                            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                            class="fixed inset-0 bg-black/30 filter-backdrop z-40" x-cloak></div>
+
+                        {{-- Panel --}}
+                        <div x-show="mobileOpen"
+                            x-transition:enter="transition ease-out duration-250" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
+                            class="absolute left-0 right-0 top-[calc(100%+8px)] bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 z-50 p-4" x-cloak>
+                            <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-3 px-1">Pilih Kategori</p>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="cat in categories" :key="cat">
+                                    <button @click="setActive(cat); mobileOpen = false"
+                                        :class="active === cat
+                                            ? 'bg-red-600 text-white border-red-600 shadow-md shadow-red-600/20'
+                                            : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-red-300 hover:text-red-600'"
+                                        class="text-[11px] font-semibold tracking-wide border rounded-full px-4 py-2 transition-all duration-200"
+                                        x-text="cat">
+                                    </button>
+                                </template>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Desktop Filter Scroll -->
-                    <style>
-                        .filter-scroll::-webkit-scrollbar { height: 4px; }
-                        .filter-scroll::-webkit-scrollbar-track { background: transparent; }
-                        .filter-scroll::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
-                        .filter-scroll::-webkit-scrollbar-thumb:hover { background: #dc2626; }
-                    </style>
-                    <div class="hidden xl:flex overflow-x-auto gap-3 pb-5 w-full snap-x snap-mandatory scroll-smooth filter-scroll justify-end">
-                        <template x-for="cat in categories" :key="cat">
-                            <button @click="setActive(cat)"
-                                :class="active === cat ? 'bg-gray-900 text-white border-gray-900 shadow-md' : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-900'"
-                                class="whitespace-nowrap shrink-0 snap-start border text-[10px] md:text-[11px] font-semibold tracking-widest uppercase px-4 py-2 md:py-2.5 rounded-full transition-all duration-250"
-                                x-text="cat">
-                            </button>
-                        </template>
+                    {{-- ── DESKTOP: Horizontal scroll pill bar ─────────────── --}}
+                    <div class="hidden xl:block relative">
+                        {{-- Left fade edge --}}
+                        <div class="pointer-events-none absolute left-0 top-0 bottom-5 w-8 z-10 filter-fade-left"></div>
+                        {{-- Right fade edge --}}
+                        <div class="pointer-events-none absolute right-0 top-0 bottom-5 w-12 z-10 filter-fade-right"></div>
+
+                        <div class="flex overflow-x-auto gap-2 pb-5 filter-scroll justify-end">
+                            <template x-for="cat in categories" :key="cat">
+                                <button @click="setActive(cat)"
+                                    :class="active === cat
+                                        ? 'bg-red-600 text-white border-red-600 shadow-lg shadow-red-600/25'
+                                        : 'bg-white text-gray-500 border-gray-200 hover:border-red-300 hover:text-red-600 hover:bg-red-50'"
+                                    class="whitespace-nowrap shrink-0 border text-[10px] font-bold tracking-widest uppercase px-4 py-2.5 rounded-full transition-all duration-200"
+                                    x-text="cat">
+                                </button>
+                            </template>
+                        </div>
                     </div>
-                </div>
+
+                </div>{{-- end filter controls --}}
             </div>
 
 
@@ -1085,13 +1136,99 @@
                         ];
                     @endphp
 
-                {{-- CAROUSEL TESTIMONIAL 3 ITEMS PER SLIDE --}}
+                <style>
+                    .testi-card {
+                        background: #ffffff;
+                        border: 1px solid #f1f1f1;
+                        border-radius: 20px;
+                        padding: 28px;
+                        display: flex;
+                        flex-direction: column;
+                        height: 100%;
+                        position: relative;
+                        transition: all 0.3s ease;
+                        box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+                    }
+                    .testi-card:hover {
+                        border-color: #fecaca;
+                        box-shadow: 0 8px 32px rgba(220,38,38,0.08);
+                        transform: translateY(-2px);
+                    }
+                    .testi-quote-icon {
+                        color: #fee2e2;
+                        font-size: 72px;
+                        line-height: 1;
+                        font-family: Georgia, serif;
+                        position: absolute;
+                        top: 16px;
+                        left: 22px;
+                        pointer-events: none;
+                        user-select: none;
+                    }
+                    .testi-stars {
+                        display: flex;
+                        gap: 2px;
+                        margin-bottom: 4px;
+                    }
+                    .testi-star {
+                        width: 16px;
+                        height: 16px;
+                        color: #f59e0b;
+                        fill: #f59e0b;
+                    }
+                    .testi-review {
+                        font-size: 0.9375rem;
+                        color: #374151;
+                        line-height: 1.7;
+                        font-style: italic;
+                        flex-grow: 1;
+                        padding-top: 12px;
+                        position: relative;
+                        z-index: 1;
+                    }
+                    .testi-divider {
+                        width: 32px;
+                        height: 2px;
+                        background: #fca5a5;
+                        margin: 18px 0;
+                        border-radius: 2px;
+                    }
+                    .testi-footer {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 12px;
+                    }
+                    .testi-name {
+                        font-weight: 700;
+                        font-size: 0.875rem;
+                        color: #111827;
+                        letter-spacing: -0.01em;
+                    }
+                    .testi-meta {
+                        font-size: 0.6875rem;
+                        color: #9ca3af;
+                        margin-top: 2px;
+                    }
+                    .testi-google-icon {
+                        width: 20px;
+                        height: 20px;
+                        opacity: 0.5;
+                        flex-shrink: 0;
+                        transition: opacity 0.3s;
+                    }
+                    .testi-card:hover .testi-google-icon {
+                        opacity: 1;
+                    }
+                </style>
+
+                {{-- CAROUSEL TESTIMONIAL --}}
                 <div x-data="{
                         activeSlide: 0,
                         totalChunks: 2,
                         next() { this.activeSlide = (this.activeSlide + 1) % this.totalChunks },
                         prev() { this.activeSlide = (this.activeSlide - 1 + this.totalChunks) % this.totalChunks },
-                        startAutoPlay() { this.interval = setInterval(function() { this.next() }.bind(this), 6000); },
+                        startAutoPlay() { this.interval = setInterval(function() { this.next() }.bind(this), 6500); },
                         stopAutoPlay() { clearInterval(this.interval); }
                     }"
                     x-init="startAutoPlay()"
@@ -1099,42 +1236,43 @@
                     @mouseleave="startAutoPlay()"
                     class="relative w-full overflow-hidden py-4"
                 >
-                    <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'">
+                    <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'"> 
                         @foreach(array_chunk($testimonials, 3) as $chunk)
-                            <div class="w-full flex-shrink-0 px-2">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="w-full flex-shrink-0 px-1">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
                                     @foreach($chunk as $testi)
-                                        {{-- Sleek & Modern Review Card Design --}}
-                                        <div class="group bg-white rounded-2xl p-6 md:p-7 w-full text-left h-full flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-red-100">
-                                            <div class="flex items-center justify-between mb-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-red-50 to-red-100/50 flex items-center justify-center text-red-600 font-bold text-sm border border-red-100 shadow-sm">
-                                                        {{ substr($testi['name'], 0, 1) }}
-                                                    </div>
-                                                    <div>
-                                                        <h4 class="font-bold text-gray-900 text-sm md:text-base tracking-tight">{{ $testi['name'] }}</h4>
-                                                        <div class="flex items-center gap-1.5 mt-0.5">
-                                                            <div class="flex gap-0.5">
-                                                                @for($i = 0; $i < $testi['stars']; $i++)
-                                                                    <svg class="w-3.5 h-3.5 text-[#fbbc04]" fill="currentColor" viewBox="0 0 24 24">
-                                                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                                                    </svg>
-                                                                @endfor
-                                                            </div>
-                                                            <span class="text-[11px] text-gray-400 font-medium ml-1">{{ $testi['time'] }}</span>
-                                                        </div>
-                                                    </div>
+                                        <div class="testi-card">
+                                            {{-- Decorative quote mark --}}
+                                            <span class="testi-quote-icon" aria-hidden="true">&ldquo;</span>
+
+                                            {{-- Stars --}}
+                                            <div class="testi-stars">
+                                                @for($i = 0; $i < 5; $i++)
+                                                    <svg class="testi-star" viewBox="0 0 24 24" fill="{{ $i < $testi['stars'] ? '#f59e0b' : '#e5e7eb' }}" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                    </svg>
+                                                @endfor
+                                            </div>
+
+                                            {{-- Review text --}}
+                                            <p class="testi-review">{{ $testi['review'] }}</p>
+
+                                            {{-- Divider --}}
+                                            <div class="testi-divider"></div>
+
+                                            {{-- Footer: name + time + google icon --}}
+                                            <div class="testi-footer">
+                                                <div>
+                                                    <div class="testi-name">{{ $testi['name'] }}</div>
+                                                    <div class="testi-meta">{{ $testi['role'] }} &middot; {{ $testi['time'] }}</div>
                                                 </div>
-                                                <svg class="w-5 h-5 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                <svg class="testi-google-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.75h3.57c2.08-1.92 3.28-4.74 3.28-8.07z" fill="#4285F4"/>
                                                     <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.75c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                                                     <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                                                     <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                                                 </svg>
                                             </div>
-                                            <p class="text-gray-600 text-sm leading-relaxed flex-grow italic">
-                                                "{{ $testi['review'] }}"
-                                            </p>
                                         </div>
                                     @endforeach
                                 </div>
@@ -1143,24 +1281,28 @@
                     </div>
 
                     {{-- Navigation Controls --}}
-                    <div class="flex justify-center items-center gap-6 mt-8">
-                        <button @click="prev()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <div class="flex justify-center items-center gap-6 mt-10">
+                        <button @click="prev()"
+                            class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-red-50 hover:border-red-300 hover:text-red-600 transition-all duration-200 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                         </button>
-                        
-                        <div class="flex gap-2">
+
+                        <div class="flex gap-2 items-center">
                             <template x-for="i in totalChunks" :key="i">
-                                <button @click="activeSlide = i - 1" 
-                                    :class="{'bg-blue-600 w-8': activeSlide === i - 1, 'bg-gray-300 w-2': activeSlide !== i - 1}"
-                                    class="h-2 rounded-full transition-all duration-500 ease-out"></button>
+                                <button @click="activeSlide = i - 1"
+                                    :class="activeSlide === i - 1 ? 'bg-red-600 w-7' : 'bg-gray-200 w-2 hover:bg-gray-300'"
+                                    class="h-2 rounded-full transition-all duration-400 ease-out">
+                                </button>
                             </template>
                         </div>
 
-                        <button @click="next()" class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors shadow-sm">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        <button @click="next()"
+                            class="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-red-50 hover:border-red-300 hover:text-red-600 transition-all duration-200 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                         </button>
                     </div>
-                </div>       </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1169,25 +1311,104 @@
     {{-- ============================================================
     INSTAGRAM FEED
     ============================================================ --}}
-    <section id="instagram" class="py-20 md:py-28 bg-gray-50 border-y border-gray-100 overflow-hidden relative">
+    <style>
+        .ig-card {
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+        .ig-card:hover {
+            box-shadow: 0 12px 40px rgba(236,72,153,0.12);
+            border-color: #fce7f3;
+            transform: translateY(-3px);
+        }
+        .ig-card-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            border-bottom: 1px solid #f9f0f5;
+            background: #fffbfe;
+        }
+        .ig-avatar-ring {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            padding: 2px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .ig-avatar-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            color: #dc2743;
+            letter-spacing: -0.5px;
+        }
+        .ig-username {
+            font-size: 13px;
+            font-weight: 700;
+            color: #111827;
+            letter-spacing: -0.2px;
+        }
+        .ig-handle {
+            font-size: 11px;
+            color: #9ca3af;
+            margin-top: 1px;
+        }
+        .ig-follow-btn {
+            margin-left: auto;
+            font-size: 11px;
+            font-weight: 700;
+            color: #e11d48;
+            background: #fff1f2;
+            border: 1px solid #fecdd3;
+            border-radius: 50px;
+            padding: 4px 12px;
+            white-space: nowrap;
+            transition: all 0.2s;
+            text-decoration: none;
+        }
+        .ig-follow-btn:hover {
+            background: #e11d48;
+            color: #fff;
+            border-color: #e11d48;
+        }
+        .ig-embed-wrap {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+    </style>
+
+    <section id="instagram" class="py-20 md:py-28 overflow-hidden relative" style="background: linear-gradient(160deg, #fff 0%, #fdf2f8 40%, #fff 100%);">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="reveal text-center mb-10 md:mb-14">
-                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">@alineas.studio</span>
-                <h2
-                    class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3 flex items-center justify-center gap-3">
+                <span class="text-pink-600 text-xs font-semibold tracking-widest uppercase">@alineas.studio</span>
+                <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3 flex items-center justify-center gap-3">
                     <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
-                        <path
-                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                     </svg>
                     Ikuti Cerita Kami
                 </h2>
-                <p class="text-gray-600 text-sm mt-3">Karya terbaru, behind the scenes, dan promo eksklusif menanti
-                    Anda.</p>
+                <p class="text-gray-500 text-sm mt-3 max-w-sm mx-auto">Karya terbaru, behind the scenes, dan promo eksklusif menanti Anda di Instagram kami.</p>
             </div>
 
             <div class="reveal relative max-w-6xl mx-auto">
-                {{-- NATIVE INSTAGRAM EMBEDS --}}
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-start">
+                {{-- NATIVE INSTAGRAM EMBEDS with branded card frames --}}
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
                     @php
                         $igUrls = [
                             'https://www.instagram.com/p/DXGgWbKEeYT/',
@@ -1199,40 +1420,57 @@
                         ];
                     @endphp
                     @foreach($igUrls as $url)
-                        <div class="w-full flex justify-center rounded-3xl overflow-hidden border border-gray-200 bg-white">
-                            <blockquote class="instagram-media" data-instgrm-permalink="{{ $url }}?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style="background:#FFF; border:0; margin: 0; min-width:100%; padding:0; width:100%;">
-                                <div style="padding:16px;"> 
-                                    <a href="{{ $url }}" style="background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                                        <div style="display: flex; flex-direction: row; align-items: center;">
-                                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                                <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                                <div style="background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                                            </div>
-                                        </div>
-                                        <div style="padding: 19% 0;"></div>
-                                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg>
-                                        </div>
-                                        <div style="padding-top: 8px;">
-                                            <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
-                                        </div>
-                                    </a>
+                        <div class="ig-card">
+                            {{-- Branded header above the embed --}}
+                            <div class="ig-card-header">
+                                <div class="ig-avatar-ring">
+                                    <div class="ig-avatar-inner">A</div>
                                 </div>
-                            </blockquote>
+                                <div>
+                                    <div class="ig-username">Alineas Studio</div>
+                                    <div class="ig-handle">@alineas.studio</div>
+                                </div>
+                                <a href="https://www.instagram.com/alineas.studio" target="_blank" class="ig-follow-btn">Follow</a>
+                            </div>
+
+                            {{-- Instagram embed --}}
+                            <div class="ig-embed-wrap">
+                                <blockquote class="instagram-media"
+                                    data-instgrm-permalink="{{ $url }}?utm_source=ig_embed&amp;utm_campaign=loading"
+                                    data-instgrm-version="14"
+                                    style="background:#FFF; border:0; margin:0; min-width:100%; padding:0; width:100%;">
+                                    <div style="padding:16px;">
+                                        <a href="{{ $url }}" style="background:#FFFFFF; line-height:0; padding:0; text-align:center; text-decoration:none; width:100%;" target="_blank">
+                                            <div style="display:flex; flex-direction:row; align-items:center;">
+                                                <div style="background-color:#F4F4F4; border-radius:50%; flex-grow:0; height:40px; margin-right:14px; width:40px;"></div>
+                                                <div style="display:flex; flex-direction:column; flex-grow:1; justify-content:center;">
+                                                    <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; margin-bottom:6px; width:100px;"></div>
+                                                    <div style="background-color:#F4F4F4; border-radius:4px; flex-grow:0; height:14px; width:60px;"></div>
+                                                </div>
+                                            </div>
+                                            <div style="padding:19% 0;"></div>
+                                            <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
+                                                <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg>
+                                            </div>
+                                            <div style="padding-top:8px;">
+                                                <div style="color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </blockquote>
+                            </div>
                         </div>
                     @endforeach
                 </div>
                 <script async src="//www.instagram.com/embed.js"></script>
 
-                <div class="text-center mt-10">
+                <div class="text-center mt-12">
                     <a href="https://www.instagram.com/alineas.studio" target="_blank"
-                        class="inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-pink-600 border border-gray-200 hover:border-pink-600 px-6 py-2.5 rounded-full transition-all bg-white shadow-sm hover:shadow-md">
-                        Kunjungi Instagram Kami
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        class="inline-flex items-center gap-2.5 text-sm font-semibold text-gray-700 hover:text-white border border-gray-200 hover:border-pink-600 hover:bg-pink-600 px-7 py-3 rounded-full transition-all duration-300 bg-white shadow-sm hover:shadow-lg hover:shadow-pink-500/20">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                         </svg>
+                        Kunjungi Instagram Kami
                     </a>
                 </div>
             </div>
