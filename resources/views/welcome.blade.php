@@ -1,6 +1,18 @@
 <x-frontend-layout>
     <!-- Tambahkan Tailwind CDN sementara agar class baru langsung ter-render walau 'npm run dev' belum dijalankan -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         .alineas-checkerboard {
             height: 30px;
@@ -239,17 +251,28 @@
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
                 </div>
-                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0">
-                    <!-- Indikator fade di kanan untuk mobile -->
-                    <div class="absolute right-0 top-0 bottom-4 w-12 bg-gradient-to-l from-white to-transparent pointer-events-none z-10 xl:hidden"></div>
-                    
+                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0 flex flex-col xl:flex-row items-center justify-end">
+                    <!-- Mobile Select Dropdown -->
+                    <div class="relative w-full xl:hidden mb-2">
+                        <select x-model="active" @change="setActive($event.target.value)"
+                            class="w-full appearance-none bg-white border border-gray-200 text-gray-900 text-sm font-semibold tracking-wide rounded-full px-5 py-3.5 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500 transition-all">
+                            <template x-for="cat in categories" :key="cat">
+                                <option :value="cat" x-text="cat"></option>
+                            </template>
+                        </select>
+                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-5 text-gray-500">
+                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Filter Scroll -->
                     <style>
                         .filter-scroll::-webkit-scrollbar { height: 4px; }
                         .filter-scroll::-webkit-scrollbar-track { background: transparent; }
                         .filter-scroll::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 4px; }
                         .filter-scroll::-webkit-scrollbar-thumb:hover { background: #dc2626; }
                     </style>
-                    <div class="flex overflow-x-auto gap-3 pb-5 w-full snap-x snap-mandatory scroll-smooth filter-scroll">
+                    <div class="hidden xl:flex overflow-x-auto gap-3 pb-5 w-full snap-x snap-mandatory scroll-smooth filter-scroll justify-end">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
                                 :class="active === cat ? 'bg-gray-900 text-white border-gray-900 shadow-md' : 'bg-white text-gray-500 border-gray-200 hover:border-gray-400 hover:text-gray-900'"
@@ -1095,36 +1118,36 @@
                             <div class="w-full flex-shrink-0 px-2">
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     @foreach($chunk as $testi)
-                                        {{-- Authentic Google Maps Review Card Design --}}
-                                        <div class="bg-white border border-gray-200 rounded-3xl p-6 md:p-8 w-full text-left h-full flex flex-col shadow-sm">
-                                            <div class="flex items-start justify-between mb-4">
+                                        {{-- Sleek & Modern Review Card Design --}}
+                                        <div class="group bg-white rounded-2xl p-6 md:p-7 w-full text-left h-full flex flex-col shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all duration-300 border border-gray-100 hover:border-red-100">
+                                            <div class="flex items-center justify-between mb-4">
                                                 <div class="flex items-center gap-3">
+                                                    <div class="w-11 h-11 rounded-full bg-gradient-to-br from-red-50 to-red-100/50 flex items-center justify-center text-red-600 font-bold text-sm border border-red-100 shadow-sm">
+                                                        {{ substr($testi['name'], 0, 1) }}
+                                                    </div>
                                                     <div>
-                                                        <h4 class="font-bold text-gray-900 text-sm md:text-base tracking-tight leading-tight">{{ $testi['name'] }}</h4>
-                                                        <div class="flex items-center gap-1.5 text-xs text-gray-500 mt-1 font-medium">
-                                                            <svg viewBox="0 0 24 24" width="12" height="12" xmlns="http://www.w3.org/2000/svg">
-                                                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.75h3.57c2.08-1.92 3.28-4.74 3.28-8.07z" fill="#4285F4"/>
-                                                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.75c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                                                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                                                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-                                                            </svg>
-                                                            <span>Ulasan Google</span>
+                                                        <h4 class="font-bold text-gray-900 text-sm md:text-base tracking-tight">{{ $testi['name'] }}</h4>
+                                                        <div class="flex items-center gap-1.5 mt-0.5">
+                                                            <div class="flex gap-0.5">
+                                                                @for($i = 0; $i < $testi['stars']; $i++)
+                                                                    <svg class="w-3.5 h-3.5 text-[#fbbc04]" fill="currentColor" viewBox="0 0 24 24">
+                                                                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                                                    </svg>
+                                                                @endfor
+                                                            </div>
+                                                            <span class="text-[11px] text-gray-400 font-medium ml-1">{{ $testi['time'] }}</span>
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <svg class="w-5 h-5 opacity-40 grayscale group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.75h3.57c2.08-1.92 3.28-4.74 3.28-8.07z" fill="#4285F4"/>
+                                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.75c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                                </svg>
                                             </div>
-                                            <div class="flex items-center gap-2 mb-3">
-                                                <div class="flex gap-0.5">
-                                                    @for($i = 0; $i < $testi['stars']; $i++)
-                                                        <svg class="w-4 h-4 text-[#fbbc04]" fill="currentColor" viewBox="0 0 24 24">
-                                                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                                                        </svg>
-                                                    @endfor
-                                                </div>
-                                                <span class="text-xs text-gray-500 font-medium">{{ $testi['time'] }}</span>
-                                            </div>
-                                            <p class="text-gray-800 text-sm leading-relaxed flex-grow">
-                                                {{ $testi['review'] }}
+                                            <p class="text-gray-600 text-sm leading-relaxed flex-grow italic">
+                                                "{{ $testi['review'] }}"
                                             </p>
                                         </div>
                                     @endforeach
