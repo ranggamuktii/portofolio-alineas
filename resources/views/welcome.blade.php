@@ -274,23 +274,33 @@
 
                         {{-- Backdrop --}}
                         <div x-show="mobileOpen" @click="mobileOpen = false"
-                            x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="fixed inset-0 bg-black/30 filter-backdrop z-40" x-cloak></div>
+                            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+                            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                            class="fixed inset-0 bg-black/50 filter-backdrop z-[90]" x-cloak></div>
 
-                        {{-- Panel --}}
+                        {{-- Panel (Bottom Sheet) --}}
                         <div x-show="mobileOpen"
-                            x-transition:enter="transition ease-out duration-250" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
-                            x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
-                            class="absolute left-0 right-0 top-[calc(100%+8px)] bg-white rounded-2xl shadow-2xl shadow-black/10 border border-gray-100 z-50 p-4" x-cloak>
-                            <p class="text-[10px] font-bold tracking-widest uppercase text-gray-400 mb-3 px-1">Pilih Kategori</p>
-                            <div class="flex flex-wrap gap-2">
+                            x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
+                            x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full"
+                            class="fixed left-0 right-0 bottom-0 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-[100] p-6 pb-10 max-h-[85vh] overflow-y-auto" x-cloak>
+                            
+                            {{-- Drag handle indicator --}}
+                            <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6"></div>
+                            
+                            <div class="flex items-center justify-between mb-5 px-1">
+                                <p class="text-xs font-bold tracking-widest uppercase text-gray-900">Pilih Kategori</p>
+                                <button @click="mobileOpen = false" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                                </button>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2.5">
                                 <template x-for="cat in categories" :key="cat">
                                     <button @click="setActive(cat); mobileOpen = false"
                                         :class="active === cat
                                             ? 'bg-red-600 text-white border-red-600 shadow-md shadow-red-600/20'
                                             : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-red-300 hover:text-red-600'"
-                                        class="text-[11px] font-semibold tracking-wide border rounded-full px-4 py-2 transition-all duration-200"
+                                        class="text-[12px] font-semibold tracking-wide border rounded-full px-5 py-2.5 transition-all duration-200 flex-grow text-center"
                                         x-text="cat">
                                     </button>
                                 </template>
@@ -1096,42 +1106,42 @@
                                 'role' => 'Google Maps Review',
                                 'review' => 'Kalau sore nyaman banget sih tempatnya, dan photonya bagus juga, rekomen sih',
                                 'stars' => 5,
-                                'time' => '1 tahun lalu'
+                                'time' => 'beberapa hari lalu'
                             ],
                             [
                                 'name' => 'Naufal Maulana Shabri',
                                 'role' => 'Google Maps Review',
                                 'review' => 'tempatnya nyaman, ruangannya full ac semua, bikin betah kalo lama lama di sini🤩',
                                 'stars' => 5,
-                                'time' => '7 bulan lalu'
+                                'time' => '1 minggu lalu'
                             ],
                             [
                                 'name' => 'AZRIL AKBAR AGUSTIYANTI',
                                 'role' => 'Google Maps Review',
                                 'review' => 'oke banget diarahin diatur gaya & posisi nya jadinya bagus gak rugi kesini',
                                 'stars' => 5,
-                                'time' => '4 bulan lalu'
+                                'time' => '2 minggu lalu'
                             ],
                             [
                                 'name' => 'Faruq Erfianto',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Tempatnya nyaman, pelayanannya ramah, mas-masnya bisa diajak bercanda juga jadi gak canggung wkwkw',
                                 'stars' => 5,
-                                'time' => '2 bulan lalu'
+                                'time' => '2 minggu lalu'
                             ],
                             [
                                 'name' => 'Ghea Alfiana',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Fotonya bagus bangett parahh harganya sangat wort it buat harga segitu',
                                 'stars' => 5,
-                                'time' => '3 bulan lalu'
+                                'time' => '3 minggu lalu'
                             ],
                             [
                                 'name' => 'Desycitra casmi',
                                 'role' => 'Google Maps Review',
                                 'review' => 'Bagus bgt, fotografer nya juga ramah, tempat nya estetik 🫶🏻',
                                 'stars' => 5,
-                                'time' => '1 bulan lalu'
+                                'time' => '4 minggu lalu'
                             ]
                         ];
                     @endphp
@@ -1160,8 +1170,8 @@
                         line-height: 1;
                         font-family: Georgia, serif;
                         position: absolute;
-                        top: 16px;
-                        left: 22px;
+                        top: 10px;
+                        left: 20px;
                         pointer-events: none;
                         user-select: none;
                     }
@@ -1169,6 +1179,9 @@
                         display: flex;
                         gap: 2px;
                         margin-bottom: 4px;
+                        margin-top: 16px;
+                        position: relative;
+                        z-index: 2;
                     }
                     .testi-star {
                         width: 16px;
@@ -1321,70 +1334,9 @@
             transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
         }
         .ig-card:hover {
-            box-shadow: 0 12px 40px rgba(236,72,153,0.12);
-            border-color: #fce7f3;
+            box-shadow: 0 12px 40px rgba(220,38,38,0.12);
+            border-color: #fee2e2;
             transform: translateY(-3px);
-        }
-        .ig-card-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 16px;
-            border-bottom: 1px solid #f9f0f5;
-            background: #fffbfe;
-        }
-        .ig-avatar-ring {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-            padding: 2px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .ig-avatar-inner {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 800;
-            color: #dc2743;
-            letter-spacing: -0.5px;
-        }
-        .ig-username {
-            font-size: 13px;
-            font-weight: 700;
-            color: #111827;
-            letter-spacing: -0.2px;
-        }
-        .ig-handle {
-            font-size: 11px;
-            color: #9ca3af;
-            margin-top: 1px;
-        }
-        .ig-follow-btn {
-            margin-left: auto;
-            font-size: 11px;
-            font-weight: 700;
-            color: #e11d48;
-            background: #fff1f2;
-            border: 1px solid #fecdd3;
-            border-radius: 50px;
-            padding: 4px 12px;
-            white-space: nowrap;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-        .ig-follow-btn:hover {
-            background: #e11d48;
-            color: #fff;
-            border-color: #e11d48;
         }
         .ig-embed-wrap {
             display: flex;
@@ -1393,12 +1345,12 @@
         }
     </style>
 
-    <section id="instagram" class="py-20 md:py-28 overflow-hidden relative" style="background: linear-gradient(160deg, #fff 0%, #fdf2f8 40%, #fff 100%);">
+    <section id="instagram" class="py-20 md:py-28 overflow-hidden relative" style="background: linear-gradient(160deg, #fff 0%, #fff1f2 40%, #fff 100%);">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="reveal text-center mb-10 md:mb-14">
-                <span class="text-pink-600 text-xs font-semibold tracking-widest uppercase">@alineas.studio</span>
+                <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">@alineas.studio</span>
                 <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-3 flex items-center justify-center gap-3">
-                    <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 24 24">
+                    <svg class="w-8 h-8 text-red-600" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
                     </svg>
                     Ikuti Cerita Kami
@@ -1407,7 +1359,7 @@
             </div>
 
             <div class="reveal relative max-w-6xl mx-auto">
-                {{-- NATIVE INSTAGRAM EMBEDS with branded card frames --}}
+                {{-- NATIVE INSTAGRAM EMBEDS --}}
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
                     @php
                         $igUrls = [
@@ -1421,18 +1373,6 @@
                     @endphp
                     @foreach($igUrls as $url)
                         <div class="ig-card">
-                            {{-- Branded header above the embed --}}
-                            <div class="ig-card-header">
-                                <div class="ig-avatar-ring">
-                                    <div class="ig-avatar-inner">A</div>
-                                </div>
-                                <div>
-                                    <div class="ig-username">Alineas Studio</div>
-                                    <div class="ig-handle">@alineas.studio</div>
-                                </div>
-                                <a href="https://www.instagram.com/alineas.studio" target="_blank" class="ig-follow-btn">Follow</a>
-                            </div>
-
                             {{-- Instagram embed --}}
                             <div class="ig-embed-wrap">
                                 <blockquote class="instagram-media"
@@ -1466,7 +1406,7 @@
 
                 <div class="text-center mt-12">
                     <a href="https://www.instagram.com/alineas.studio" target="_blank"
-                        class="inline-flex items-center gap-2.5 text-sm font-semibold text-gray-700 hover:text-white border border-gray-200 hover:border-pink-600 hover:bg-pink-600 px-7 py-3 rounded-full transition-all duration-300 bg-white shadow-sm hover:shadow-lg hover:shadow-pink-500/20">
+                        class="inline-flex items-center gap-2.5 text-sm font-semibold text-red-600 border border-red-200 hover:border-red-600 hover:bg-red-600 hover:text-white px-7 py-3 rounded-full transition-all duration-300 bg-white shadow-sm hover:shadow-lg hover:shadow-red-500/20">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
                         </svg>
