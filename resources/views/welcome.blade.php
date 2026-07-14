@@ -1019,7 +1019,8 @@
 
     {{-- ============================================================
     REVIEWS
-    ============================================================ --    <section id="reviews" class="py-24 md:py-32 bg-[#faf9f7]">
+    ============================================================ --}}
+    <section id="reviews" class="py-24 md:py-32 bg-[#faf9f7]">
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
             <div class="reveal text-center mb-12">
                 <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Testimoni</span>
@@ -1078,7 +1079,7 @@
                 {{-- CAROUSEL TESTIMONIAL 3 ITEMS PER SLIDE --}}
                 <div x-data="{
                         activeSlide: 0,
-                        totalChunks: {{ count(array_chunk($testimonials, 3)) }},
+                        totalChunks: 2,
                         next() { this.activeSlide = (this.activeSlide + 1) % this.totalChunks },
                         prev() { this.activeSlide = (this.activeSlide - 1 + this.totalChunks) % this.totalChunks },
                         startAutoPlay() { this.interval = setInterval(function() { this.next() }.bind(this), 6000); },
