@@ -251,41 +251,54 @@
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2">Karya Terbaik Kami</h2>
                 </div>
 
-                {{-- Filter controls --}}
-                {{-- 
-                    STRATEGY:
-                    - Satu strip horizontal scrollable untuk semua ukuran layar
-                    - Active: pill merah solid (tidak bisa di-clip seperti border-b)
-                    - Inactive: teks abu transparan
-                    - Berapapun jumlah filter, overflow-x-auto + filter-scroll menangani semua kasus
-                    - Auto-scroll ke item aktif lewat scrollIntoView
-                --}}
-                <div class="relative" x-data="{
+                {{-- ============================================================
+                    FILTER — UX STRATEGY:
+                    - MOBILE (<lg): flex-wrap → semua filter langsung keliatan, tinggal tap
+                    - DESKTOP (lg+): horizontal scroll strip → mouse/trackpad bisa scroll
+                    - Active state: pill merah solid, jelas tidak ambigu
+                    - Auto-scroll ke active item (khusus desktop)
+                    ============================================================ --}}
+                <div x-data="{
                     init() {
                         this.$watch('active', () => {
                             setTimeout(() => {
-                                const el = this.$el.querySelector('.is-active-tab');
+                                const el = this.$refs.desktopStrip?.querySelector('.is-active-tab');
                                 if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                             }, 50);
                         });
                     }
                 }">
-                    {{-- Fade edges to signal scrollability --}}
-                    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white to-transparent z-10"></div>
-                    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                    <div class="flex overflow-x-auto filter-scroll gap-1.5 py-1 px-1">
+                    {{-- MOBILE: Semua filter tampil sekaligus (flex-wrap) --}}
+                    <div class="lg:hidden flex flex-wrap gap-2 pt-1">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
-                                class="whitespace-nowrap shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200"
+                                class="shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200"
                                 :class="active === cat
                                     ? 'is-active-tab bg-red-600 text-white shadow-sm'
-                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
-                                x-text="cat"
-                            >
+                                    : 'bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-gray-900'"
+                                x-text="cat">
                             </button>
                         </template>
                     </div>
+
+                    {{-- DESKTOP: Horizontal scroll strip --}}
+                    <div class="hidden lg:block relative">
+                        <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white to-transparent z-10"></div>
+                        <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent z-10"></div>
+                        <div class="flex overflow-x-auto filter-scroll gap-1.5 py-1 px-1" x-ref="desktopStrip">
+                            <template x-for="cat in categories" :key="cat">
+                                <button @click="setActive(cat)"
+                                    class="whitespace-nowrap shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200"
+                                    :class="active === cat
+                                        ? 'is-active-tab bg-red-600 text-white shadow-sm'
+                                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
+                                    x-text="cat">
+                                </button>
+                            </template>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
