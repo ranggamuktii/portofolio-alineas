@@ -268,20 +268,20 @@
 
                     {{-- ── ✨ PREMIUM UNIFIED HORIZONTAL FILTER ✨ ──────── --}}
                     {{-- Soft edge fade gradients to indicate scrollability --}}
-                    <div class="pointer-events-none absolute left-0 top-0 bottom-8 w-12 bg-gradient-to-r from-white via-white/90 to-transparent z-10"></div>
-                    <div class="pointer-events-none absolute right-0 top-0 bottom-8 w-12 bg-gradient-to-l from-white via-white/90 to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute left-0 top-0 bottom-8 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute right-0 top-0 bottom-8 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
 
                     {{-- Scrollable Container --}}
                     <div class="flex overflow-x-auto gap-3 pb-8 pt-2 px-4 filter-scroll scroll-smooth snap-x">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
-                                class="snap-center relative flex items-center justify-center whitespace-nowrap shrink-0 px-6 py-3 rounded-full text-[13px] font-extrabold tracking-wide transition-all duration-500 ease-out active:scale-95 group overflow-hidden"
+                                class="snap-center relative flex items-center justify-center whitespace-nowrap shrink-0 px-6 py-3 rounded-full text-[13px] font-extrabold tracking-wide transition-all duration-300 ease-out active:scale-95 group overflow-hidden"
                                 :class="active === cat
-                                    ? 'is-active-tab bg-gradient-to-br from-red-600 to-red-700 text-white shadow-[0_8px_20px_-6px_rgba(220,38,38,0.5)] ring-1 ring-red-500/50'
-                                    : 'bg-white text-gray-500 ring-1 ring-gray-200/80 shadow-sm hover:shadow-md hover:ring-gray-300 hover:text-gray-900'"
+                                    ? 'is-active-tab bg-red-600 text-white shadow-lg ring-1 ring-red-600'
+                                    : 'bg-white text-gray-500 ring-1 ring-gray-200 shadow-sm hover:shadow-md hover:ring-gray-300 hover:text-gray-900'"
                             >
                                 {{-- Animated Checkmark Icon --}}
-                                <div class="flex items-center justify-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                                <div class="flex items-center justify-center overflow-hidden transition-all duration-300"
                                       :class="active === cat ? 'w-4 opacity-100 scale-100 mr-1.5' : 'w-0 opacity-0 scale-50 mr-0'">
                                     <svg class="w-3.5 h-3.5 text-white drop-shadow-sm shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
@@ -289,10 +289,6 @@
                                 </div>
                                 
                                 <span x-text="cat" class="relative z-10"></span>
-                                
-                                {{-- Soft hover glow overlay --}}
-                                <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                                     :class="active === cat ? 'bg-white/10' : 'bg-gray-900/[0.03]'"></div>
                             </button>
                         </template>
                     </div>
