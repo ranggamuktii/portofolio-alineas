@@ -241,59 +241,47 @@
             .filter-fade-right { background: linear-gradient(to left,   #ffffff 0%, transparent 100%); }
         </style>
 
+        {{-- Section heading + filter in clean stacked layout --}}
         <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-            <div class="reveal flex flex-col xl:flex-row xl:items-end justify-between gap-6 relative" style="margin-bottom: 4rem; z-index: 30;">
-
+            <div class="reveal mb-10" style="z-index: 30;">
                 {{-- Section heading --}}
-                <div class="shrink-0 xl:pr-10">
+                <div class="mb-6">
                     <span class="text-red-600 text-xs font-semibold tracking-widest uppercase">Portfolio</span>
-                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2 min-w-max">Karya Terbaik Kami</h2>
+                    <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2">Karya Terbaik Kami</h2>
                 </div>
 
-                {{-- Filter controls --}}
-                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0" x-data="{ 
+                {{-- Filter controls - full width clean tab strip --}}
+                <div class="relative" x-data="{
                     init() {
-                        // Auto-scroll the active filter pill to the center when clicked
-                        this.$watch('active', value => {
+                        this.$watch('active', () => {
                             setTimeout(() => {
-                                const activeEl = this.$el.querySelector('.is-active-tab');
-                                if (activeEl) {
-                                    activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-                                }
+                                const el = this.$el.querySelector('.is-active-tab');
+                                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
                             }, 50);
                         });
                     }
                 }">
+                    {{-- Fade edges --}}
+                    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                    {{-- ── ✨ PREMIUM UNIFIED HORIZONTAL FILTER ✨ ──────── --}}
-                    {{-- Soft edge fade gradients to indicate scrollability --}}
-                    <div class="pointer-events-none absolute left-0 top-0 bottom-8 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
-                    <div class="pointer-events-none absolute right-0 top-0 bottom-8 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
-
-                    {{-- Scrollable Container --}}
-                    <div class="flex overflow-x-auto gap-3 pb-8 pt-2 px-4 filter-scroll scroll-smooth snap-x">
+                    <div class="flex overflow-x-auto gap-2 filter-scroll py-1">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
-                                class="snap-center relative flex items-center justify-center whitespace-nowrap shrink-0 px-6 py-3 rounded-full text-[13px] font-extrabold tracking-wide transition-all duration-300 ease-out active:scale-95 group overflow-hidden"
+                                class="whitespace-nowrap shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200"
                                 :class="active === cat
-                                    ? 'is-active-tab bg-red-600 text-white shadow-lg ring-1 ring-red-600'
-                                    : 'bg-white text-gray-500 ring-1 ring-gray-200 shadow-sm hover:shadow-md hover:ring-gray-300 hover:text-gray-900'"
+                                    ? 'is-active-tab bg-red-600 text-white shadow-md'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
                             >
-                                {{-- Animated Checkmark Icon --}}
-                                <div class="flex items-center justify-center overflow-hidden transition-all duration-300"
-                                      :class="active === cat ? 'w-4 opacity-100 scale-100 mr-1.5' : 'w-0 opacity-0 scale-50 mr-0'">
-                                    <svg class="w-3.5 h-3.5 text-white drop-shadow-sm shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
-                                    </svg>
-                                </div>
-                                
-                                <span x-text="cat" class="relative z-10"></span>
+                                <svg x-show="active === cat" class="w-3 h-3 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                </svg>
+                                <span x-text="cat"></span>
                             </button>
                         </template>
                     </div>
-
-                </div>{{-- end filter controls --}}
+                </div>
             </div>
 
 
