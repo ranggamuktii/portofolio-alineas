@@ -254,22 +254,21 @@
                 {{-- Filter controls --}}
                 <div class="relative w-full xl:w-auto xl:flex-1 min-w-0" x-data="{ mobileOpen: false }">
 
-                    {{-- ── MOBILE & TABLET: Premium Dropdown Panel ──────── --}}
+                    {{-- ── MOBILE: Custom pill trigger + dropdown panel ──────── --}}
                     <div class="xl:hidden">
                         {{-- Trigger button --}}
-                        <button @click="mobileOpen = true"
-                            class="w-full flex items-center justify-between gap-3 bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl px-5 py-4 shadow-[0_2px_10px_rgba(0,0,0,0.04)] hover:shadow-md transition-all duration-300">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-red-50 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
-                                </div>
-                                <div class="text-left">
-                                    <div class="text-[10px] text-gray-400 font-bold uppercase tracking-widest mb-0.5">Filter Kategori</div>
-                                    <div class="text-gray-900 text-sm font-bold tracking-wide" x-text="active"></div>
-                                </div>
+                        <button @click="mobileOpen = !mobileOpen"
+                            class="w-full flex items-center justify-between gap-3 bg-white border border-gray-200 rounded-2xl px-5 py-3.5 shadow-sm hover:border-red-400 transition-all duration-200">
+                            <div class="flex items-center gap-2.5">
+                                <span class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0 animate-pulse"></span>
+                                <span class="text-gray-900 text-sm font-bold tracking-wide" x-text="active"></span>
                             </div>
-                            <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-400">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            <div class="flex items-center gap-2">
+                                <span class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Filter</span>
+                                <svg class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="mobileOpen ? 'rotate-180' : ''"
+                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+                                </svg>
                             </div>
                         </button>
 
@@ -277,62 +276,52 @@
                         <div x-show="mobileOpen" @click="mobileOpen = false"
                             x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
                             x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[90]" x-cloak></div>
+                            class="fixed inset-0 bg-black/50 filter-backdrop z-[90]" x-cloak></div>
 
                         {{-- Panel (Bottom Sheet) --}}
                         <div x-show="mobileOpen"
                             x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
                             x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full"
-                            class="fixed left-0 right-0 bottom-0 bg-white rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-[100] max-h-[85vh] flex flex-col" x-cloak>
+                            class="fixed left-0 right-0 bottom-0 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-[100] p-6 pb-10 max-h-[85vh] overflow-y-auto" x-cloak>
                             
-                            {{-- Header --}}
-                            <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 relative shrink-0">
-                                <div class="absolute left-1/2 -top-3 -translate-x-1/2 w-12 h-1.5 bg-gray-200 rounded-full"></div>
-                                <div>
-                                    <h3 class="text-sm font-extrabold text-gray-900 tracking-wide">Kategori Portfolio</h3>
-                                    <p class="text-xs text-gray-400 mt-0.5" x-text="categories.length + ' Pilihan Tersedia'"></p>
-                                </div>
-                                <button @click="mobileOpen = false" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors">
+                            {{-- Drag handle indicator --}}
+                            <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6"></div>
+                            
+                            <div class="flex items-center justify-between mb-5 px-1">
+                                <p class="text-xs font-bold tracking-widest uppercase text-gray-900">Pilih Kategori</p>
+                                <button @click="mobileOpen = false" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                                 </button>
                             </div>
 
-                            {{-- List --}}
-                            <div class="p-6 overflow-y-auto filter-scroll">
-                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                    <template x-for="cat in categories" :key="cat">
-                                        <button @click="setActive(cat); mobileOpen = false"
-                                            :class="active === cat
-                                                ? 'bg-red-600 text-white ring-1 ring-red-600 shadow-md shadow-red-600/20'
-                                                : 'bg-white text-gray-600 ring-1 ring-gray-200 hover:ring-red-200 hover:bg-red-50 hover:text-red-600'"
-                                            class="relative flex items-center justify-between px-4 py-3.5 rounded-2xl transition-all duration-200 text-left group"
-                                        >
-                                            <span class="text-[13px] font-semibold tracking-wide truncate pr-4" x-text="cat"></span>
-                                            
-                                            <div :class="active === cat ? 'scale-100 opacity-100' : 'scale-75 opacity-0'"
-                                                class="flex-shrink-0 w-5 h-5 rounded-full bg-white/20 flex items-center justify-center transition-all duration-300">
-                                                <svg class="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
-                                            </div>
-                                        </button>
-                                    </template>
-                                </div>
+                            <div class="flex flex-wrap gap-2.5">
+                                <template x-for="cat in categories" :key="cat">
+                                    <button @click="setActive(cat); mobileOpen = false"
+                                        :class="active === cat
+                                            ? 'bg-red-600 text-white border-red-600 shadow-md shadow-red-600/20'
+                                            : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-red-300 hover:text-red-600'"
+                                        class="text-[12px] font-semibold tracking-wide border rounded-full px-5 py-2.5 transition-all duration-200 flex-grow text-center"
+                                        x-text="cat">
+                                    </button>
+                                </template>
                             </div>
                         </div>
                     </div>
 
-                    {{-- ── DESKTOP: Sleek Horizontal scroll bar ─────────────── --}}
-                    <div class="hidden xl:block relative group">
-                        {{-- Left/Right fade gradients for premium feel --}}
-                        <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white to-transparent z-10"></div>
-                        <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white to-transparent z-10"></div>
+                    {{-- ── DESKTOP: Horizontal scroll pill bar ─────────────── --}}
+                    <div class="hidden xl:block relative">
+                        {{-- Left fade edge --}}
+                        <div class="pointer-events-none absolute left-0 top-0 bottom-5 w-8 z-10 filter-fade-left"></div>
+                        {{-- Right fade edge --}}
+                        <div class="pointer-events-none absolute right-0 top-0 bottom-5 w-12 z-10 filter-fade-right"></div>
 
-                        <div class="flex overflow-x-auto gap-2.5 pb-2 filter-scroll justify-end px-2">
+                        <div class="flex overflow-x-auto gap-2 pb-5 filter-scroll justify-end">
                             <template x-for="cat in categories" :key="cat">
                                 <button @click="setActive(cat)"
                                     :class="active === cat
-                                        ? 'bg-red-600 text-white shadow-lg shadow-red-600/20 ring-1 ring-red-600'
-                                        : 'bg-white text-gray-500 ring-1 ring-gray-200 hover:ring-red-200 hover:text-red-600 hover:bg-red-50 hover:shadow-sm'"
-                                    class="whitespace-nowrap shrink-0 text-[12px] font-bold tracking-wide px-5 py-3 rounded-2xl transition-all duration-300"
+                                        ? 'bg-red-600 text-white border-red-600 shadow-lg shadow-red-600/25'
+                                        : 'bg-white text-gray-500 border-gray-200 hover:border-red-300 hover:text-red-600 hover:bg-red-50'"
+                                    class="whitespace-nowrap shrink-0 border text-[10px] font-bold tracking-widest uppercase px-4 py-2.5 rounded-full transition-all duration-200"
                                     x-text="cat">
                                 </button>
                             </template>
