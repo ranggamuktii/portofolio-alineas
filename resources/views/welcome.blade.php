@@ -251,7 +251,15 @@
                     <h2 class="font-display text-3xl md:text-4xl font-bold text-gray-900 mt-2">Karya Terbaik Kami</h2>
                 </div>
 
-                {{-- Filter controls - full width clean tab strip --}}
+                {{-- Filter controls --}}
+                {{-- 
+                    STRATEGY:
+                    - All screens: single horizontal scrollable strip (no dropdown, no bottom sheet)
+                    - Active tab: bold text + colored underline (no background fill = cleaner look)
+                    - Mobile: left-aligned, scroll as needed, fade edges indicate more items
+                    - Desktop: items auto-wrap if they fit, scroll if not
+                    - Many items: gracefully handled by overflow-x-auto + snap scrolling
+                --}}
                 <div class="relative" x-data="{
                     init() {
                         this.$watch('active', () => {
@@ -262,22 +270,19 @@
                         });
                     }
                 }">
-                    {{-- Fade edges --}}
+                    {{-- Fade edges to signal scrollability --}}
                     <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10"></div>
                     <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                    <div class="flex overflow-x-auto gap-2 filter-scroll py-1">
+                    <div class="flex overflow-x-auto filter-scroll gap-1 pb-1">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
-                                class="whitespace-nowrap shrink-0 flex items-center gap-1.5 px-4 py-2 rounded-full text-sm font-semibold transition-all duration-200"
+                                class="is-active-tab whitespace-nowrap shrink-0 px-4 py-2 text-sm font-semibold transition-all duration-200 relative border-b-2"
                                 :class="active === cat
-                                    ? 'is-active-tab bg-red-600 text-white shadow-md'
-                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
+                                    ? 'is-active-tab text-red-600 border-red-600'
+                                    : 'text-gray-400 border-transparent hover:text-gray-700 hover:border-gray-300'"
+                                x-text="cat"
                             >
-                                <svg x-show="active === cat" class="w-3 h-3 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
-                                </svg>
-                                <span x-text="cat"></span>
                             </button>
                         </template>
                     </div>
@@ -1204,8 +1209,8 @@
                 >
                     <div class="flex transition-transform duration-700 ease-in-out" :style="'transform: translateX(-' + (activeSlide * 100) + '%)'"> 
                         @foreach(array_chunk($testimonials, 3) as $chunk)
-                            <div class="w-full flex-shrink-0 px-1" style="height: 100%;">
-                                <div class="grid grid-cols-1 md:grid-cols-3 gap-5" style="height: 100%;">
+                            <div class="w-full flex-shrink-0 px-1">
+                                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
                                     @foreach($chunk as $testi)
                                         <div class="testi-card">
                                             {{-- Decorative quote mark --}}
