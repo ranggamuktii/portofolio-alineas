@@ -252,80 +252,49 @@
                 </div>
 
                 {{-- Filter controls --}}
-                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0" x-data="{ mobileOpen: false }">
+                <div class="relative w-full xl:w-auto xl:flex-1 min-w-0" x-data="{ 
+                    init() {
+                        // Auto-scroll the active filter pill to the center when clicked
+                        this.$watch('active', value => {
+                            setTimeout(() => {
+                                const activeEl = this.$el.querySelector('.is-active-tab');
+                                if (activeEl) {
+                                    activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                                }
+                            }, 50);
+                        });
+                    }
+                }">
 
-                    {{-- ── MOBILE: Custom pill trigger + dropdown panel ──────── --}}
-                    <div class="xl:hidden">
-                        {{-- Trigger button --}}
-                        <button @click="mobileOpen = !mobileOpen"
-                            class="w-full flex items-center justify-between gap-3 bg-white border border-gray-200 rounded-2xl px-5 py-3.5 shadow-sm hover:border-red-400 transition-all duration-200">
-                            <div class="flex items-center gap-2.5">
-                                <span class="w-2 h-2 rounded-full bg-red-500 flex-shrink-0 animate-pulse"></span>
-                                <span class="text-gray-900 text-sm font-bold tracking-wide" x-text="active"></span>
-                            </div>
-                            <div class="flex items-center gap-2">
-                                <span class="text-[10px] text-gray-400 font-medium uppercase tracking-widest">Filter</span>
-                                <svg class="w-4 h-4 text-gray-400 transition-transform duration-300" :class="mobileOpen ? 'rotate-180' : ''"
-                                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                                </svg>
-                            </div>
-                        </button>
+                    {{-- ── ✨ PREMIUM UNIFIED HORIZONTAL FILTER ✨ ──────── --}}
+                    {{-- Soft edge fade gradients to indicate scrollability --}}
+                    <div class="pointer-events-none absolute left-0 top-0 bottom-8 w-12 bg-gradient-to-r from-white via-white/90 to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute right-0 top-0 bottom-8 w-12 bg-gradient-to-l from-white via-white/90 to-transparent z-10"></div>
 
-                        {{-- Backdrop --}}
-                        <div x-show="mobileOpen" @click="mobileOpen = false"
-                            x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-                            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
-                            class="fixed inset-0 bg-black/50 filter-backdrop z-[90]" x-cloak></div>
-
-                        {{-- Panel (Bottom Sheet) --}}
-                        <div x-show="mobileOpen"
-                            x-transition:enter="transition ease-out duration-300 transform" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
-                            x-transition:leave="transition ease-in duration-200 transform" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full"
-                            class="fixed left-0 right-0 bottom-0 bg-white rounded-t-3xl shadow-[0_-10px_40px_rgba(0,0,0,0.1)] z-[100] p-6 pb-10 max-h-[85vh] overflow-y-auto" x-cloak>
-                            
-                            {{-- Drag handle indicator --}}
-                            <div class="w-12 h-1.5 bg-gray-200 rounded-full mx-auto mb-6"></div>
-                            
-                            <div class="flex items-center justify-between mb-5 px-1">
-                                <p class="text-xs font-bold tracking-widest uppercase text-gray-900">Pilih Kategori</p>
-                                <button @click="mobileOpen = false" class="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                                </button>
-                            </div>
-
-                            <div class="flex flex-wrap gap-2.5">
-                                <template x-for="cat in categories" :key="cat">
-                                    <button @click="setActive(cat); mobileOpen = false"
-                                        :class="active === cat
-                                            ? 'bg-red-600 text-white border-red-600 shadow-md shadow-red-600/20'
-                                            : 'bg-gray-50 text-gray-600 border-gray-200 hover:border-red-300 hover:text-red-600'"
-                                        class="text-[12px] font-semibold tracking-wide border rounded-full px-5 py-2.5 transition-all duration-200 flex-grow text-center"
-                                        x-text="cat">
-                                    </button>
-                                </template>
-                            </div>
-                        </div>
-                    </div>
-
-                    {{-- ── DESKTOP: Horizontal scroll pill bar ─────────────── --}}
-                    <div class="hidden xl:block relative">
-                        {{-- Left fade edge --}}
-                        <div class="pointer-events-none absolute left-0 top-0 bottom-5 w-8 z-10 filter-fade-left"></div>
-                        {{-- Right fade edge --}}
-                        <div class="pointer-events-none absolute right-0 top-0 bottom-5 w-12 z-10 filter-fade-right"></div>
-
-                        <div class="flex overflow-x-auto gap-2 pb-5 filter-scroll justify-end">
-                            <template x-for="cat in categories" :key="cat">
-                                <button @click="setActive(cat)"
-                                    :class="active === cat
-                                        ? 'bg-red-600 text-white border-red-600 shadow-lg shadow-red-600/25'
-                                        : 'bg-white text-gray-500 border-gray-200 hover:border-red-300 hover:text-red-600 hover:bg-red-50'"
-                                    class="whitespace-nowrap shrink-0 border text-[10px] font-bold tracking-widest uppercase px-4 py-2.5 rounded-full transition-all duration-200"
-                                    x-text="cat">
-                                </button>
-                            </template>
-                        </div>
+                    {{-- Scrollable Container --}}
+                    <div class="flex overflow-x-auto gap-3 pb-8 pt-2 px-4 filter-scroll scroll-smooth snap-x">
+                        <template x-for="cat in categories" :key="cat">
+                            <button @click="setActive(cat)"
+                                class="snap-center relative flex items-center justify-center whitespace-nowrap shrink-0 px-6 py-3 rounded-full text-[13px] font-extrabold tracking-wide transition-all duration-500 ease-out active:scale-95 group overflow-hidden"
+                                :class="active === cat
+                                    ? 'is-active-tab bg-gradient-to-br from-red-600 to-red-700 text-white shadow-[0_8px_20px_-6px_rgba(220,38,38,0.5)] ring-1 ring-red-500/50'
+                                    : 'bg-white text-gray-500 ring-1 ring-gray-200/80 shadow-sm hover:shadow-md hover:ring-gray-300 hover:text-gray-900'"
+                            >
+                                {{-- Animated Checkmark Icon --}}
+                                <div class="flex items-center justify-center overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                                      :class="active === cat ? 'w-4 opacity-100 scale-100 mr-1.5' : 'w-0 opacity-0 scale-50 mr-0'">
+                                    <svg class="w-3.5 h-3.5 text-white drop-shadow-sm shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+                                    </svg>
+                                </div>
+                                
+                                <span x-text="cat" class="relative z-10"></span>
+                                
+                                {{-- Soft hover glow overlay --}}
+                                <div class="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                                     :class="active === cat ? 'bg-white/10' : 'bg-gray-900/[0.03]'"></div>
+                            </button>
+                        </template>
                     </div>
 
                 </div>{{-- end filter controls --}}
