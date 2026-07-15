@@ -254,11 +254,11 @@
                 {{-- Filter controls --}}
                 {{-- 
                     STRATEGY:
-                    - All screens: single horizontal scrollable strip (no dropdown, no bottom sheet)
-                    - Active tab: bold text + colored underline (no background fill = cleaner look)
-                    - Mobile: left-aligned, scroll as needed, fade edges indicate more items
-                    - Desktop: items auto-wrap if they fit, scroll if not
-                    - Many items: gracefully handled by overflow-x-auto + snap scrolling
+                    - Satu strip horizontal scrollable untuk semua ukuran layar
+                    - Active: pill merah solid (tidak bisa di-clip seperti border-b)
+                    - Inactive: teks abu transparan
+                    - Berapapun jumlah filter, overflow-x-auto + filter-scroll menangani semua kasus
+                    - Auto-scroll ke item aktif lewat scrollIntoView
                 --}}
                 <div class="relative" x-data="{
                     init() {
@@ -271,16 +271,16 @@
                     }
                 }">
                     {{-- Fade edges to signal scrollability --}}
-                    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent z-10"></div>
-                    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute left-0 top-0 bottom-0 w-10 bg-gradient-to-r from-white to-transparent z-10"></div>
+                    <div class="pointer-events-none absolute right-0 top-0 bottom-0 w-10 bg-gradient-to-l from-white to-transparent z-10"></div>
 
-                    <div class="flex overflow-x-auto filter-scroll gap-1 pb-1">
+                    <div class="flex overflow-x-auto filter-scroll gap-1.5 py-1 px-1">
                         <template x-for="cat in categories" :key="cat">
                             <button @click="setActive(cat)"
-                                class="is-active-tab whitespace-nowrap shrink-0 px-4 py-2 text-sm font-semibold transition-all duration-200 relative border-b-2"
+                                class="whitespace-nowrap shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-all duration-200"
                                 :class="active === cat
-                                    ? 'is-active-tab text-red-600 border-red-600'
-                                    : 'text-gray-400 border-transparent hover:text-gray-700 hover:border-gray-300'"
+                                    ? 'is-active-tab bg-red-600 text-white shadow-sm'
+                                    : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'"
                                 x-text="cat"
                             >
                             </button>
@@ -1112,6 +1112,8 @@
                         padding: 28px;
                         display: flex;
                         flex-direction: column;
+                        /* Fixed min-height agar semua card sama tinggi antar slide */
+                        min-height: 260px;
                         height: 100%;
                         position: relative;
                         transition: all 0.3s ease;
